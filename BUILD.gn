@@ -1,0 +1,44 @@
+import("//build/ohos.gni")
+
+_tc = "//build/toolchain/ohos:ohos_clang_x86_64"
+
+
+group("atm") {
+  deps = [
+    "//base/security/access_token/services/accesstokenmanager:accesstoken_manager_service($_tc)",
+    "//base/security/access_token/services/common/json_parse:accesstoken_json_parse($_tc)",
+  ]
+}
+
+ohos_executable("sa_main") {
+  sources = [ "//foundation/systemabilitymgr/safwk/services/safwk/src/main.cpp" ]
+
+  include_dirs = [
+    "//foundation/systemabilitymgr/safwk/services/safwk/include",
+    "//foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk",
+  ]
+  deps = [
+    "//foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk:system_ability_fwk",
+  ]
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
+    "init:libbegetutil",
+    "ipc:ipc_single",
+    "json:nlohmann_json_static",
+    "samgr:samgr_common",
+  ]
+
+  ldflags = [ "-rdynamic" ]
+
+  install_enable = false
+  part_name = "safwk"
+  subsystem_name = "systemabilitymgr"
+}
+
+group("all") {
+  deps = [
+    ":atm",
+    ":sa_main",
+  ]
+}
