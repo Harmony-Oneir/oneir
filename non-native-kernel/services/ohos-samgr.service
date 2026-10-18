@@ -1,0 +1,48 @@
+# Реестр системных сервисов OpenHarmony (samgr) как служба systemd на хосте.
+# На устройстве samgr запускает init одним из первых; здесь — systemd после hilogd.
+#
+# Установка:
+#   sudo cp ohos-samgr.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-samgr
+# Проверка:
+#   systemctl status ohos-samgr
+#   journalctl -u ohos-samgr -f
+
+[Unit]
+Description=OpenHarmony samgr (реестр системных сервисов)
+# Журнал желателен, но не обязателен: без hilogd samgr работает, просто без логов
+Wants=ohos-hilogd.service
+After=ohos-hilogd.service local-fs.target
+ConditionPathExists=/system/bin/samgr
+
+[Service]
+Type=simple
+# --- /dev/binder: без него samgr не может стать context manager.
+# 1) Загрузить модуль binder, если он есть в ядре модулем ("-" — не ошибка, если
+#    модуля нет или binder встроен в ядро).
+ExecStartPre=-/sbin/modprobe binder_linux devices=binder,hwbinder,vndbinder
+# 2) Если узла нет: создать его по номеру из sysfs (binder как misc-устройство),
+#    иначе подключить binderfs и сослаться на его binder. Затем права 666 —
+#    все процессы стенда должны открывать binder.
+ExecStartPre=/bin/sh -c '\
+  if [ ! -e /dev/binder ]; then \
+    if [ -r /sys/class/misc/binder/dev ]; then \
+      IFS=: read MA MI < /sys/class/misc/binder/dev; \
+      mknod /dev/binder c $$MA $$MI && echo "создан /dev/binder ($$MA:$$MI)"; \
+    elif grep -qw binder /proc/filesystems; then \
+      mkdir -p /dev/binderfs; \
+      mountpoint -q /dev/binderfs || mount -t binder binder /dev/binderfs; \
+      [ -e /dev/binderfs/binder ] && ln -sf /dev/binderfs/binder /dev/binder \
+        && echo "/dev/binder -> /dev/binderfs/binder"; \
+    fi; \
+  fi; \
+  [ -e /dev/binder ] || { echo "binder недоступен: нет ни модуля binder, ни binderfs" >&2; exit 1; }; \
+  chmod 666 /dev/binder'
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/samgr'
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target
