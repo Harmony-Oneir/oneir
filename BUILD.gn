@@ -23,6 +23,29 @@ group("hilog") {
  ]
 }
 
+group("hiview") {
+  deps = [ 
+     "//base/hiviewdfx/hiview:hiview_package($_tc)",
+     "//base/hiviewdfx/faultloggerd:faultloggerd_targets($_tc)" 
+  ]
+}
+
+
+ohos_executable("token_init") {
+  sources = [ "non-native-kernel/src/token/token_init.cpp" ]
+  external_deps = [ "access_token:libnativetoken","access_token:libtoken_setproc" ]
+  install_enable = false
+  part_name = "ipc"
+  subsystem_name = "communication"
+}
+
+
+group("oneir_token_init") {
+  deps = [
+     ":token_init($_tc)",
+  ]
+}
+
 ohos_executable("sa_main") {
   sources = [ "//foundation/systemabilitymgr/safwk/services/safwk/src/main.cpp" ]
 
@@ -30,6 +53,8 @@ ohos_executable("sa_main") {
     "//foundation/systemabilitymgr/safwk/services/safwk/include",
     "//foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk",
   ]
+
+
   deps = [
     "//foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk:system_ability_fwk",
   ]
@@ -48,6 +73,7 @@ ohos_executable("sa_main") {
   part_name = "safwk"
   subsystem_name = "systemabilitymgr"
 }
+
 
 group("all") {
   deps = [
