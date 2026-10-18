@@ -1,9 +1,8 @@
 #!/bin/bash
 
-
-
-
 SYS=${SYS:-/system}
+
+PWD_DIR=$(pwd)
 PARENT_DIR=$(cd ../.. && pwd)
 PROJECT_NAME="oneir"
 OUT_DIR="${PARENT_DIR}/out/${PROJECT_NAME}"
@@ -23,7 +22,7 @@ out_atm="security/access_token/"
 
 atm_deps=("accesstoken_cjson_utils" "accesstoken_manager_service" "accesstoken_json_parse" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "libaccesstoken_sdk" "libtokenid_sdk" "libtoken_callback_sdk" "libtokensetproc_shared" "libpermsetproc_shared" "libprivacy_sdk" "privacy_communication_adapter_cxx" )
 hilog_deps=("hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
-safwk_deps=("sa_main" "system_ability_fwk" "utils" "libhilog" "libbegetutil" "samgr_common" "libsec_shared" "" )
+safwk_deps=("sa_main" "system_ability_fwk" "utils" "libhilog" "libbegetutil" "samgr_common" "libsec_shared" )
 samgr_deps=("samgr" "samgr_proxy" "samgr_common" "samgr_rust")
 
 
@@ -101,13 +100,39 @@ install_minimal() {
    echo "Запуск минимальной установки..."
    echo "	Установка samgr"
    process_and_install_deps "${samgr_deps[@]}"
+
+   # Создание сервиса для samgr
+   if ! cp "${PWD_DIR}/services/ohos-samgr.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-samgr.service${NC}"
+   fi
+
+
    echo "	Установка safwk"
    process_and_install_deps "${safwk_deps[@]}"
    echo "	Установка HiLog"
    process_and_install_deps "${hilog_deps[@]}"
+   
+   # Создание сервиса для hilog
+   if ! cp "${PWD_DIR}/services/ohos-hilogd.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-hilogd.service${NC}"
+   fi
+
+
    echo "	Установка ATM"
    process_and_install_deps "${atm_deps[@]}"
+
+   # Создание сервиса для ATM
+   if ! cp "${PWD_DIR}/services/ohos-atm.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-atm.service${NC}"
+   fi
+
+
+
+
+   systemctl daemon-reload
 }
+
+
 
 # Проверяем переданный аргумент ($1)
 case "$1" in
