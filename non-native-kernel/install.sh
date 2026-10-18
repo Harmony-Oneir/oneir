@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+
 SYS=${SYS:-/system}
 
 PWD_DIR=$(pwd)
@@ -24,7 +27,9 @@ atm_deps=("accesstoken_cjson_utils" "accesstoken_manager_service" "accesstoken_j
 hilog_deps=("hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
 safwk_deps=("sa_main" "system_ability_fwk" "utils" "libhilog" "libbegetutil" "samgr_common" "libsec_shared" )
 samgr_deps=("samgr" "samgr_proxy" "samgr_common" "samgr_rust")
-
+faultloggerd_deps=("faultloggerd" "processdump" "dumpcatcher" "crashvalidator" "dfx_signalhandler" "libfaultloggerd" "libdfx_dumpcatcher" "libunwinder" "libbacktrace_local" "libstack_printer" "libjson_stack_formatter" "libasync_stack" "libdfx_procinfo" "crash_exception" "kernel_snapshot" "panic_handler" "stacktrace_rust" "rustc_demangle" )
+hiview_deps=("hiview" "hiviewbase" "sys_event_service_adapter" "libfaultlogger" "eventloggerso" "libcrashvalidator" "crashvalidator" "libtrace_manager" "libucollection_client" "libucollection_utility" "xperfservice_client" "xperfservice_server" "libxpower_event" "adft" "bdfr" "bdfr_base" "analysis_faultlog" "usage_report" )
+token_init_deps=("token_init")
 
 
 echo "$PARENT_DIR"
@@ -126,6 +131,27 @@ install_minimal() {
     echo -e "${RED}Ошибка: не удалось скопировать ohos-atm.service${NC}"
    fi
 
+   if ! cp "${PWD_DIR}/../profile/accesstoken_service.json" "${SYS}/profile/accesstoken_service.json"; then
+    echo -e "${RED}Ошибка: не удалось скопировать accesstoken_service.json${NC}"
+   fi
+
+   echo "       Установка faultloggerd_deps"
+   process_and_install_deps "${faultloggerd_deps[@]}"
+
+   # Создание сервиса для ohos-faultloggerd
+   if ! cp "${PWD_DIR}/services/ohos-faultloggerd.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-faultloggerd.service${NC}"
+   fi
+
+
+   echo "       Установка hiview_deps"
+   process_and_install_deps "${hiview_deps[@]}"
+   # Создание сервиса для  ohos-hiview
+   if ! cp "${PWD_DIR}/services/ohos-hiview.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-hiview.service${NC}"
+   fi
+   echo "       Установка token_init"
+   process_and_install_deps "${token_init_deps[@]}"
 
 
 
