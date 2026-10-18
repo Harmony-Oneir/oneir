@@ -1,0 +1,38 @@
+# AccessTokenManager (SA 3503) через sa_main как служба systemd на хосте.
+# На устройстве его запускает init по accesstoken_service.cfg:
+#   /system/bin/sa_main /system/profile/accesstoken_service.json
+#
+# Установка:
+#   sudo cp ohos-atm.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-atm
+# Проверка:
+#   systemctl status ohos-atm
+#   journalctl -u ohos-atm -f
+
+[Unit]
+Description=OpenHarmony AccessTokenManager (SA 3503)
+# BindsTo: если samgr остановлен или перезапущен, ATM останавливается вместе с ним —
+# его регистрация в старом samgr потеряна. Обратно его поднимает WantedBy ниже:
+# при каждом старте samgr systemd запускает и ATM.
+BindsTo=ohos-samgr.service
+After=ohos-samgr.service
+ConditionPathExists=/system/bin/sa_main
+ConditionPathExists=/system/profile/accesstoken_service.json
+
+[Service]
+Type=simple
+# Каталоги ATM, как на устройстве
+ExecStartPre=/bin/mkdir -p /data/service/el0/access_token/bypid /data/service/el0/access_token/byname /data/service/el1/public/access_token
+# Старые записи bypid: их pid могут достаться новым процессам
+ExecStartPre=/bin/sh -c 'rm -f /data/service/el0/access_token/bypid/*'
+# Дать samgr время стать context manager
+ExecStartPre=/bin/sleep 1
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/sa_main /system/profile/accesstoken_service.json'
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+# Запускать ATM вместе с samgr: при старте или перезапуске samgr
+WantedBy=ohos-samgr.service
