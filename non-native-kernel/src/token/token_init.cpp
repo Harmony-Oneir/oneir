@@ -1,0 +1,170 @@
+#include <cstdio>
+#include <cstdint>
+#include <string>
+#include <vector>
+
+#include "nativetoken_kit.h"
+
+namespace {
+
+// Разрешения, нужные системным процессам нашего стенда. На устройстве
+// у каждого сервиса свой список, заданный в его исходниках; здесь мы
+// играем роль того, кто наполняет реестр нативных токенов при сборке образа.
+const char *PERMS[] = {
+    "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+    "ohos.permission.INSTALL_BUNDLE",
+    "ohos.permission.UNINSTALL_BUNDLE",
+    "ohos.permission.GET_INSTALLED_BUNDLE_LIST",
+    "ohos.permission.LISTEN_BUNDLE_CHANGE",
+    "ohos.permission.REMOVE_CACHE_FILES",
+    "ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
+    "ohos.permission.STORAGE_MANAGER",
+    "ohos.permission.STORAGE_MANAGER_CRYPT",
+    "ohos.permission.MOUNT_UNMOUNT_MANAGER",
+    "ohos.permission.MOUNT_FORMAT_MANAGER",
+    "ohos.permission.MANAGE_LOCAL_ACCOUNTS",
+    "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS",
+    "ohos.permission.GET_LOCAL_ACCOUNTS",
+    "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION",
+    "ohos.permission.MANAGE_HAP_TOKENID",
+    "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+    "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+    "ohos.permission.GET_SENSITIVE_PERMISSIONS",
+    "ohos.permission.GET_RUNNING_INFO",
+    "ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+    "ohos.permission.START_INVISIBLE_ABILITY",
+    "ohos.permission.ABILITY_BACKGROUND_COMMUNICATION",
+    "ohos.permission.USE_USER_IDM",
+    "ohos.permission.MANAGE_USER_IDM",
+    "ohos.permission.ACCESS_USER_AUTH_INTERNAL",
+    // Право распоряжаться охраняемыми настройками. Без него хранилище
+    // отклоняет и обновление записи, и её вставку — причём молча: в
+    // SettingProvider::PutStringValue ответ Insert не проверяется, и наверх
+    // уходит успех. Отсюда «записал» в журнале при вечном «не найдено».
+    "ohos.permission.MANAGE_SECURE_SETTINGS",
+    "ohos.permission.MANAGE_SETTINGS",
+
+    // Смена оформления: служба 7002 просит распорядителя приложений разослать
+    // новые настройки всем окнам. Без этого права просьба отклоняется, служба
+    // возвращает единицу, и признак persist.ace.darkmode остаётся прежним —
+    // она меняет его только после успешной рассылки.
+    "ohos.permission.UPDATE_CONFIGURATION",
+    // Наблюдение за состоянием приложений. Без него распорядитель дважды в
+    // секунду отказывает подписчику — та самая ровная жалоба в журнале.
+    "ohos.permission.RUNNING_STATE_OBSERVER",
+
+
+    // Ближняя связь: сеть, радиомодуль, беспроводной обмен, удостоверение
+    // устройства. Полный заводской перечень вдвое длиннее, но остальное —
+    // про сверхширокополосную связь, учёт трафика и прочее, чего у нас нет.
+    "ohos.permission.INTERNET",
+    "ohos.permission.GET_NETWORK_INFO",
+    "ohos.permission.CONNECTIVITY_INTERNAL",
+    "ohos.permission.DISTRIBUTED_DATASYNC",
+    "ohos.permission.ACCESS_BLUETOOTH",
+    "ohos.permission.MANAGE_BLUETOOTH",
+    "ohos.permission.GET_BLUETOOTH_LOCAL_MAC",
+    "ohos.permission.GET_WIFI_INFO",
+    "ohos.permission.GET_WIFI_INFO_INTERNAL",
+    "ohos.permission.GET_WIFI_LOCAL_MAC",
+    "ohos.permission.ACCESS_IDS",
+    "ohos.permission.sec.ACCESS_UDID",
+    "ohos.permission.ACCESS_DEVAUTH_CRED_PRIVILEGE",
+    "ohos.permission.ACCESS_SERVICE_DP",
+    "ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS",
+    "ohos.permission.GET_DISTRIBUTED_ACCOUNTS",
+    // Служба доступа к пользовательским файлам (5010): она посредничает
+    // между приложениями и поставщиками каталогов.
+    "ohos.permission.FILE_ACCESS_MANAGER",
+    "ohos.permission.CONNECT_FILE_ACCESS_EXTENSION",
+    "ohos.permission.CHECK_SANDBOX_POLICY",
+    "ohos.permission.MANAGE_NET_STRATEGY",
+    "ohos.permission.GET_NETWORK_INFO",
+    "ohos.permission.CONNECTIVITY_INTERNAL",
+    "ohos.permission.INTERNET",
+};
+
+// Имена процессов ровно те, под которыми они видны в /proc/<pid>/cmdline.
+// Для сервисов под sa_main это имя профиля: каркас переименовывает процесс.
+const char *PROCESSES[] = {
+    "samgr",
+    "accesstoken_service",
+    "installs",
+    "bms",
+    "bm",
+    "hilogd",
+    "samgr_client",
+    "ipc_test_client",
+    "ipc_test_server",
+    "accountmgr",
+    "storage_daemon",
+    "storage_manager",
+    "acm",
+    "foundation",
+    "bundle_test_tool",
+    "appspawn",
+    "aa",
+    "hdf_devmgr",
+    "composer_host",
+    "allocator_host",
+    "render_service",
+    "multimodalinput",
+    "param_watcher",
+    "inputmethod_service",
+    "distributeddata",
+    "screenlock_server",
+    "useriam",
+    "powermgr",
+    "audio_server",
+    "bluetooth_service",
+    "ui_service",
+    "device_manager",
+    "huks_service",
+    "wifi_manager_service",
+    "deviceauth_service",
+    "file_access_service",
+    "disk_manager",
+    "netsysnative",
+    "netmanager",
+};
+
+constexpr const char *BYNAME_DIR = "/data/service/el0/access_token/byname";
+
+bool WriteToken(const char *name, uint64_t token)
+{
+    std::string path = std::string(BYNAME_DIR) + "/" + name;
+    FILE *f = fopen(path.c_str(), "w");
+    if (f == nullptr) {
+        printf("cannot write %s\n", path.c_str());
+        return false;
+    }
+    fprintf(f, "%llu\n", static_cast<unsigned long long>(token));
+    fclose(f);
+    return true;
+}
+
+} // namespace
+
+int main()
+{
+    int permsNum = static_cast<int>(sizeof(PERMS) / sizeof(PERMS[0]));
+
+    for (const char *name : PROCESSES) {
+        NativeTokenInfoParams info = {
+            .dcapsNum = 0,
+            .permsNum = permsNum,
+            .aclsNum = 0,
+            .dcaps = nullptr,
+            .perms = PERMS,
+            .acls = nullptr,
+            .processName = name,
+            .aplStr = "system_core",
+            .uid = 0,
+        };
+
+        uint64_t token = GetAccessTokenId(&info);
+        printf("%-22s -> %llu\n", name, static_cast<unsigned long long>(token));
+        WriteToken(name, token);
+    }
+    return 0;
+}
