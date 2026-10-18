@@ -1,1 +1,11 @@
-
+{
+  "process": "accesstoken_service",
+  "systemability": [
+    {
+      "name": 3503,
+      "libpath": "libaccesstoken_manager_service.z.so",
+      "run-on-create": true,
+      "distributed": false
+    }
+  ]
+}
