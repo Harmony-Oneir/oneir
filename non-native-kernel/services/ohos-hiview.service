@@ -1,0 +1,43 @@
+# Служба диагностики OpenHarmony (hiview, SA 1201) как служба systemd на хосте.
+# На устройстве её запускает init по hiview.cfg; здесь — systemd после samgr.
+#
+# hiview регистрируется в samgr, поэтому, как и ATM, привязан к ohos-samgr:
+# при перезапуске samgr перезапускается и он.
+# Принимает системные события через сокет /dev/unix/socket/hisysevent,
+# забирает отчёты faultloggerd и сохраняет итоговые журналы сбоев.
+#
+# Установка:
+#   sudo cp ohos-hiview.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-hiview
+# Проверка:
+#   systemctl status ohos-hiview
+#   ls -l /dev/unix/socket/hisysevent
+#   sudo /system/bin/hilog -x -P "$(pgrep -x hiview)"   # записи процесса hiview
+
+[Unit]
+Description=OpenHarmony hiview (системные события и журналы сбоев, SA 1201)
+BindsTo=ohos-samgr.service
+After=ohos-samgr.service ohos-faultloggerd.service
+# faultloggerd желателен: без него не будет отчётов о сбоях, но события hiview примет
+Wants=ohos-faultloggerd.service
+ConditionPathExists=/system/bin/hiview
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mkdir -p /dev/unix/socket
+# Рабочие каталоги hiview и итоговых журналов сбоев
+ExecStartPre=/bin/mkdir -p /data/log/hiview /data/log/faultlog/faultlogger /data/system/hiview
+# Дать samgr время стать context manager
+ExecStartPre=/bin/sleep 1
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/hiview'
+ExecStopPost=-/bin/rm -f /dev/unix/socket/hisysevent
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix/socket
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+# Запускать вместе с samgr (как ATM)
+WantedBy=ohos-samgr.service
