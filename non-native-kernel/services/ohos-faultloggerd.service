@@ -1,0 +1,40 @@
+# Служба приёма сбоев OpenHarmony (faultloggerd) как служба systemd на хосте.
+# На устройстве её запускает init по faultloggerd.cfg; здесь — systemd.
+#
+# При сбое процесса обработчик сигналов (libdfx_signalhandler) запускает
+# /system/bin/processdump; тот раскручивает стек и через сокеты faultloggerd
+# получает файл для отчёта в /data/log/faultlog/temp/.
+#
+# Установка:
+#   sudo cp ohos-faultloggerd.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-faultloggerd
+# Проверка:
+#   systemctl status ohos-faultloggerd
+#   ls -l /dev/unix/socket/ | grep faultloggerd
+#   ls -l /data/log/faultlog/temp/          # отчёты cppcrash-*
+
+[Unit]
+Description=OpenHarmony faultloggerd (приём отчётов о сбоях)
+Wants=ohos-hilogd.service
+After=ohos-hilogd.service local-fs.target
+ConditionPathExists=/system/bin/faultloggerd
+
+[Service]
+Type=simple
+# Каталог сокетов: на устройстве его и сокеты faultloggerd.* создаёт init
+ExecStartPre=/bin/mkdir -p /dev/unix/socket
+# Каталоги отчётов, как на устройстве
+ExecStartPre=/bin/mkdir -p /data/log/faultlog/temp /data/log/faultlog/debug
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/faultloggerd'
+# После остановки или падения: убрать сокеты faultloggerd и пустые каталоги.
+# Сокеты других служб (hilogd, hiview) остаются — каталог удалится, только если пуст.
+ExecStopPost=-/bin/sh -c 'rm -f /dev/unix/socket/faultloggerd.*'
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix/socket
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target
