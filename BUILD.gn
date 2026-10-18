@@ -16,6 +16,13 @@ group("samgr") {
  ]
 }
 
+group("hilog") {
+ deps = [
+    "//base/hiviewdfx/hilog/services/hilogd:hilogd($_tc)",
+    "//base/hiviewdfx/hilog/services/hilogtool:hilog($_tc)",
+ ]
+}
+
 ohos_executable("sa_main") {
   sources = [ "//foundation/systemabilitymgr/safwk/services/safwk/src/main.cpp" ]
 
