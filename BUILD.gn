@@ -10,6 +10,12 @@ group("atm") {
   ]
 }
 
+group("samgr") {
+ deps = [
+    "//foundation/systemabilitymgr/samgr/services/samgr/native:samgr($_tc)",
+ ]
+}
+
 ohos_executable("sa_main") {
   sources = [ "//foundation/systemabilitymgr/safwk/services/safwk/src/main.cpp" ]
 
