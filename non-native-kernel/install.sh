@@ -1,12 +1,15 @@
 #!/bin/bash
 # Раскладка собранных компонентов OpenHarmony по путям оригинальной системы.
 #
-#   ./oneir/install.sh minimal              — вся минимальная система
-#   ./oneir/install.sh runtime hilog samgr  — только выбранные компоненты
-#   ./oneir/install.sh list                 — список компонентов
-#   ./oneir/install.sh gen <файл>           — строки lib ... для всех зависимостей файла
-#   ./oneir/install.sh verify               — у всех установленных ELF есть все NEEDED?
-#   ./oneir/install.sh uninstall [компонент]— удалить установленное (по журналу)
+#   ./install.sh minimal              — вся минимальная система
+#   ./install.sh runtime hilog samgr  — только выбранные компоненты
+#   ./install.sh list                 — список компонентов
+#   ./install.sh gen <файл>           — строки lib ... для всех зависимостей файла
+#   ./install.sh verify               — у всех установленных ELF есть все NEEDED?
+#   ./install.sh uninstall [компонент]— удалить установленное (по журналу)
+#
+# Скрипт можно класть в любой подкаталог дерева: корень ищется вверх по .gn и build.sh
+# (или задаётся OHOS_ROOT). Профили берутся из profile/ рядом со скриптом.
 #
 # Опции (перед командой):
 #   --dest DIR     корень установки (по умолчанию /; например ./rootfs для пробы)
@@ -19,7 +22,17 @@
 # туда, где она лежит на оригинальной системе. Если сведений нет — /system/lib64.
 # Второй аргумент lib/bin задаёт каталог явно.
 set -e
-ROOT=$(cd "$(dirname "$0")/.." && pwd)
+T=$(cd "$(dirname "$0")" && pwd)     # каталог скрипта (здесь же profile/)
+# Корень дерева OpenHarmony: OHOS_ROOT или первый каталог вверх от скрипта с .gn и build.sh
+ROOT=${OHOS_ROOT:-}
+if [ -z "$ROOT" ]; then
+  d=$T
+  while [ "$d" != / ]; do
+    if [ -f "$d/.gn" ] && [ -f "$d/build.sh" ]; then ROOT=$d; break; fi
+    d=$(dirname "$d")
+  done
+fi
+[ -n "$ROOT" ] || { echo "не найден корень дерева OpenHarmony (задайте OHOS_ROOT)" >&2; exit 1; }
 OUT=out/oneir
 DEST=/
 DRY=0
@@ -33,12 +46,13 @@ while [ $# -gt 0 ]; do
     --dry-run) DRY=1; shift ;;
     --keep-going) KEEP=1; shift ;;
     --reindex) REINDEX=1; shift ;;
-    -h|--help) sed -n '2,22p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,25p' "$0"; exit 0 ;;
     *) break ;;
   esac
 done
 cd "$ROOT"
 DEST=${DEST%/}                      # "/" -> "", "./rootfs/" -> "./rootfs"
+[ -d "$OUT" ] || { echo "нет каталога сборки $ROOT/$OUT (задайте --out)" >&2; exit 1; }
 OUTABS=$(cd "$OUT" && pwd)
 LIB64=/system/lib64
 BIN=/system/bin
@@ -206,7 +220,7 @@ comp_atm() {  # AccessTokenManager (SA 3503)
   lib libtoken_callback_sdk.z.so            # обратные вызовы ATM
   lib libtokensetproc_shared.z.so           # token_setproc (с патчем)
   lib libpermsetproc_shared.z.so            # установка прав процесса
-  file "$ROOT/oneir/profile/accesstoken_service.json" /system/profile/accesstoken_service.json
+  file "$T/profile/accesstoken_service.json" /system/profile/accesstoken_service.json
   dir /data/service/el0/access_token            # nativetoken.json
   dir /data/service/el0/access_token/bypid      # токены по pid (патч token_setproc)
   dir /data/service/el0/access_token/byname     # токены служб по имени (token_init)
@@ -281,7 +295,7 @@ run_comp() {
 }
 
 # ================================================================ команды
-[ $# -gt 0 ] || { sed -n '2,22p' "$0"; exit 1; }
+[ $# -gt 0 ] || { sed -n '2,25p' "$0"; exit 1; }
 if [ "$DEST" = "" ] && [ "$DRY" = 0 ] && [ "$(id -u)" != 0 ] && [[ "$1" != list && "$1" != gen ]]; then
   echo "установка в / требует root (или --dest DIR)" >&2; exit 1
 fi
