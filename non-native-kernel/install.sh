@@ -9,7 +9,8 @@
 #   ./install.sh uninstall [компонент]— удалить установленное (по журналу)
 #
 # Скрипт можно класть в любой подкаталог дерева: корень ищется вверх по .gn и build.sh
-# (или задаётся OHOS_ROOT). Профили берутся из profile/ рядом со скриптом.
+# (или задаётся OHOS_ROOT). Профили ищутся в profile/ рядом со скриптом, затем
+# в profile/ каталогов выше, до корня дерева (или задаются PROFILE_DIR).
 #
 # Опции (перед командой):
 #   --dest DIR     корень установки (по умолчанию /; например ./rootfs для пробы)
@@ -22,7 +23,9 @@
 # туда, где она лежит на оригинальной системе. Если сведений нет — /system/lib64.
 # Второй аргумент lib/bin задаёт каталог явно.
 set -e
-T=$(cd "$(dirname "$0")" && pwd)     # каталог скрипта (здесь же profile/)
+usage() { awk 'NR>1 && /^#/ {sub(/^# ?/, ""); print; next} NR>1 {exit}' "$(readlink -f "$0")"; }
+SELF=$(readlink -f "$0")             # абсолютный путь: дальше скрипт делает cd в корень дерева
+T=$(dirname "$SELF")                 # каталог скрипта (здесь же profile/)
 # Корень дерева OpenHarmony: OHOS_ROOT или первый каталог вверх от скрипта с .gn и build.sh
 ROOT=${OHOS_ROOT:-}
 if [ -z "$ROOT" ]; then
@@ -46,10 +49,11 @@ while [ $# -gt 0 ]; do
     --dry-run) DRY=1; shift ;;
     --keep-going) KEEP=1; shift ;;
     --reindex) REINDEX=1; shift ;;
-    -h|--help) sed -n '2,25p' "$0"; exit 0 ;;
+    -h|--help) usage; exit 0 ;;
     *) break ;;
   esac
 done
+[ $# -gt 0 ] || { usage; echo; echo "укажите команду, например: minimal" >&2; exit 1; }
 cd "$ROOT"
 DEST=${DEST%/}                      # "/" -> "", "./rootfs/" -> "./rootfs"
 [ -d "$OUT" ] || { echo "нет каталога сборки $ROOT/$OUT (задайте --out)" >&2; exit 1; }
@@ -153,6 +157,18 @@ file() {  # file ИСТОЧНИК ПУТЬ_НА_СИСТЕМЕ — обычны�
   record "$path"
 }
 
+profile() {  # путь к профилю: PROFILE_DIR, иначе profile/ рядом со скриптом или выше до корня
+  local name=$1 d
+  if [ -n "$PROFILE_DIR" ]; then echo "$PROFILE_DIR/$name"; return; fi
+  d=$T
+  while :; do
+    [ -f "$d/profile/$name" ] && { echo "$d/profile/$name"; return; }
+    [ "$d" = "$ROOT" ] || [ "$d" = / ] && break
+    d=$(dirname "$d")
+  done
+  echo "$T/profile/$name"   # не найден — сообщение об ошибке покажет ожидаемый путь
+}
+
 dir() {  # dir ПУТЬ [ПРАВА] — каталог данных
   printf '  %-44s (каталог)\n' "$1"
   [ "$DRY" = 1 ] && return
@@ -220,7 +236,7 @@ comp_atm() {  # AccessTokenManager (SA 3503)
   lib libtoken_callback_sdk.z.so            # обратные вызовы ATM
   lib libtokensetproc_shared.z.so           # token_setproc (с патчем)
   lib libpermsetproc_shared.z.so            # установка прав процесса
-  file "$T/profile/accesstoken_service.json" /system/profile/accesstoken_service.json
+  file "$(profile accesstoken_service.json)" /system/profile/accesstoken_service.json
   dir /data/service/el0/access_token            # nativetoken.json
   dir /data/service/el0/access_token/bypid      # токены по pid (патч token_setproc)
   dir /data/service/el0/access_token/byname     # токены служб по имени (token_init)
@@ -295,14 +311,13 @@ run_comp() {
 }
 
 # ================================================================ команды
-[ $# -gt 0 ] || { sed -n '2,25p' "$0"; exit 1; }
 if [ "$DEST" = "" ] && [ "$DRY" = 0 ] && [ "$(id -u)" != 0 ] && [[ "$1" != list && "$1" != gen ]]; then
   echo "установка в / требует root (или --dest DIR)" >&2; exit 1
 fi
 case "$1" in
   list)
     for c in $COMPONENTS; do
-      printf '  %-8s %s\n' "$c" "$(grep -m1 "^comp_$c()" "$0" | sed 's/.*# *//')"
+      printf '  %-8s %s\n' "$c" "$(grep -m1 "^comp_$c()" "$SELF" | sed 's/.*# *//')"
     done
     echo "  minimal = $MINIMAL" ;;
   minimal|минимальная) for c in $MINIMAL; do run_comp "$c"; done ;;
