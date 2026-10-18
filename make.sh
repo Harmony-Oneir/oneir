@@ -1,5 +1,5 @@
 #!/bin/bash
-# Сборка произвольной цели: свой out-каталог,
+# Сборка целей: свой out-каталог,
 # граф GN строится от выбранной цели (--root-target), собирается только она.
 #
 #   ./oneir/make.sh                     — oneir:atm (по умолчанию)
@@ -16,6 +16,10 @@ ROOT=$(dirname "$T")
 OUT=out/oneir
 GN=prebuilts/build-tools/linux-x86/bin/gn
 NINJA=prebuilts/build-tools/linux-x86/bin/ninja
+export PATH=/home/openharmony/prebuilts/python/linux-x86/current/bin:/home/openharmony/prebuilts/build-tools/common/nodejs/node-v18.20.1-linux-x64/bin:$PATH
+python3 --version
+python3 -c "import yaml" 2>/dev/null || python3 -m pip install pyyaml
+
 cd "$ROOT"
 
 RELOAD=0
