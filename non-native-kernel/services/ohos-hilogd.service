@@ -1,0 +1,43 @@
+# Журнал OpenHarmony (hilogd) как служба systemd на хосте.
+# На устройстве hilogd запускает init по /system/etc/init/hilogd.cfg; здесь — systemd.
+#
+# Установка:
+#   sudo cp ohos-hilogd.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-hilogd
+# Проверка:
+#   systemctl status ohos-hilogd
+#   journalctl -u ohos-hilogd -f        # stdout/stderr самого hilogd
+#   sudo /system/bin/hilog -x           # журнал OpenHarmony (нужен LD_LIBRARY_PATH или .ini в /etc)
+#   ls -l /dev/unix/socket              # сокеты hilogInput и hilogControl
+
+[Unit]
+Description=OpenHarmony hilogd (системный журнал)
+Documentation=file:///system/etc/init/hilogd.cfg
+After=local-fs.target
+ConditionPathExists=/system/bin/hilogd
+
+[Service]
+Type=simple
+# Каталог журнала на диске, как на устройстве
+ExecStartPre=/bin/mkdir -p /data/log/hilog
+# Каталог сокетов hilogd (hilogInput — запись логов, hilogControl — управление).
+# На устройстве его создаёт init по секции "socket" в hilogd.cfg.
+ExecStartPre=/bin/mkdir -p /dev/unix/socket
+# Каталоги библиотек: всё под /system/lib64 и /system/lib.
+# $$ — литеральный $ для оболочки (systemd иначе подставляет свои переменные).
+# Если ld-musl-namespace-x86_64.ini лежит в /etc, LD_LIBRARY_PATH не нужен,
+# но и не мешает.
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/hilogd'
+# После остановки (и после падения) убираем сокеты hilogd и пустые каталоги.
+# Каталог удаляется, только если в нём не осталось сокетов других служб.
+# "-" — ошибка команды не считается ошибкой службы.
+ExecStopPost=-/bin/rm -f /dev/unix/socket/hilogInput /dev/unix/socket/hilogControl
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix/socket
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target
