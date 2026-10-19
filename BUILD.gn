@@ -1,6 +1,13 @@
+# Фрагмент arkvm/BUILD.gn: замените им group("all"), остальное в файле не трогайте.
+# Переменные $_ipc и $_tc и локальные цели (:sa_main, :samgr_client, ...)
+# определены выше в этом же файле.
+
+# Только ATM и его библиотеки (token_setproc, rdb и пр. подтянутся по зависимостям).
+#   prebuilts/build-tools/linux-x86/bin/ninja -C out/arkvm arkvm:atm -w dupbuild=warn
 import("//build/ohos.gni")
 
 _tc = "//build/toolchain/ohos:ohos_clang_x86_64"
+_graphic_2d = "//foundation/graphic/graphic_2d"
 
 
 group("atm") {
@@ -29,6 +36,46 @@ group("hiview") {
      "//base/hiviewdfx/faultloggerd:faultloggerd_targets($_tc)" 
   ]
 }
+
+
+
+ohos_executable("oneir_param_service") {
+  sources = ["non-native-kernel/src/param_service/init_stubs.c", "non-native-kernel/src/param_service/param_service.cpp" ]
+
+
+  include_dirs = [
+    "//base/startup/init/interfaces/innerkits/include",
+    "//base/startup/init/interfaces/innerkits/init_module_engine/include",
+    "//base/startup/init/services/init/include",
+    "//base/startup/init/services/modules/init_hook",
+    "//base/startup/init/services/param/include",
+  ]
+
+  deps = [
+
+    "//base/startup/init/interfaces/innerkits:libbegetutil",
+    "//base/startup/init/services/log:init_log",
+    "//base/startup/init/services/param/base:param_base",
+    "//base/startup/init/services/param/linux:param_init",
+    "//base/startup/init/services/utils:libinit_utils",
+  ]
+  external_deps = [ "cJSON:cjson","hilog:libhilog" ]
+
+  install_enable = false
+  part_name = "init"
+  subsystem_name = "startup"
+
+}
+
+
+
+group("param_service") {
+  deps = [
+     "//base/startup/init/services/begetctl:param",
+     ":oneir_param_service($_tc)"
+  ]
+}
+
 
 
 ohos_executable("token_init") {
@@ -74,6 +121,8 @@ ohos_executable("sa_main") {
   subsystem_name = "systemabilitymgr"
 }
 
+
+
 group("oneir_graphics") {
   deps = [
     # --- Render Service ---
@@ -90,6 +139,8 @@ group("oneir_graphics") {
 
   ]
 }
+
+
 
 group("all") {
   deps = [
