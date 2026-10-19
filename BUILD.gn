@@ -74,6 +74,22 @@ ohos_executable("sa_main") {
   subsystem_name = "systemabilitymgr"
 }
 
+group("oneir_graphics") {
+  deps = [
+    # --- Render Service ---
+    # Процесс render_service. Транзитивно тянет librender_service, composer,
+    # vsync, hyper_graphic_manager и интерфейсные proxy-библиотеки Display HDI.
+    "$_graphic_2d/rosen/modules/render_service:render_service",
+    "$_graphic_2d/rosen/modules/render_service_base:librender_service_base",
+
+    # Клиентская часть RS: нужна приложениям и вашим пробникам (surface_probe, ohos_window).
+    "$_graphic_2d/rosen/modules/render_service_client:librender_service_client",
+
+    # --- Библиотека отрисовки (Drawing поверх Skia) ---
+    # "$_graphic_2d/rosen/modules/2d_graphics:2d_graphics",
+
+  ]
+}
 
 group("all") {
   deps = [
