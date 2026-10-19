@@ -1,2 +1,4 @@
 import("//tests/args.gn")
 graphic_2d_feature_enable_vulkan = true
+skia_use_vulkan = true
+skia_vk_enable_partialrender = true
