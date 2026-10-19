@@ -30,11 +30,11 @@ samgr_deps=("samgr" "samgr_proxy" "samgr_common" "samgr_rust")
 faultloggerd_deps=("faultloggerd" "processdump" "dumpcatcher" "crashvalidator" "dfx_signalhandler" "libfaultloggerd" "libdfx_dumpcatcher" "libunwinder" "libbacktrace_local" "libstack_printer" "libjson_stack_formatter" "libasync_stack" "libdfx_procinfo" "crash_exception" "kernel_snapshot" "panic_handler" "stacktrace_rust" "rustc_demangle" )
 hiview_deps=("hiview" "hiviewbase" "sys_event_service_adapter" "libfaultlogger" "eventloggerso" "libcrashvalidator" "crashvalidator" "libtrace_manager" "libucollection_client" "libucollection_utility" "xperfservice_client" "xperfservice_server" "libxpower_event" "adft" "bdfr" "bdfr_base" "analysis_faultlog" "usage_report" )
 token_init_deps=("token_init")
-
+param_service_deps=("oneir_param_service" "param" "libbegetutil" "libbeget_proxy" "libsystemparam")
 
 #
 render_service_deps=("render_service" "librender_service" "librender_service_base" "librender_service_client" "libcomposer" "libvsync" "libhyper_graphic_manager" "2d_graphics" "rosen_text" "EGL" "GLESv3" "color_manager" "libnative_color_space_manager" "color_space_object_convertor" "create_pixelmap_surface" "socketpair" "libframe_analyzer" "window_animation" )
-
+skia_deps=("skia_canvaskit")
 
 echo "$PARENT_DIR"
 echo $SYS
@@ -157,7 +157,8 @@ install_minimal() {
    echo "       Установка token_init"
    process_and_install_deps "${token_init_deps[@]}"
 
-
+   echo "       Установка param_service"
+   process_and_install_deps "${param_service_deps[@]}"
 
    systemctl daemon-reload
 }
@@ -167,6 +168,9 @@ install_graphics(){
    echo "       Установка render_service"
    process_and_install_deps "${render_service_deps[@]}"
 
+   echo "       Установка Skia"
+   process_and_install_deps "${skia_deps[@]}"
+
 
 }
 
@@ -174,6 +178,9 @@ install_graphics(){
 case "$1" in
     minimal)
         install_minimal
+        ;;
+    graphics)
+        install_graphics
         ;;
     full)
         install_full
