@@ -32,6 +32,10 @@ hiview_deps=("hiview" "hiviewbase" "sys_event_service_adapter" "libfaultlogger" 
 token_init_deps=("token_init")
 
 
+#
+render_service_deps=("render_service" "librender_service" "librender_service_base" "librender_service_client" "libcomposer" "libvsync" "libhyper_graphic_manager" "2d_graphics" "rosen_text" "EGL" "GLESv3" "color_manager" "libnative_color_space_manager" "color_space_object_convertor" "create_pixelmap_surface" "socketpair" "libframe_analyzer" "window_animation" )
+
+
 echo "$PARENT_DIR"
 echo $SYS
 echo "$OUT_DIR"
@@ -158,7 +162,13 @@ install_minimal() {
    systemctl daemon-reload
 }
 
+install_graphics(){
+   echo "Запуск установки графики"
+   echo "       Установка render_service"
+   process_and_install_deps "${render_service_deps[@]}"
 
+
+}
 
 # Проверяем переданный аргумент ($1)
 case "$1" in
