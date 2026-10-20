@@ -141,6 +141,13 @@ group("oneir_graphics") {
 }
 
 
+group("hdf") {
+  deps = [
+   "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr",
+   "//drivers/peripheral/devhost/host:hdf_devhost",
+  ]
+}
+
 
 group("all") {
   deps = [
