@@ -35,6 +35,9 @@ param_service_deps=("oneir_param_service" "param" "libbegetutil" "libbeget_proxy
 #
 render_service_deps=("render_service" "librender_service" "librender_service_base" "librender_service_client" "libcomposer" "libvsync" "libhyper_graphic_manager" "2d_graphics" "rosen_text" "EGL" "GLESv3" "color_manager" "libnative_color_space_manager" "color_space_object_convertor" "create_pixelmap_surface" "socketpair" "libframe_analyzer" "window_animation" )
 skia_deps=("skia_canvaskit")
+hdf_deps=("hdf_devmgr" "hdf_devhost" "libhdf_host" "libhdf_utils" "libhdf_ipc_adapter" "libhdi" "libhdi_base" "libpub_utils" )
+
+
 
 echo "$PARENT_DIR"
 echo $SYS
@@ -160,6 +163,12 @@ install_minimal() {
    echo "       Установка param_service"
    process_and_install_deps "${param_service_deps[@]}"
 
+
+   if ! cp "${PWD_DIR}/services/ohos-param.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-param.service${NC}"
+   fi
+
+
    systemctl daemon-reload
 }
 
@@ -171,6 +180,9 @@ install_graphics(){
    echo "       Установка Skia"
    process_and_install_deps "${skia_deps[@]}"
 
+
+   echo "       Установка hdf"
+   process_and_install_deps "${hdf_deps[@]}"
 
 }
 
