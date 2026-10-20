@@ -1,0 +1,51 @@
+# Служба системных параметров OpenHarmony (oneir_param_service) как служба systemd.
+# На устройстве параметры обслуживает сам init; на стенде — отдельная служба.
+#
+# Без неё GetParameter/SetParameter/WaitParameter у всех компонентов возвращают
+# ошибку или значения по умолчанию (hiview: "Fail to wait the samgr",
+# паузы при старте render_service).
+#
+# Служба считается запущенной, только когда появилась /dev/__parameters__ —
+# поэтому samgr, hiview и другие, указавшие After=ohos-param.service,
+# стартуют уже при готовых параметрах.
+#
+# Установка:
+#   sudo install -m 755 out/oneir/startup/init/oneir_param_service /system/bin/
+#   sudo cp ohos-param.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-param
+# Проверка:
+#   systemctl status ohos-param
+#   ls -l /dev/__parameters__ /dev/unix/socket/
+
+[Unit]
+Description=OpenHarmony param service (системные параметры)
+Wants=ohos-hilogd.service
+After=ohos-hilogd.service local-fs.target
+ConditionPathExists=/system/bin/oneir_param_service
+
+[Service]
+Type=simple
+# Каталог сокетов (сокет службы параметров) и каталог сохраняемых параметров
+ExecStartPre=/bin/mkdir -p /dev/unix/socket /data/parameters
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/oneir_param_service'
+# Ждать готовности: до 5 секунд (25 x 0.2), пока не появится /dev/__parameters__.
+# Пока ExecStartPost не завершился, служба не active и зависящие от неё ждут.
+ExecStartPost=/bin/sh -c '\
+  for i in $$(seq 1 25); do \
+    [ -d /dev/__parameters__ ] && exit 0; \
+    sleep 0.2; \
+  done; \
+  echo "нет /dev/__parameters__ через 5 секунд" >&2; exit 1'
+# После остановки или падения: убрать область параметров и сокет, чтобы при
+# следующем старте проверка готовности не сработала по старому каталогу.
+ExecStopPost=-/bin/rm -rf /dev/__parameters__
+ExecStopPost=-/bin/rm -f /dev/unix/socket/paramservice
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix/socket
+ExecStopPost=-/bin/rmdir --ignore-fail-on-non-empty /dev/unix
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target
