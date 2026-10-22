@@ -39,6 +39,8 @@ render_service2_deps=("libdisplay_buffer_hdi_impl_v1_4" "libdisplay_buffer_proxy
 
 skia_deps=("skia_canvaskit")
 hdf_deps=("hdf_devmgr" "hdf_devhost" "libhdf_host" "libhdf_utils" "libhdf_ipc_adapter" "libhdi" "libhdi_base" "libpub_utils" )
+display_buffer_deps=("oneir_display_buffer_vdi_impl" "oneir_display_buffer_vendor")
+display_composer_deps=("oneir_display_composer_vdi_impl" "oneir_display_composer_vendor" "oneir_display_gfx")
 
 
 
@@ -92,7 +94,10 @@ process_and_install_deps() {
                 mkdir -p "$(dirname "$dest_path")"
 
                 # Копируем файл с принудительной перезаписью
-                cp -f "$src_path" "$dest_path" 2>/dev/null
+                cp -f "$src_path" "$dest_path" 
+
+
+
 
                 # Проверяем код возврата команды cp ($?)
                 if [[ $? -eq 0 ]]; then
@@ -195,10 +200,26 @@ install_graphics(){
     echo -e "${RED}Ошибка: не удалось скопировать hdf_devhost.cfg${NC}"
    fi
 
+   if ! cp "${PARENT_DIR}/out/oneir/gen/oneir/hdf_config/uhdf/hdf_default.hcb" "/vendor/etc/hdfconfig/hdf_default.hcb"; then
+    echo -e "${RED}Ошибка: не удалось скопировать hdf_default.hcb${NC}"
+   fi
+
 
    if ! cp "${PWD_DIR}/services/ohos-hdf-devmgr.service" "/etc/systemd/system/"; then
     echo -e "${RED}Ошибка: не удалось скопировать ohos-hdf-devmgr.service${NC}"
    fi
+
+
+   if ! cp "${PWD_DIR}/services/ohos-allocator-host.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-allocator-host.service${NC}"
+   fi
+
+   echo "       Установка display_buffer"
+   process_and_install_deps "${display_buffer_deps[@]}"
+
+   echo "       Установка display_composer_deps"
+   process_and_install_deps "${display_composer_deps[@]}"
+
 
    systemctl daemon-reload
 }
