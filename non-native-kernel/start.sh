@@ -20,7 +20,7 @@
 #   atm           AccessTokenManager (SA 3503)
 #   hiview        системные события и журналы сбоев (SA 1201)
 # ---------------------------------------------------------------------------
-SERVICES="hilogd faultloggerd samgr atm hiview"
+SERVICES="hilogd faultloggerd samgr atm param hdf-devmgr allocator-host composer-host" #hiview
 
 # Выдача токенов службам: должна пройти до samgr, иначе samgr не примет
 # регистрацию сервисов (токен вызывающего будет 0).
