@@ -188,6 +188,19 @@ install_graphics(){
    echo "       Установка hdf"
    process_and_install_deps "${hdf_deps[@]}"
 
+
+   echo "       Установка hdf_devhost.cfg"
+   mkdir -p /vendor/etc/init/
+   if ! cp "${PARENT_DIR}/out/oneir/gen/oneir/hdf_config/uhdf/hdf_devhost.cfg" "/vendor/etc/init/hdf_devhost.cfg"; then
+    echo -e "${RED}Ошибка: не удалось скопировать hdf_devhost.cfg${NC}"
+   fi
+
+
+   if ! cp "${PWD_DIR}/services/ohos-hdf-devmgr.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-hdf-devmgr.service${NC}"
+   fi
+
+   systemctl daemon-reload
 }
 
 # Проверяем переданный аргумент ($1)
