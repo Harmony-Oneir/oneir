@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenHarmony Display Buffer HDI (allocator_host)
+Requires=oneir-hdf-devmgr.service
+After=oneir-hdf-devmgr.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 1
+ExecStart=/vendor/bin/hdf_devhost -i 0 -n allocator_host
+Restart=on-failure
+RestartSec=2
+# Явный выбор DRM-устройства (иначе — первое с подключённым коннектором):
+#Environment=ONEIR_DRM_DEVICE=/dev/dri/card1
+
+[Install]
+WantedBy=multi-user.target
