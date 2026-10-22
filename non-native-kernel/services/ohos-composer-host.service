@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenHarmony HDF host (composer_host)
+Requires=ohos-hdf-devmgr.service
+After=ohos-hdf-devmgr.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 1
+ExecStart=/vendor/bin/hdf_devhost -i 1 -n composer_host -p -8 -s 1
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
