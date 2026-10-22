@@ -219,7 +219,9 @@ install_graphics(){
 
    echo "       Установка display_composer_deps"
    process_and_install_deps "${display_composer_deps[@]}"
-
+   if ! cp "${PWD_DIR}/services/ohos-composer-host.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-composer-host.service${NC}"
+   fi
 
    systemctl daemon-reload
 }
