@@ -1,7 +1,7 @@
 [Unit]
 Description=OpenHarmony Display Buffer HDI (allocator_host)
-Requires=oneir-hdf-devmgr.service
-After=oneir-hdf-devmgr.service
+Requires=ohos-hdf-devmgr.service
+After=ohos-hdf-devmgr.service
 
 [Service]
 Type=simple
