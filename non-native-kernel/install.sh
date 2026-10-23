@@ -152,7 +152,7 @@ install_minimal() {
 
    echo "       Установка faultloggerd_deps"
    process_and_install_deps "${faultloggerd_deps[@]}"
-
+   mkdir -p /log/crash
    # Создание сервиса для ohos-faultloggerd
    if ! cp "${PWD_DIR}/services/ohos-faultloggerd.service" "/etc/systemd/system/"; then
     echo -e "${RED}Ошибка: не удалось скопировать ohos-faultloggerd.service${NC}"
