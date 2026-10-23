@@ -1,9 +1,3 @@
-# Фрагмент arkvm/BUILD.gn: замените им group("all"), остальное в файле не трогайте.
-# Переменные $_ipc и $_tc и локальные цели (:sa_main, :samgr_client, ...)
-# определены выше в этом же файле.
-
-# Только ATM и его библиотеки (token_setproc, rdb и пр. подтянутся по зависимостям).
-#   prebuilts/build-tools/linux-x86/bin/ninja -C out/arkvm arkvm:atm -w dupbuild=warn
 import("//build/ohos.gni")
 
 _tc = "//build/toolchain/ohos:ohos_clang_x86_64"
@@ -145,9 +139,76 @@ group("hdf") {
   deps = [
    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr",
    "//drivers/peripheral/devhost/host:hdf_devhost",
+
+
+    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.cfg",
+    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.para.dac",
+
   ]
 }
 
+
+
+
+group("display_buffer") {
+  deps = [
+    # --- Наша реализация VDI: libdisplay_buffer_vdi_impl.z.so + libdisplay_buffer_vendor.z.so
+    "//oneir/display_buffer:display_buffer",
+
+    # --- HDI-сервис аллокатора (серверная сторона, живёт в allocator_host):
+    # liballocator_driver/service, libmapper_*, libmetadata_* и stub-библиотеки интерфейса.
+    "//drivers/peripheral/display/buffer:display_buffer_entry",
+
+    # --- Клиентская обёртка (для RS, Surface и тестов): тянет proxy 1.0…1.4 и commontype.
+    "//drivers/interface/display/buffer/v1_4:libdisplay_buffer_hdi_impl_v1_4",
+
+    # --- Конфигурация HDF: hdf_default.hcb + hdf_devhost.cfg (хост allocator_host).
+    "//oneir/hdf_config/uhdf:hdf_config",
+
+  ]
+}
+
+
+
+# Проверка: unit-тесты аллокатора (запускать после старта allocator_host).
+group("display_buffer_test") {
+  testonly = true
+  deps = [
+    ":display_buffer",
+    "//drivers/peripheral/display/buffer/test/unittest:hdf_disp_buffer_unittest",
+    "//oneir/display_buffer/tests:display_buffer_perf",
+
+  ]
+}
+
+
+
+
+group("display_composer_test") {
+  testonly = true
+  deps = [
+    "//drivers/peripheral/display/composer/test/unittest:composer_ut",
+    "//drivers/peripheral/display/composer/test/unittest:composer_death_test",
+    "//drivers/peripheral/display/composer/test/moduletest:composer_mt",
+    "//drivers/peripheral/display/composer/test/benchmark:hdf_display_benchmark_test",
+  ]
+}
+
+
+# ATM и всё, что нужно для его запуска и проверки на стенде:
+# журнал, samgr, загрузчик SA и клиент для проверки регистрации 3503.
+#   prebuilts/build-tools/linux-x86/bin/ninja -C out/arkvm arkvm:atm_stand -w dupbuild=warn
+#group("atm_stand") {
+#  deps = [
+#    ":atm",
+#    "$_ipc($_tc)",
+#    "//foundation/systemabilitymgr/samgr/services/samgr/native:samgr($_tc)",
+#    ":sa_main($_tc)",
+#    ":samgr_client($_tc)",
+#    "//base/hiviewdfx/hilog/services/hilogd:hilogd($_tc)",
+#    "//base/hiviewdfx/hilog/services/hilogtool:hilog($_tc)",
+#  ]
+#}
 
 group("all") {
   deps = [
