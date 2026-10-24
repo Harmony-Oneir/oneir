@@ -6,6 +6,8 @@
 #   0. Mesa собирается с -Dplatforms=ohos: так src/util/meson.build подключает
 #      sys_param.cpp (флаг трассировки open_mesa3d_trace) и зависимости libhilog,
 #      libhitrace, libbegetutil, libqos — для них этот скрипт создаёт .pc-файлы.
+#      Также создаётся expat.pc для expat из OpenHarmony (libexpat.z.so), чтобы
+#      meson не собирал свой подпроект expat (драйвер требовал бы libexpat.so.1).
 #   1. Под OHOS (компилятор сам задаёт __OHOS__) Mesa использует hitrace, hilog,
 #      системные параметры init (sys_param.h) — src/util/perf/cpu_trace.h,
 #      src/util/meson.build — и QoS потоков из qos_manager (C-API NDK: qos.h с
@@ -29,6 +31,10 @@
 #      -DVK_USE_PLATFORM_DISPLAY_KHR исключаются при with_platform_ohos:
 #      src/vulkan/wsi/meson.build и src/vulkan/meson.build.
 #      Патч: oneir_patches/mesa_ohos_no_wsi_display.patch
+#   5. meson.build: при with_platform_ohos Mesa выставляет system_has_kms_drm = false
+#      (рассчитано на EGL поверх Zink), и anv теряет libdrm. Отключение DRM
+#      оставлено только для сборок без Vulkan-драйверов (_vulkan_drivers пуст).
+#      Патч: oneir_patches/mesa_ohos_vulkan_kms.patch
 #
 # Запуск в контейнере сборки OpenHarmony:
 #   ./gen_mesa_cross_x86_64.sh [корень дерева] [каталог сборки]
@@ -82,6 +88,14 @@ SYSPARAM_INC=$(dirname "$SYSPARAM_H")
 QOS_H=$(grep -rl "OH_QoS_SetThreadQoS" "$ROOT/foundation/resourceschedule/qos_manager" --include=qos.h 2>/dev/null | head -1)
 [ -n "$QOS_H" ] || { echo "не найден qos.h с OH_QoS_SetThreadQoS в qos_manager"; exit 1; }
 QOS_INC=$(dirname "$QOS_H")
+# expat из OpenHarmony (//third_party/expat:expat -> libexpat.z.so): без него meson
+# собирает собственный подпроект, и драйвер начинает требовать libexpat.so.1.
+LIBEXPAT=$(find_lib libexpat.z.so libexpat.so)
+EXPAT_H=$(find "$ROOT/third_party/expat" -name expat.h -not -path "*test*" 2>/dev/null | head -1)
+[ -n "$LIBEXPAT" ] || { echo "не найден libexpat.z.so — соберите //third_party/expat:expat"; exit 1; }
+[ -n "$EXPAT_H" ]  || { echo "не найден expat.h в third_party/expat"; exit 1; }
+EXPAT_VER=$(awk '/#define XML_MAJOR_VERSION/{a=$3} /#define XML_MINOR_VERSION/{b=$3} /#define XML_MICRO_VERSION/{c=$3} END{print a"."b"."c}' "$EXPAT_H")
+
 LIBQOS=""
 for f in $(find "$OUTDIR" -name "libqos*.so" -not -path "*unstripped*" 2>/dev/null); do
   if "$LLVM/llvm-nm" -D --defined-only "$f" 2>/dev/null | grep -q " OH_QoS_SetThreadQoS$"; then
@@ -127,6 +141,14 @@ Description: init begetutil (OpenHarmony build)
 Version: 1.0
 Libs: $(link_flags "$LIBBEGET")
 Cflags: -I$ROOT/base/startup/init/interfaces/innerkits/include -I$ROOT/base/startup/init/interfaces/innerkits/include/syspara -I$SYSPARAM_INC
+EOF
+
+cat > "$DST/pkgconfig/expat.pc" <<EOF
+Name: expat
+Description: expat (OpenHarmony build)
+Version: $EXPAT_VER
+Libs: $(link_flags "$LIBEXPAT")
+Cflags: -I$(dirname "$EXPAT_H")
 EOF
 
 cat > "$DST/pkgconfig/libqos.pc" <<EOF
@@ -182,3 +204,4 @@ echo "  hilog:      $LIBHILOG"
 echo "  begetutil:  $LIBBEGET"
 echo "  sys_param:  $SYSPARAM_INC"
 echo "  qos:        $LIBQOS ($QOS_INC)"
+echo "  expat:      $LIBEXPAT (версия $EXPAT_VER)"
