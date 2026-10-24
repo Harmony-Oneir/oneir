@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenHarmony Render Service
+Requires=ohos-allocator-host.service ohos-composer-host.service
+After=ohos-allocator-host.service ohos-composer-host.service ohos-samgr.service ohos-param.service ohos-hilogd.service
+Wants= ohos-samgr.service ohos-param.service ohos-hilogd.service
+# композитору нужен DRM master — графическая оболочка Kali должна быть остановлена
+Conflicts=display-manager.service
+After=display-manager.service
+
+[Service]
+Type=simple
+Environment=VK_ICD_FILENAMES=/system/etc/vulkan/icd.d/intel_icd.x86_64.json
+ExecStartPre=-/system/bin/param set persist.sys.graphic.GpuApitype 1
+ExecStart=/system/bin/render_service
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
