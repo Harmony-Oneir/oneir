@@ -8,12 +8,15 @@
 # Проверка:
 #   systemctl status ohos-samgr
 #   journalctl -u ohos-samgr -f
+#   /system/bin/param get bootevent.samgr.ready     # true, когда samgr готов
 
 [Unit]
 Description=OpenHarmony samgr (реестр системных сервисов)
 # Журнал желателен, но не обязателен: без hilogd samgr работает, просто без логов
 Wants=ohos-hilogd.service
-After=ohos-hilogd.service local-fs.target
+# Сервис параметров нужен для bootevent.samgr.ready (см. ExecStartPost)
+Wants=ohos-param.service
+After=ohos-hilogd.service ohos-param.service local-fs.target
 ConditionPathExists=/system/bin/samgr
 
 [Service]
@@ -39,7 +42,26 @@ ExecStartPre=/bin/sh -c '\
   fi; \
   [ -e /dev/binder ] || { echo "binder недоступен: нет ни модуля binder, ни binderfs" >&2; exit 1; }; \
   chmod 666 /dev/binder'
+# 3) Пока samgr не поднялся, флаг готовности должен быть сброшен (на случай перезапуска).
+ExecStartPre=-/system/bin/param set bootevent.samgr.ready false
 ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/samgr'
+# 4) Готовность. На устройстве init выставляет bootevent.samgr.ready, когда samgr запущен;
+#    этот параметр ждут клиенты, в том числе Render Service (WaitParameter перед
+#    регистрацией, иначе он завершается с «wait SAMGR error»). Ждём, пока samgr откроет
+#    /dev/binder (стал context manager), и выставляем флаг. Сервисы, упорядоченные
+#    After=ohos-samgr.service, стартуют только после завершения этого шага.
+ExecStartPost=/bin/sh -c '\
+  P=""; \
+  for i in $$(seq 1 100); do \
+    P=$$(pidof samgr); \
+    if [ -n "$$P" ] && ls -l /proc/$$P/fd 2>/dev/null | grep -q binder; then break; fi; \
+    P=""; sleep 0.1; \
+  done; \
+  [ -n "$$P" ] || { echo "samgr не открыл /dev/binder за 10 с" >&2; exit 1; }; \
+  sleep 0.5; \
+  /system/bin/param set bootevent.samgr.ready true && echo "bootevent.samgr.ready=true (samgr $$P)"'
+# 5) После остановки — снова «не готов», чтобы клиенты ждали новый запуск.
+ExecStopPost=-/system/bin/param set bootevent.samgr.ready false
 Restart=on-failure
 RestartSec=2
 User=root
