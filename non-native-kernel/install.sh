@@ -42,7 +42,7 @@ hdf_deps=("hdf_devmgr" "hdf_devhost" "libhdf_host" "libhdf_utils" "libhdf_ipc_ad
 display_buffer_deps=("oneir_display_buffer_vdi_impl" "oneir_display_buffer_vendor")
 display_composer_deps=("oneir_display_composer_vdi_impl" "oneir_display_composer_vendor" "oneir_display_gfx")
 
-intel_deps=("hitrace_meter" "libhilog" "libbegetutil" "qos" "expat" "libdrm" "shared_libz"  )
+intel_deps=("hitrace_meter" "libhilog" "libbegetutil" "qos" "expat" "libdrm" "shared_libz" "surface")
 
 
 echo "$PARENT_DIR"
