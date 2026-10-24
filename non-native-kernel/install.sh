@@ -42,6 +42,7 @@ hdf_deps=("hdf_devmgr" "hdf_devhost" "libhdf_host" "libhdf_utils" "libhdf_ipc_ad
 display_buffer_deps=("oneir_display_buffer_vdi_impl" "oneir_display_buffer_vendor")
 display_composer_deps=("oneir_display_composer_vdi_impl" "oneir_display_composer_vendor" "oneir_display_gfx")
 
+intel_deps=("hitrace_meter" "libhilog" "libbegetutil" "qos" "expat" "libdrm" "shared_libz"  )
 
 
 echo "$PARENT_DIR"
@@ -222,6 +223,24 @@ install_graphics(){
    if ! cp "${PWD_DIR}/services/ohos-composer-host.service" "/etc/systemd/system/"; then
     echo -e "${RED}Ошибка: не удалось скопировать ohos-composer-host.service${NC}"
    fi
+
+   echo "       Установка intel_deps"
+   process_and_install_deps "${intel_deps[@]}"
+
+
+
+   readelf -d $PARENT_DIR/out/oneir/thirdparty/mesa3d-vk/stage/vendor/lib64/libvulkan_intel.so | grep -E "RUNPATH|RPATH" || echo -e "${GREEN}RUNPATH нет${NC}"
+
+
+   if ! cp "${PARENT_DIR}/out/oneir/thirdparty/mesa3d-vk/build/src/intel/vulkan/libvulkan_intel.so" "/vendor/lib64/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать libvulkan_intel.so${NC}"
+   fi
+
+   if ! cp "${PARENT_DIR}/out/oneir/thirdparty/mesa3d-vk/build/src/intel/vulkan/intel_icd.x86_64.json" "/system/etc/vulkan/icd.d/intel_icd.x86_64.json"; then
+    echo -e "${RED}Ошибка: не удалось скопировать intel_icd.x86_64.json${NC}"
+   fi
+
+   sed -i "s#\"library_path\": *\"[^\"]*\"#\"library_path\": \"/vendor/lib64/libvulkan_intel.so\"#" "/system/etc/vulkan/icd.d/intel_icd.x86_64.json"
 
    systemctl daemon-reload
 }
