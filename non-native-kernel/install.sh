@@ -42,7 +42,7 @@ hdf_deps=("hdf_devmgr" "hdf_devhost" "libhdf_host" "libhdf_utils" "libhdf_ipc_ad
 display_buffer_deps=("oneir_display_buffer_vdi_impl" "oneir_display_buffer_vendor")
 display_composer_deps=("oneir_display_composer_vdi_impl" "oneir_display_composer_vendor" "oneir_display_gfx")
 
-intel_deps=("hitrace_meter" "libhilog" "libbegetutil" "qos" "expat" "libdrm" "shared_libz" "surface" "vulkan_swapchain" "vulkan_swapchain_layer_json")
+intel_deps=("hitrace_meter" "libhilog" "libbegetutil" "qos" "expat" "libdrm" "shared_libz" "surface" "vulkan_swapchain_layer" "vulkan_swapchain_layer_json")
 
 
 echo "$PARENT_DIR"
@@ -186,6 +186,11 @@ install_graphics(){
    echo "       Установка render_service"
    process_and_install_deps "${render_service_deps[@]}"
    process_and_install_deps "${render_service2_deps[@]}"
+
+   if ! cp "${PWD_DIR}/services/ohos-render-service.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-render-service.service${NC}"
+   fi
+
 
    echo "       Установка Skia"
    process_and_install_deps "${skia_deps[@]}"
