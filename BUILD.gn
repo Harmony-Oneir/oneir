@@ -66,7 +66,8 @@ ohos_executable("oneir_param_service") {
 group("param_service") {
   deps = [
      "//base/startup/init/services/begetctl:param",
-     ":oneir_param_service($_tc)"
+     ":oneir_param_service($_tc)",
+     "//base/startup/init/services/param/watcher:param_watcher",
   ]
 }
 
@@ -191,6 +192,13 @@ group("display_composer_test") {
     "//drivers/peripheral/display/composer/test/unittest:composer_death_test",
     "//drivers/peripheral/display/composer/test/moduletest:composer_mt",
     "//drivers/peripheral/display/composer/test/benchmark:hdf_display_benchmark_test",
+  ]
+}
+
+group("appmgr") {
+
+  deps = [
+    //foundation/ability/ability_runtime/services/appmgr:libappms
   ]
 }
 
