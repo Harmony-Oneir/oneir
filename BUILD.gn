@@ -198,7 +198,7 @@ group("display_composer_test") {
 group("appmgr") {
 
   deps = [
-    //foundation/ability/ability_runtime/services/appmgr:libappms
+    "//foundation/ability/ability_runtime/services/appmgr:libappms",
   ]
 }
 
