@@ -1,0 +1,39 @@
+# Служба подписок на системные параметры OpenHarmony (param_watcher, SA 3009)
+# как служба systemd на хосте.
+#
+# Через неё работает WatchParameter: клиенты (в том числе Render Service) подписываются
+# на изменения параметров. Без неё каждый WatchParameter несколько секунд ждёт
+# службу у samgr, инициализация RS затягивается, и сторож XCollie завершает процесс.
+#
+# Запуск — та же команда, что в param_watcher.cfg, без обвязки init
+# (пользователь paramwatcher, secon и bootevents на стенде не нужны — работаем от root).
+#
+# Установка:
+#   sudo cp ohos-param-watcher.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ohos-param-watcher
+# Проверка:
+#   systemctl status ohos-param-watcher
+#   journalctl -u ohos-param-watcher -f
+
+[Unit]
+Description=OpenHarmony param_watcher (подписки на системные параметры, SA 3009)
+# SA регистрируется у samgr, параметры обслуживает сервис параметров
+Requires=ohos-samgr.service
+Wants=ohos-param.service ohos-hilogd.service
+After=ohos-samgr.service ohos-param.service ohos-hilogd.service
+ConditionPathExists=/system/bin/sa_main
+ConditionPathExists=/system/profile/param_watcher.json
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'export LD_LIBRARY_PATH=$$(find /system/lib64 /system/lib -type d 2>/dev/null | paste -sd: -); exec /system/bin/sa_main /system/profile/param_watcher.json'
+# SA регистрируется у samgr не мгновенно; клиенты с After=ohos-param-watcher.service
+# стартуют после этой паузы.
+ExecStartPost=/bin/sleep 1
+Restart=on-failure
+RestartSec=2
+User=root
+
+[Install]
+WantedBy=multi-user.target
