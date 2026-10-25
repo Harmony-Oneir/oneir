@@ -82,6 +82,9 @@ const char *PERMS[] = {
     "ohos.permission.GET_NETWORK_INFO",
     "ohos.permission.CONNECTIVITY_INTERNAL",
     "ohos.permission.INTERNET",
+    // Снимок экрана через Render Service (TakeSurfaceCapture): проверяется
+    // верификатором IPC RS по PermissionType::CAPTURE_SCREEN.
+    "ohos.permission.CAPTURE_SCREEN",
 };
 
 // Имена процессов ровно те, под которыми они видны в /proc/<pid>/cmdline.
@@ -126,6 +129,8 @@ const char *PROCESSES[] = {
     "disk_manager",
     "netsysnative",
     "netmanager",
+    // тестовые программы графики: снимок экрана и системные запросы к RS
+    "rs_probe",
 };
 
 constexpr const char *BYNAME_DIR = "/data/service/el0/access_token/byname";
