@@ -33,6 +33,17 @@ group("hiview") {
 
 
 
+group("hitrace") {
+  deps = [
+    "//base/hiviewdfx/hitrace/cmd:hitrace_target($_tc)",
+    "//base/hiviewdfx/hitrace/interfaces/native/innerkits:hitrace_meter($_tc)",
+    "//base/hiviewdfx/hitrace/interfaces/native/innerkits:libhitracechain($_tc)",
+    "//base/hiviewdfx/hitrace/interfaces/native/innerkits:hitrace_dump($_tc)",
+    "//base/hiviewdfx/hitrace/interfaces/native/innerkits:libhitrace_option($_tc)",
+  ]
+}
+
+
 ohos_executable("oneir_param_service") {
   sources = ["non-native-kernel/src/param_service/init_stubs.c", "non-native-kernel/src/param_service/param_service.cpp" ]
 
