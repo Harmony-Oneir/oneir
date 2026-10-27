@@ -31,6 +31,8 @@ faultloggerd_deps=("faultloggerd" "processdump" "dumpcatcher" "crashvalidator" "
 hiview_deps=("hiview" "hiviewbase" "sys_event_service_adapter" "libfaultlogger" "eventloggerso" "libcrashvalidator" "crashvalidator" "libtrace_manager" "libucollection_client" "libucollection_utility" "xperfservice_client" "xperfservice_server" "libxpower_event" "adft" "bdfr" "bdfr_base" "analysis_faultlog" "usage_report" )
 token_init_deps=("token_init")
 param_service_deps=("oneir_param_service" "param" "libbegetutil" "libbeget_proxy" "libsystemparam")
+param_watcher_deps=("param_watcher")
+hitrace_deps=("hitrace" "libhitracechain" "hitrace_dump" "hitrace_meter" "libhitrace_option")
 
 #
 render_service_deps=("render_service" "librender_service" "librender_service_base" "librender_service_client" "libcomposer" "libvsync" "libhyper_graphic_manager" "2d_graphics" "rosen_text" "EGL" "GLESv3" "color_manager" "libnative_color_space_manager" "color_space_object_convertor" "create_pixelmap_surface" "socketpair" "libframe_analyzer" "window_animation" )
@@ -176,6 +178,21 @@ install_minimal() {
    if ! cp "${PWD_DIR}/services/ohos-param.service" "/etc/systemd/system/"; then
     echo -e "${RED}Ошибка: не удалось скопировать ohos-param.service${NC}"
    fi
+
+   echo "       Установка param_watcher"
+   process_and_install_deps "${param_watcher_deps[@]}"
+
+   if ! cp "${PWD_DIR}/../profile/param_watcher.json" "${SYS}/profile/param_watcher.json"; then
+    echo -e "${RED}Ошибка: не удалось скопировать param_watcher.json${NC}"
+   fi
+
+   if ! cp "${PWD_DIR}/services/ohos-param-watcher.service" "/etc/systemd/system/"; then
+    echo -e "${RED}Ошибка: не удалось скопировать ohos-param-watcher.service${NC}"
+   fi
+
+   echo "       Установка hitrace"
+   process_and_install_deps "${hitrace_deps[@]}"
+
 
 
    systemctl daemon-reload
