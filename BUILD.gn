@@ -214,6 +214,20 @@ group("appmgr") {
 }
 
 
+group("rootfs_init") {
+  deps = [
+    "//base/startup/init/services/init/standard:init",
+    "//base/startup/init/ueventd:ueventd",
+    "//base/startup/init/services/begetctl:begetctl",
+    "//base/startup/init/services/etc:etc_files",
+    "//third_party/musl:musl_all",
+    "//third_party/musl:ld-musl-namespace-x86_64.ini",
+    "//third_party/mksh:sh",
+    "//third_party/toybox:toybox",
+  ]
+}
+
+
 # ATM и всё, что нужно для его запуска и проверки на стенде:
 # журнал, samgr, загрузчик SA и клиент для проверки регистрации 3503.
 #   prebuilts/build-tools/linux-x86/bin/ninja -C out/arkvm arkvm:atm_stand -w dupbuild=warn
