@@ -24,7 +24,7 @@ out_hilog="hiviewdfx/hilog/"
 out_atm="security/access_token/"
 
 atm_deps=("accesstoken_cjson_utils" "accesstoken_manager_service" "accesstoken_json_parse" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "libaccesstoken_sdk" "libtokenid_sdk" "libtoken_callback_sdk" "libtokensetproc_shared" "libpermsetproc_shared" "libprivacy_sdk" "privacy_communication_adapter_cxx" )
-hilog_deps=("hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
+hilog_deps=("libffrt" "shared_libz" "hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
 safwk_deps=("sa_main" "system_ability_fwk" "utils" "libhilog" "libbegetutil" "samgr_common" "libsec_shared" )
 samgr_deps=("samgr" "samgr_proxy" "samgr_common" "samgr_rust")
 faultloggerd_deps=("faultloggerd" "processdump" "dumpcatcher" "crashvalidator" "dfx_signalhandler" "libfaultloggerd" "libdfx_dumpcatcher" "libunwinder" "libbacktrace_local" "libstack_printer" "libjson_stack_formatter" "libasync_stack" "libdfx_procinfo" "crash_exception" "kernel_snapshot" "panic_handler" "stacktrace_rust" "rustc_demangle" )
