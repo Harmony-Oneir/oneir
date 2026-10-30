@@ -18,6 +18,9 @@ SIZE=2G
 REBUILD=${REBUILD:-0}          # REBUILD=1 — пересоздать образ с нуля
 
 GREEN='\033[0;32m'; RED='\033[0;31m'; YELLOW='\033[0;33m'; NC='\033[0m'
+TOOLCHAIN_LIB="$ROOT_DIR/prebuilts/clang/ohos/linux-x86_64/llvm/lib"
+
+
 
 command -v jq >/dev/null || { echo "Нужен jq: apt install jq" >&2; exit 1; }
 
@@ -76,6 +79,19 @@ truncate -s "$SIZE" "$FILE"
 mkfs.ext4 -q -L ohos-root "$FILE"
 file "$FILE"
 
+
+
+# Образ /data — создаётся один раз, при REBUILD не трогается
+USERDATA="${OUT_DIR}/userdata.img"
+if [[ ! -e "$USERDATA" ]]; then
+  truncate -s 4G "$USERDATA"
+  mkfs.ext4 -q -L userdata "$USERDATA"
+  echo -e "${GREEN}Создан образ /data: $USERDATA${NC}"
+fi
+
+
+
+
 mkdir -p "$MOUNT_DIR"
 mount -o loop "$FILE" "$MOUNT_DIR"
 trap 'cd /; umount "$MOUNT_DIR" 2>/dev/null || true' EXIT   # отмонтировать при любом выходе
@@ -112,6 +128,36 @@ for cmd in $("$LDMUSL" "$MOUNT_DIR/system/bin/toybox"); do
 done
 echo "toybox: $(ls "$MOUNT_DIR/system/bin" | wc -l) команд в /system/bin"
 
+
+
+# Шаг 3: init, его утилиты и библиотеки
+cp "$OUT_DIR"/startup/init/{init,ueventd,begetctl,param} "$MOUNT_DIR/system/bin/"
+chmod 755 "$MOUNT_DIR"/system/bin/{init,ueventd,begetctl,param}
+cp "$OUT_DIR"/startup/init/*.z.so "$MOUNT_DIR/system/lib64/"
+
+cp "$TOOLCHAIN_LIB/x86_64-linux-ohos/libc++.so" "$MOUNT_DIR/system/lib64/libc++.so"
+cp "$TOOLCHAIN_LIB/clang/15.0.4/lib/x86_64-linux-ohos/libclang_rt.ubsan_minimal.so" "$MOUNT_DIR/system/lib64/libclang_rt.ubsan_minimal.so"
+
+process_and_install_deps configpolicy_util libhisysevent libsec_shared libhilog libhitracechain libsandboxlog cjson
+
+
+
+
+# Шаг 6: fstab платы — /data на втором диске
+mkdir -p "$MOUNT_DIR/vendor/etc"
+cat > "$MOUNT_DIR/vendor/etc/fstab.x86_64_oneir" << 'EOF'
+# fstab for x86_64_oneir (QEMU)
+#<src>              <mnt_point>  <type>  <mnt_flags and options>  <fs_mgr_flags>
+/dev/block/vdb      /data        ext4    noatime,nosuid,nodev     wait
+EOF
+
+
+
+# Шаг 4: конфиги init
+process_and_install_deps \
+  init.cfg ueventd console.cfg watchdog.cfg \
+  ohos.para ohos.para.dac ohos_const.para ohos.startup.para ohos.para.size \
+  passwd group boot.group
 
 
 
