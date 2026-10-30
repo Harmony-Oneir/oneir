@@ -98,7 +98,7 @@ trap 'cd /; umount "$MOUNT_DIR" 2>/dev/null || true' EXIT   # отмонтиро
 
 # Скелет
 mkdir -p "$MOUNT_DIR"/system/{bin,lib,lib64,etc/init,etc/param}
-mkdir -p "$MOUNT_DIR"/{vendor,data,dev,proc,sys,mnt,tmp}
+mkdir -p "$MOUNT_DIR"/{vendor,data,dev,proc,sys,mnt,tmp,storage}
 ln -s /system/bin   "$MOUNT_DIR/bin"
 ln -s /system/lib   "$MOUNT_DIR/lib"
 ln -s /system/lib64 "$MOUNT_DIR/lib64"
@@ -143,23 +143,42 @@ process_and_install_deps configpolicy_util libhisysevent libsec_shared libhilog 
 
 
 
-# Шаг 6: fstab платы — /data на втором диске
-mkdir -p "$MOUNT_DIR/vendor/etc"
-cat > "$MOUNT_DIR/vendor/etc/fstab.x86_64_oneir" << 'EOF'
-# fstab for x86_64_oneir (QEMU)
-#<src>              <mnt_point>  <type>  <mnt_flags and options>  <fs_mgr_flags>
-/dev/block/vdb      /data        ext4    noatime,nosuid,nodev     wait
-EOF
+# Шаг 4: файлы платы из oneir/rootfs (накладываются поверх образа)
+OVERLAY_DIR="$SCRIPT_DIR/rootfs"
+if [[ -d "$OVERLAY_DIR" ]]; then
+  # проверка синтаксиса всех .cfg — init молча пропустит битый JSON
+  for cfg in $(find "$OVERLAY_DIR" -name "*.cfg"); do
+    jq empty "$cfg" || { echo -e "${RED}Ошибка JSON: $cfg${NC}"; exit 1; }
+  done
+  cp -a "$OVERLAY_DIR/." "$MOUNT_DIR/"
+  echo -e "${GREEN}+ файлы платы из $OVERLAY_DIR${NC}"
+fi
 
 
-
-# Шаг 4: конфиги init
+# Шаг 5: конфиги init
 process_and_install_deps \
-  init.cfg ueventd console.cfg watchdog.cfg \
+  init.cfg ueventd ueventd.cfg console.cfg watchdog.cfg \
   ohos.para ohos.para.dac ohos_const.para ohos.startup.para ohos.para.size \
   passwd group boot.group
 
 
+
+
+
+
+
+# Шаг 6: тесты ядра OpenHarmony
+TESTS_SRC="$OUT_DIR/tests/unittest/linux-linux"
+mkdir -p "$MOUNT_DIR/system/tests"
+for t in accesstokenid_test; do
+  if [[ -f "$TESTS_SRC/$t" ]]; then
+    cp "$TESTS_SRC/$t" "$MOUNT_DIR/system/tests/"
+    chmod 755 "$MOUNT_DIR/system/tests/$t"
+    echo -e "${GREEN}+ system/tests/$t${NC}"
+  else
+    echo -e "${RED}Не найден: $TESTS_SRC/$t${NC}"
+  fi
+done
 
 
 ls -la "$MOUNT_DIR"
