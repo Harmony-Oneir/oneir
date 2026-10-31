@@ -151,10 +151,7 @@ group("hdf") {
   deps = [
    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr",
    "//drivers/peripheral/devhost/host:hdf_devhost",
-
-
-    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.cfg",
-    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.para.dac",
+   "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.para.dac",
 
   ]
 }
@@ -228,6 +225,18 @@ group("rootfs_init") {
 }
 
 
+
+group("rootfs_services_cfg") {
+  deps = [
+    "//base/startup/init/services/param/watcher:param_watcher.rc",
+    "//foundation/systemabilitymgr/samgr/etc:samgr_init",
+    "//foundation/graphic/graphic_2d:graphic.rc",
+    "//base/startup/init/services/etc:ueventd.cfg", 
+    "//drivers/hdf_core/adapter/uhdf2/manager:hdf_devmgr.cfg",
+    "//base/startup/init/ueventd:ueventd.config",
+ ]
+}
+
 # ATM и всё, что нужно для его запуска и проверки на стенде:
 # журнал, samgr, загрузчик SA и клиент для проверки регистрации 3503.
 #   prebuilts/build-tools/linux-x86/bin/ninja -C out/arkvm arkvm:atm_stand -w dupbuild=warn
@@ -242,6 +251,26 @@ group("rootfs_init") {
 #    "//base/hiviewdfx/hilog/services/hilogtool:hilog($_tc)",
 #  ]
 #}
+
+
+group("hdc") {
+  deps = [
+    "//developtools/hdc:hdcd_system",
+    "//developtools/hdc/src/daemon/etc:hdcd.cfg",
+    "//developtools/hdc/src/daemon/etc:hdc.para",
+    "//developtools/hdc/src/daemon/etc:hdc.para.dac",
+  ]
+}
+
+group("network") {
+  deps = [
+    "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:wpa_supplicant",
+    "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:wpa_cli",
+    "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:hostapd",
+    "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:hostapd_cli",
+  ]
+}
+
 
 group("all") {
   deps = [
