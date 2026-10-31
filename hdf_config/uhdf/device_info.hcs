@@ -1,4 +1,13 @@
-root {
+/*
+ * oneir: минимальный список HDF-хостов.
+ * Основа: vendor/ohemu/virt/hdf_config/uhdf/device_info.hcs.
+ * Оставлены только шаблоны и графические хосты; остальные добавлять по мере появления драйверов.
+ *
+ * ВАЖНО: номера хостов (-i в hdf_devhost.cfg) вычисляются из этого файла.
+ * После любого изменения ставить hdf_default.hcb и hdf_devhost.cfg вместе
+ * и перезапускать hdf_devmgr.
+ */
+ root {
     device_info {
         match_attr = "hdf_manager";
         template host {
@@ -20,6 +29,41 @@ root {
                 }
             }
         }
+
+        /* Аллокатор буферов: загружает libdisplay_buffer_vdi_impl.z.so (oneir/display_buffer). */
+        allocator :: host {
+            hostName = "allocator_host";
+            priority = 40;
+            gid = ["allocator_host", "graphics"];
+            allocator_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    moduleName = "liballocator_driver_1.0.z.so";
+                    serviceName = "allocator_service";
+                }
+            }
+        }
+
+        /* Композитор: загружает libdisplay_composer_vdi_impl.z.so (oneir/display_composer). */
+        display_composer :: host {
+            hostName = "composer_host";
+            priority = 41;
+            processPriority = -8;
+            threadPriority = 1;
+            caps = ["SYS_NICE", "SYS_ADMIN"];
+            uid = ["composer_host"];
+            gid = ["composer_host", "graphics"];
+            composer_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    moduleName = "libdisplay_composer_driver_1.0.z.so";
+                    serviceName = "display_composer_service";
+                }
+            }
+        }
+
         wlan :: host {
             hostName = "wifi_host";
             priority = 50;
@@ -33,48 +77,8 @@ root {
                     serviceName = "wlan_interface_service";
                 }
             }
-            wifi_chip_device :: device {
-                device0 :: deviceNode {
-                    policy = 2;
-                    priority = 100;
-                    moduleName = "libchip_hdi_driver.z.so";
-                    serviceName = "chip_interface_service";
-                }
-            }
         }
-        wpa :: host {
-            hostName = "wpa_host";
-            priority = 50;
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
-            initconfig = ["\"permission\" : [\"ohos.permission.ACCESS_CERT_MANAGER\"]", "\"secon\" : \"u:r:wifi_host:s0\""];
-            uid = "wifi";
-            gid = ["wifi", "wifi_group", "wifi_host"];
-            wpa_device :: device {
-                device0 :: deviceNode {
-                    policy = 2;
-                    preload = 2;
-                    priority = 100;
-                    moduleName = "libwpa_hdi_c_device.z.so";
-                    serviceName = "wpa_interface_service";
-                }
-            }
-        }
-        hostapd :: host {
-            hostName = "hostapd_host";
-            priority = 50;
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
-            initconfig = ["\"secon\" : \"u:r:wifi_host:s0\""];
-            uid = "wifi";
-            gid = ["wifi", "wifi_group", "wifi_host"];
-            hostapd_device :: device {
-                device0 :: deviceNode {
-                    policy = 2;
-                    preload = 2;
-                    priority = 100;
-                    moduleName = "libhostapd_hdi_c_device.z.so";
-                    serviceName = "hostapd_interface_service";
-                }
-            }
-        }
+
+
     }
 }
