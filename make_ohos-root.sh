@@ -22,6 +22,59 @@ TOOLCHAIN_LIB="$ROOT_DIR/prebuilts/clang/ohos/linux-x86_64/llvm/lib"
 
 
 
+# Minimal
+atm_deps=("accesstoken_cjson_utils" "accesstoken_manager_service" "accesstoken_json_parse" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "libaccesstoken_sdk" "libtokenid_sdk" "libtoken_callback_sdk" "libtokensetproc_shared" "libpermsetproc_shared" "libprivacy_sdk" "privacy_communication_adapter_cxx" )
+hilog_deps=("libffrt" "shared_libz" "hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
+safwk_deps=(
+  "sa_main"
+  "ipc_single" "ipc_core" "ipc_common"
+  "system_ability_fwk" "samgr_common" "samgr_proxy"
+  "utils" "libeventhandler" "libffrt" "libhicollie"
+  "libhilog" "libsandboxlog" "libhisysevent" "libhitracechain" "hitrace_meter"
+  "libfaultloggerd" "libbacktrace_local" "libunwinder" "libdfx_procinfo"
+  "libucollection_client"
+  "libaccesstoken_sdk" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx"
+  "libbegetutil" "libsystemparam" "configpolicy_util"
+  "libsec_shared" "cjson" "libpcre2" "libselinux"
+  "storage_manager_acl"
+)
+samgr_deps=("samgr" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "base" "cesfwk_core" "cesfwk_innerkits" "cjson" "concurrent_task_client" "configpolicy_util" "dataobs_manager" "devicemanagerjson" "devicemanagersdk" "hitrace_meter" "ipc_common" "ipc_core" "jsoncpp" "libaccesstoken_sdk" "libbacktrace_local" "libbeget_proxy" "libbegetutil" "libdbinder" "libdfx_procinfo" "libeventhandler" "libfaultloggerd" "libffrt" "libhicollie" "libhilog" "libhisysevent" "libhitracechain" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux" "libsystemparam" "libucollection_client" "libunwinder" "libxml2" "native_preferences" "qos" "samgr_common" "samgr_proxy" "storage_manager_acl" "utils" "want" "zuri" )
+faultloggerd_deps=("faultloggerd" "processdump" "dumpcatcher" "crashvalidator" "dfx_signalhandler" "libfaultloggerd" "libdfx_dumpcatcher" "libunwinder" "libbacktrace_local" "libstack_printer" "libjson_stack_formatter" "libasync_stack" "libdfx_procinfo" "crash_exception" "kernel_snapshot" "panic_handler" "stacktrace_rust" "rustc_demangle" )
+hiview_deps=("hiview" "hiviewbase" "sys_event_service_adapter" "libfaultlogger" "eventloggerso" "libcrashvalidator" "crashvalidator" "libtrace_manager" "libucollection_client" "libucollection_utility" "xperfservice_client" "xperfservice_server" "libxpower_event" "adft" "bdfr" "bdfr_base" "analysis_faultlog" "usage_report" )
+token_init_deps=("token_init")
+param_service_deps=("oneir_param_service" "param" "libbegetutil" "libbeget_proxy" "libsystemparam")
+param_watcher_deps=("param_watcher")
+hitrace_deps=("hitrace" "libhitracechain" "hitrace_dump" "hitrace_meter" "libhitrace_option")
+
+
+processdump_deps=("api_cache_manager" "appexecfwk_base" "appexecfwk_core" "base" "cesfwk_core" "cesfwk_innerkits" "cjson" "configpolicy_util" "crash_exception" "extractortool" "global_resmgr" "histogrammanager" "hitrace_meter" "ipc_common" "ipc_core" "jsoncpp" "libappexecfwk_common" "libasync_stack" "libbacktrace_local" "libbegetutil" "libdfx_procinfo" "libeventhandler" "libfaultloggerd" "libffrt" "libhicollie" "libhilog" "libhisysevent" "libhitracechain" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux" "libstack_printer" "libsystemparam" "libucollection_client" "libunwinder" "samgr_proxy" "shared_icui18n" "shared_icuuc" "storage_manager_acl" "string_utils" "utils" "want" "zuri")
+
+
+# CFG
+hilog_cfg=("hilogd.cfg" "hilog.para" "hilog.para.dac")
+atm_cfg=("access_token.rc" "access_token.para" "access_token.para.dac")
+faultloggerd_cfg=("faultloggerd.cfg" "faultloggerd.para" "faultloggerd.para.dac")
+hiview_cfg=("hiview.cfg" "hiview.para.dac")
+hitrace_cfg=("hitrace.para" "hitrace.para.dac")
+hdf_cfg=("hdf_devmgr.cfg" "hdf_devmgr.para.dac")
+
+
+# Network
+
+wpa_deps=(
+   "wpa_supplicant" "wpa_cli" "wpa"
+   "cjson" 
+   "configpolicy_util" 
+   "hostapd_hdi_client"
+   "ipc_common"
+   "ipc_core"
+   "libbacktrace_local"
+   "libbegetutil" 
+   "libcrypto_shared" "libdfx_procinfo" "libfaultloggerd" "libffrt" "libhilog" "libhisysevent" "libhitracechain"
+   "libhukssdk" "libnl_share" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux" "libssl_shared" "libsystemparam" "libunwinder" "samgr_proxy" "utils" "wpa" "wpa_hdi_client")
+hostapd_deps=("hostapd" "hostapd_cli" "libhitracechain" "libhukssdk" "libnl_share" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux" )
+
+
 command -v jq >/dev/null || { echo "Нужен jq: apt install jq" >&2; exit 1; }
 
 # ------------------------------------------------------------------------------
@@ -60,6 +113,55 @@ process_and_install_deps() {
     done < <(jq -r '.dest[]?' "$found_file")
   done
 }
+
+
+
+# Функция для минимальной установки
+install_minimal() {
+   echo "Запуск минимальной установки..."
+   echo "	Установка samgr"
+   process_and_install_deps "${samgr_deps[@]}"
+
+   echo "	Установка safwk"
+   process_and_install_deps "${safwk_deps[@]}"
+   echo "	Установка HiLog"
+   process_and_install_deps "${hilog_deps[@]}"
+
+   echo "	Установка ATM"
+   process_and_install_deps "${atm_deps[@]}"
+
+   echo "       Установка faultloggerd_deps"
+   process_and_install_deps "${faultloggerd_deps[@]}"
+   ln -s /data/log "$MOUNT_DIR/log"
+ 
+   echo "       Установка hiview_deps"
+   process_and_install_deps "${hiview_deps[@]}"
+   # Создание сервиса для  ohos-hiview
+   #echo "       Установка token_init" # init выдаёт токены сам
+   #process_and_install_deps "${token_init_deps[@]}"
+
+   #echo "       Установка param_service" # сервис параметров встроен в init
+   #process_and_install_deps "${param_service_deps[@]}"
+
+
+   echo "       Установка param_watcher"
+   process_and_install_deps "${param_watcher_deps[@]}"
+
+   echo "       Установка hitrace"
+   process_and_install_deps "${hitrace_deps[@]}"
+
+}
+
+
+install_network() {
+   echo "Установка сети..."
+   echo "	Установка wpa_supplicant"
+   process_and_install_deps "${wpa_deps[@]}"
+
+   echo "	Установка hostapd (тестовая точка доступа для QEMU)"
+   process_and_install_deps "${hostapd_deps[@]}"
+}
+
 
 # ------------------------------------------------------------------------------
 # Подготовка образа
@@ -103,6 +205,7 @@ ln -s /system/bin   "$MOUNT_DIR/bin"
 ln -s /system/lib   "$MOUNT_DIR/lib"
 ln -s /system/lib64 "$MOUNT_DIR/lib64"
 ln -s /system/etc   "$MOUNT_DIR/etc"
+ln -s /vendor       "$MOUNT_DIR/chipset"
 
 # Модули (пример — дополняйте список)
 # process_and_install_deps init ueventd begetctl sh toybox
@@ -143,21 +246,9 @@ process_and_install_deps configpolicy_util libhisysevent libsec_shared libhilog 
 
 
 
-# Шаг 4: файлы платы из oneir/rootfs (накладываются поверх образа)
-OVERLAY_DIR="$SCRIPT_DIR/rootfs"
-if [[ -d "$OVERLAY_DIR" ]]; then
-  # проверка синтаксиса всех .cfg — init молча пропустит битый JSON
-  for cfg in $(find "$OVERLAY_DIR" -name "*.cfg"); do
-    jq empty "$cfg" || { echo -e "${RED}Ошибка JSON: $cfg${NC}"; exit 1; }
-  done
-  cp -a "$OVERLAY_DIR/." "$MOUNT_DIR/"
-  echo -e "${GREEN}+ файлы платы из $OVERLAY_DIR${NC}"
-fi
-
-
 # Шаг 5: конфиги init
 process_and_install_deps \
-  init.cfg ueventd ueventd.cfg console.cfg watchdog.cfg \
+  init.cfg ueventd ueventd.cfg ueventd.config init.reboot console.cfg watchdog.cfg \
   ohos.para ohos.para.dac ohos_const.para ohos.startup.para ohos.para.size \
   passwd group boot.group
 
@@ -170,7 +261,7 @@ process_and_install_deps \
 # Шаг 6: тесты ядра OpenHarmony
 TESTS_SRC="$OUT_DIR/tests/unittest/linux-linux"
 mkdir -p "$MOUNT_DIR/system/tests"
-for t in accesstokenid_test; do
+for t in accesstokenid_test rtg_test; do
   if [[ -f "$TESTS_SRC/$t" ]]; then
     cp "$TESTS_SRC/$t" "$MOUNT_DIR/system/tests/"
     chmod 755 "$MOUNT_DIR/system/tests/$t"
@@ -179,6 +270,67 @@ for t in accesstokenid_test; do
     echo -e "${RED}Не найден: $TESTS_SRC/$t${NC}"
   fi
 done
+
+
+# Шаг 7: кладем профили SA
+
+mkdir -p "$MOUNT_DIR/system/profile/"
+
+
+cp ${SCRIPT_DIR}/profile/*.json "$MOUNT_DIR/system/profile/"
+process_and_install_deps hdf_devmgr.cfg hiview.cfg faultloggerd.cfg hilogd.cfg console.cfg access_token.rc param_watcher.rc samgr_init graphic.rc
+
+
+process_and_install_deps \
+  hilog.para hilog.para.dac \
+  access_token.para access_token.para.dac \
+  faultloggerd.para faultloggerd.para.dac \
+  hiview.para.dac \
+  hitrace.para hitrace.para.dac \
+  hdf_devmgr.para.dac
+
+process_and_install_deps \
+  syscap.para i18n.para i18n.para.dac libuv.para libuv.para.dac \
+  Runtime.para Runtime.para.dac Interop.para Interop.para.dac \
+  hichecker.para hichecker.para.dac customization.para.dac
+
+
+
+
+ 
+install_minimal
+
+
+process_and_install_deps "${processdump_deps[@]}"
+
+# network
+install_network
+
+#process_and_install_deps "${wpa_deps[@]}"
+
+
+
+
+
+# Шаг 4 (перенесён): файлы платы из oneir/rootfs — последними, чтобы переопределять стандартные
+OVERLAY_DIR="$SCRIPT_DIR/rootfs"
+if [[ -d "$OVERLAY_DIR" ]]; then
+  # проверка синтаксиса JSON — init молча пропустит битый файл
+  for cfg in $(find "$OVERLAY_DIR" -name "*.cfg" -o -name "*.json"); do
+    jq empty "$cfg" || { echo -e "${RED}Ошибка JSON: $cfg${NC}"; exit 1; }
+  done
+
+  cp -a "$OVERLAY_DIR/." "$MOUNT_DIR/"
+
+  # владелец — root (cp -a сохраняет uid хоста, а uid 1000 в OpenHarmony — это system)
+  chown -R 0:0 "$MOUNT_DIR/vendor" "$MOUNT_DIR/system"
+
+  # конфиги и параметры — 644, как у штатных файлов
+  find "$OVERLAY_DIR" -type f \( -name "*.cfg" -o -name "*.json" -o -name "*.para" -o -name "*.conf" -o -name "fstab.*" \) \
+    | sed "s|^$OVERLAY_DIR|$MOUNT_DIR|" | xargs -r chmod 644
+
+  echo -e "${GREEN}+ файлы платы из $OVERLAY_DIR${NC}"
+fi 
 
 
 ls -la "$MOUNT_DIR"
