@@ -1,5 +1,5 @@
 #!/bin/bash
-# Сборка целей: свой out-каталог,
+# Сборка произвольной цели по схеме tests/make.sh: свой out-каталог,
 # граф GN строится от выбранной цели (--root-target), собирается только она.
 #
 #   ./oneir/make.sh                     — oneir:atm (по умолчанию)
@@ -57,6 +57,16 @@ mkdir -p "$OUT"
 # свой args.gn, если есть, иначе тот же, что у tests
 if [ -f "$T/args.gn" ]; then ARGS="$T/args.gn"; else ARGS="$ROOT/tests/args.gn"; fi
 cp "$ARGS" "$OUT/args.gn"
+
+# флаги продукта (features из config.json) — как их передаёт GN штатный build.sh
+FEATURES=out/preloader/oneir/features.json
+if [ -f "$FEATURES" ]; then
+  echo "# --- features продукта из $FEATURES ---" >> "$OUT/args.gn"
+  jq -r '(.features // .) | to_entries[]
+         | select(.value | type == "boolean" or type == "number" or type == "string")
+         | "\(.key) = \(.value | tojson)"' "$FEATURES" >> "$OUT/args.gn"
+fi
+
 ln -sfn "$ROOT/out/sdk/build_configs" "$OUT/build_configs"
 
 if [ "$LIST" = 1 ]; then
