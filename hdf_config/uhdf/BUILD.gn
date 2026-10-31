@@ -1,0 +1,21 @@
+import("//build/ohos.gni")
+import("//drivers/hdf_core/adapter/uhdf2/hcs/hcs.gni")
+
+hdf_hcb("hdf_default.hcb") {
+  source = "./hdf.hcs"
+  part_name = "hdf_core"
+  subsystem_name = "hdf"
+}
+
+hdf_cfg("hdf_devhost.cfg") {
+  source = "./hdf.hcs"
+  part_name = "hdf_core"
+  subsystem_name = "hdf"
+}
+
+group("hdf_config") {
+  deps = [
+    ":hdf_default.hcb",
+    ":hdf_devhost.cfg",
+  ]
+}
