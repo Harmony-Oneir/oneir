@@ -1,16 +1,33 @@
+# oneir: конфигурация HDF продукта (одна на всю систему).
+# Собирает hdf_default.hcb (описание хостов и драйверов) и hdf_devhost.cfg
+# (init-конфиг запуска хостов) из hdf.hcs. Структура по образцу vendor/hihope/rk3568.
+#
+# Сборка из корня дерева:  ./oneir/make.sh //oneir/hdf_config/uhdf:hdf_config
+
 import("//build/ohos.gni")
 import("//drivers/hdf_core/adapter/uhdf2/hcs/hcs.gni")
 
+_part = "oneir_hdf_config"
+_subsystem = "oneir"
+
 hdf_hcb("hdf_default.hcb") {
   source = "./hdf.hcs"
-  part_name = "hdf_core"
-  subsystem_name = "hdf"
+  part_name = _part
+  subsystem_name = _subsystem
 }
 
 hdf_cfg("hdf_devhost.cfg") {
   source = "./hdf.hcs"
-  part_name = "hdf_core"
-  subsystem_name = "hdf"
+  part_name = _part
+  subsystem_name = _subsystem
+}
+
+ohos_prebuilt_etc("hdf_peripheral.cfg") {
+  source = "hdf_peripheral.cfg"
+  relative_install_dir = "init"
+  install_images = [ chipset_base_dir ]
+  part_name = _part
+  subsystem_name = _subsystem
 }
 
 group("hdf_config") {
