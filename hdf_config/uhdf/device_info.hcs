@@ -103,7 +103,7 @@
         }
 
 
-        /* Wi-Fi: адаптер (обычный драйвер Linux через nl80211). Без chip_interface_service, как у virt. */
+        /* Wi-Fi: адаптер и чип, обычный драйвер Linux через nl80211 (как у rk3568, vendor = default). */
         wlan :: host {
             hostName = "wifi_host";
             priority = 50;
@@ -117,9 +117,15 @@
                     serviceName = "wlan_interface_service";
                 }
             }
+            wifi_chip_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libchip_hdi_driver.z.so";
+                    serviceName = "chip_interface_service";
+                }
+            }
         }
-
-
 
     }
 }
