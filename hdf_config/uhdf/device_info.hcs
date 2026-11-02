@@ -64,6 +64,46 @@
             }
         }
 
+        /* wpa_supplicant (libwpa) внутри хоста; загружается по запросу wifi_manager. */
+        wpa :: host {
+            hostName = "wpa_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
+            initconfig = ["\"permission\" : [\"ohos.permission.ACCESS_CERT_MANAGER\"]", "\"secon\" : \"u:r:wifi_host:s0\""];
+            uid = "wifi";
+            gid = ["wifi", "wifi_group", "wifi_host"];
+            wpa_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    preload = 2;
+                    priority = 100;
+                    moduleName = "libwpa_hdi_c_device.z.so";
+                    serviceName = "wpa_interface_service";
+                }
+            }
+        }
+
+        /* hostapd (точка доступа); загружается по запросу. */
+        hostapd :: host {
+            hostName = "hostapd_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
+            initconfig = ["\"secon\" : \"u:r:wifi_host:s0\""];
+            uid = "wifi";
+            gid = ["wifi", "wifi_group", "wifi_host"];
+            wpa_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    preload = 2;
+                    priority = 100;
+                    moduleName = "libhostapd_hdi_c_device.z.so";
+                    serviceName = "hostapd_interface_service";
+                }
+            }
+        }
+
+
+        /* Wi-Fi: адаптер (обычный драйвер Linux через nl80211). Без chip_interface_service, как у virt. */
         wlan :: host {
             hostName = "wifi_host";
             priority = 50;
@@ -78,6 +118,7 @@
                 }
             }
         }
+
 
 
     }
