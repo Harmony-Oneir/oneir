@@ -75,6 +75,58 @@ wpa_deps=(
 hostapd_deps=("hostapd" "hostapd_cli" "libhitracechain" "libhukssdk" "libnl_share" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux" )
 
 
+
+#netstack_deps=(
+#  "detectionconfig.conf" "dhcp_client" "dhcp_sdk" "dhcp_utils" "fwmark_client" "initHosts"
+#  "net_conn_manager" "net_conn_manager_if" "net_data_share" "netdetectionurl.conf"
+#  "netmanager_base.para" "netmanager_base.para.dac" "netmanager_base.rc" "net_manager_common"
+#  "netmanager_trust" "net_native_manager_if" "net_policy_manager" "net_policy_manager_if"
+#  "net_security_config_if" "net_service_common" "net_stats_manager" "net_stats_manager_if"
+#  "netsys" "netsys_bpf_utils" "netsys_client" "netsys_controller" "netsys_native_manager"
+#  "netsysnative.rc" "netsysnative_trust" "resolv.conf" "xtables.lock"
+#  "ohos-wifiManager" "ohos-wifiManager_config" "ohos-wifiManager_exec"
+#  "wifi_ap_service" "wifi_base" "wifi_device_ability" "wifi_hotspot_ability" "wifi_manager_service"
+#  "wifi_p2p_ability" "wifi_p2p_service" "wifi_scan_ability" "wifi_sdk" "wifi_utils"
+#  "wifi.para" "wifi.para.dac" "wifi_standard.cfg"
+#)
+
+
+# Ядро HDF и конфигурация платы
+hdf_deps=(
+  "hdf_devmgr" "hdf_devhost"
+  "libhdf_host" "libhdf_ipc_adapter" "libhdf_utils" "libhdi" "libhdi_base" "libpub_utils"
+  "hdf_devmgr.cfg" "hdf_devmgr.para.dac"
+  "hdf_default.hcb" "hdf_devhost.cfg"
+)
+
+# Драйверный слой Wi-Fi: хосты wifi_host, wpa_host, hostapd_host
+hdf_wlan_deps=(
+  "libwifi_hdi_c_device" "libwlan_interface_service_1.3" "libwlan_stub_1.3" "libwlan_service_extend"
+  "wifi_driver_client" "wifi_hal" "libnl_share"
+  "libwpa_hdi_c_device" "libwpa_interface_service_2.0" "libwpa_stub_2.0" "wpa" "wpa_client_vendor" "wpa_hdi_client"
+  "libhostapd_hdi_c_device" "libhostapd_interface_service_1.0" "libhostapd_stub_1.0" "hostapd_hdi_client"
+)
+
+# Сетевой стек: сервисы, конфиги, параметры
+netstack_deps=(
+  "detectionconfig.conf" "dhcp_client" "dhcp_sdk" "dhcp_utils" "fwmark_client" "hostapd_coex.conf" "hostapd.conf" "initHosts"
+  "net_conn_manager" "net_conn_manager_if" "net_data_share" "netdetectionurl.conf"
+  "netmanager_base.para" "netmanager_base.para.dac" "netmanager_base.rc" "net_manager_common"
+  "netmanager_trust" "net_native_manager_if" "net_policy_manager" "net_policy_manager_if"
+  "net_security_config_if" "net_service_common" "net_stats_manager" "net_stats_manager_if"
+  "netsys" "netsys_bpf_utils" "netsys_client" "netsys_controller" "netsys_native_manager"
+  "netsysnative.rc" "netsysnative_trust" "ohos-wifiManager" "ohos-wifiManager_config" "ohos-wifiManager_exec"
+  "p2p_supplicant.conf" "resolv.conf" "wpa_supplicant.conf" "xtables.lock"
+  "wifi_ap_service" "wifi_base" "wifi_device_ability" "wifi_hotspot_ability" "wifi_manager_service"
+  "wifi_p2p_ability" "wifi_p2p_service" "wifi_scan_ability" "wifi_sdk" "wifi_utils"
+  "wifi.para" "wifi.para.dac" "wifi_standard.cfg"
+)
+
+
+
+netstack_libs=("ability_connect_callback_stub" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "api_cache_manager" "appexecfwk_base" "appexecfwk_core" "app_manager" "app_util" "base" "batterysrv_client" "brotli_shared" "c_ares" "cert_manager_sdk" "cesfwk_core" "cesfwk_innerkits" "cjson" "concurrent_task_client" "configpolicy_util" "configuration" "connection_obs_manager" "curl_shared" "database_utils" "dataobs_manager" "datashare_common" "datashare_consumer" "dhcp_sdk" "dhcp_utils" "distributeddb_client" "domain_account_innerkits" "elfio" "extension_manager" "extractortool" "freeze_util" "fwmark_client" "global_resmgr" "histogrammanager" "hisysevent_report" "hitrace_meter" "hostapd_hdi_client" "ipc_common" "ipc_core" "jsoncpp" "libaccesstoken_sdk" "libaccount_common" "libaccountkits" "libappexecfwk_common" "libasync_stack" "libbacktrace_local" "libbeget_proxy" "libbegetutil" "libbpf" "libcrypto_shared" "libdfx_dumpcatcher" "libdfx_procinfo" "libdm_lite" "libeventhandler" "libfaultloggerd" "libffrt" "libhdf_host" "libhdf_ipc_adapter" "libhdf_utils" "libhdi" "libhdi_base" "libhicollie" "libhilog" "libhisysevent" "libhitracechain" "libhostapd_interface_service_1.0" "libhostapd_proxy_1.0" "libhostapd_stub_1.0" "libhukssdk" "libnghttp2_shared" "libnl_share" "libpcre2" "libpub_utils" "libsandboxlog" "libsec_shared" "libselinux" "libssl_shared" "libstack_printer" "libsystemparam" "libtokenid_sdk" "libucollection_client" "libunwinder" "libwlan_interface_service_1.3" "libwlan_service_extend" "libwlan_stub_1.3" "libwmutil_base" "libwpa_interface_service_2.0" "libwpa_proxy_2.0" "libwpa_stub_2.0" "libwsutils" "libxml2" "native_appdatafwk" "native_rdb" "net_conn_manager_if" "net_data_share" "net_manager_common" "net_native_manager_if" "net_policy_manager_if" "net_service_common" "net_stats_manager_if" "netsys_bpf_utils" "netsys_client" "netsys_controller" "openhitls_bsl" "openhitls_crypto" "openhitls_pki" "openhitls_tls" "os_account_innerkits" "powermgr_client" "qos" "relational_common_base" "ressched_client" "runtime_utils" "samgr_common" "samgr_proxy" "shared_icui18n" "shared_icuuc" "shared_libz" "sqlite" "startup_util" "storage_manager_acl" "string_utils" "system_ability_fwk" "tel_core_service_api" "tel_state_registry_api" "time_client" "utils" "want" "wifi_base" "wifi_driver_client" "wifi_hal" "wifi_manager_service" "wifi_sdk" "wifi_utils" "wpa" "wpa_client_vendor" "wpa_hdi_client" "zuri")
+
+
 command -v jq >/dev/null || { echo "Нужен jq: apt install jq" >&2; exit 1; }
 
 # ------------------------------------------------------------------------------
@@ -161,6 +213,24 @@ install_network() {
    echo "	Установка hostapd (тестовая точка доступа для QEMU)"
    process_and_install_deps "${hostapd_deps[@]}"
 }
+
+
+install_hdf() {
+   echo "Установка HDF..."
+   process_and_install_deps "${hdf_deps[@]}"
+}
+
+install_hdf_wlan() {
+   echo "Установка драйверного слоя Wi-Fi..."
+   process_and_install_deps "${hdf_wlan_deps[@]}"
+}
+
+install_netstack() {
+   echo "Установка сетевого стека..."
+   process_and_install_deps "${netstack_deps[@]}"
+   process_and_install_deps "${netstack_libs[@]}"
+}
+
 
 
 # ------------------------------------------------------------------------------
@@ -304,7 +374,14 @@ install_minimal
 process_and_install_deps "${processdump_deps[@]}"
 
 # network
-install_network
+install_network      # wpa_cli, hostapd для тестов
+install_hdf
+install_hdf_wlan
+install_netstack
+
+
+
+
 
 #process_and_install_deps "${wpa_deps[@]}"
 
