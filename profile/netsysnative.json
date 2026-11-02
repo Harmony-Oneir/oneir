@@ -1,0 +1,13 @@
+{
+    "process": "netsysnative",
+    "systemability": [
+        {
+            "name": 1158,
+            "libpath": "libnetsys_native_manager.z.so",
+            "run-on-create": true,
+            "distributed": false,
+            "dump_level": 1,
+            "min_hdi_proxy_version": []
+        }
+    ]
+}
