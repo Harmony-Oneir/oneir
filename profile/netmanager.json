@@ -1,0 +1,13 @@
+{
+    "process": "netmanager",
+    "systemability": [
+        {
+            "name": 1151,
+            "libpath": "libnet_conn_manager.z.so",
+            "run-on-create": true,
+            "distributed": false,
+            "dump_level": 1,
+            "min_hdi_proxy_version": []
+        }
+    ]
+}
