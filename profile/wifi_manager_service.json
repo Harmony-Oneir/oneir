@@ -12,7 +12,15 @@
         "backup",
         "restore"
       ],
-      "min_hdi_proxy_version": []
+      "min_hdi_proxy_version": [],
+      "start-on-demand": {
+        "param": [
+          {
+            "name": "bootevent.netmanager.ready",
+            "value": "true"
+          }
+        ]
+      }
     },
     {
       "name": 1121,
@@ -39,7 +47,7 @@
     {
       "name": 1124,
       "libpath": "libwifi_scan_ability.z.so",
-      "run-on-create": false,
+      "run-on-create": true,
       "auto-restart": true,
       "distributed": false,
       "dump-level": 1,
@@ -48,7 +56,7 @@
     {
       "name": 1126,
       "libpath": "libdhcp_client.z.so",
-      "run-on-create": false,
+      "run-on-create": true,
       "auto-restart": true,
       "distributed": false,
       "dump-level": 1,
