@@ -268,6 +268,87 @@ group("network") {
     "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:wpa_cli",
     "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:hostapd",
     "//third_party/wpa_supplicant/wpa_supplicant-2.9_standard:hostapd_cli",
+
+  ]
+}
+
+
+
+
+group("netstack") {
+  deps = [
+    # netmanager_base
+    "//foundation/communication/netmanager_base/services:netmanager_base_services",
+    "//foundation/communication/netmanager_base/services/etc/init:netmanager_base.rc",
+    "//foundation/communication/netmanager_base/services/etc/init:netsysnative.rc",
+    "//foundation/communication/netmanager_base/services/etc/init:netmanager_base.para",
+    "//foundation/communication/netmanager_base/services/etc/init:netmanager_base.para.dac",
+    "//foundation/communication/netmanager_base/services/etc/init:resolv.conf",
+    "//foundation/communication/netmanager_base/services/etc/init:initHosts",
+    "//foundation/communication/netmanager_base/services/etc/init:hosts_lnk",
+    "//foundation/communication/netmanager_base/services/etc/init:xtables.lock",
+    "//foundation/communication/netmanager_base/services/etc/init:netmanager_trust",
+    "//foundation/communication/netmanager_base/services/etc/init:netsysnative_trust",
+    "//foundation/communication/netmanager_base/services/etc/init:netdetectionurl.conf",
+    "//foundation/communication/netmanager_base/services/etc/init:detectionconfig.conf",
+    "//foundation/communication/netmanager_base/sa_profile:net_manager_profile",
+
+    # dhcp
+    "//foundation/communication/dhcp/services/dhcp_client:dhcp_client",
+    "//foundation/communication/dhcp/frameworks/native:dhcp_sdk",
+    "//foundation/communication/dhcp/services/utils:dhcp_utils",
+    "//foundation/communication/dhcp/services/sa_profile:wifi_standard_sa_profile",
+
+    # wifi
+    "//foundation/communication/wifi/wifi/services/wifi_standard/wifi_framework:wifi_manage",
+    "//foundation/communication/wifi/wifi/services/wifi_standard/wifi_framework:wifi_system_ability",
+    "//foundation/communication/wifi/wifi/relation_services:relation_services",
+    "//foundation/communication/wifi/wifi/frameworks/native/tools/ohos-wifiManager:ohos-wifiManager",
+  ]
+}
+
+
+
+group("hdf_wlan") {
+  deps = [
+    "//drivers/peripheral/wlan:wlan_entry",
+    "//drivers/peripheral/wlan/wpa:wpa_entry",
+    "//drivers/peripheral/wlan/hostapd:hostapd_entry",
+    "//drivers/peripheral/wlan/chip:wlan_chip_entry",
+    "//oneir/hdf_config/uhdf:hdf_config",
+    "//drivers/peripheral/wlan/chip:wlan_chip_entry"
+  ]
+}
+
+
+
+group("ces") {
+  deps = [
+    "//base/notification/common_event_service/services:cesfwk_services",
+    "//base/notification/common_event_service/sa_profile:event_sa_profile",
+    "//base/notification/common_event_service/tools:tools_target",
+  ]
+}
+
+
+
+# Клиент hdc для компьютера разработчика
+group("hdc_host_linux") {
+  deps = [ "//developtools/hdc:hdc(//build/toolchain/linux:clang_x64)" ]
+}
+
+group("hdc_host_windows") {
+  deps = [ "//developtools/hdc:hdc(//build/toolchain/mingw:mingw_x86_64)" ]
+}
+
+
+# Демон hdcd для устройства (удалённый доступ через hdc)
+group("hdcd") {
+  deps = [
+    "//developtools/hdc:hdcd_system",
+    "//developtools/hdc/src/daemon/etc:hdcd.cfg",
+    "//developtools/hdc/src/daemon/etc:hdc.para",
+    "//developtools/hdc/src/daemon/etc:hdc.para.dac",
   ]
 }
 
