@@ -135,6 +135,29 @@ hdcd_deps=(
 netstack_libs=("ability_connect_callback_stub" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "api_cache_manager" "appexecfwk_base" "appexecfwk_core" "app_manager" "app_util" "base" "batterysrv_client" "brotli_shared" "c_ares" "cert_manager_sdk" "cesfwk_core" "cesfwk_innerkits" "cjson" "concurrent_task_client" "configpolicy_util" "configuration" "connection_obs_manager" "curl_shared" "database_utils" "dataobs_manager" "datashare_common" "datashare_consumer" "dhcp_sdk" "dhcp_utils" "distributeddb_client" "domain_account_innerkits" "elfio" "extension_manager" "extractortool" "freeze_util" "fwmark_client" "global_resmgr" "histogrammanager" "hisysevent_report" "hitrace_meter" "hostapd_hdi_client" "ipc_common" "ipc_core" "jsoncpp" "libaccesstoken_sdk" "libaccount_common" "libaccountkits" "libappexecfwk_common" "libasync_stack" "libbacktrace_local" "libbeget_proxy" "libbegetutil" "libbpf" "libcrypto_shared" "libdfx_dumpcatcher" "libdfx_procinfo" "libdm_lite" "libeventhandler" "libfaultloggerd" "libffrt" "libhdf_host" "libhdf_ipc_adapter" "libhdf_utils" "libhdi" "libhdi_base" "libhicollie" "libhilog" "libhisysevent" "libhitracechain" "libhostapd_interface_service_1.0" "libhostapd_proxy_1.0" "libhostapd_stub_1.0" "libhukssdk" "libnghttp2_shared" "libnl_share" "libpcre2" "libpub_utils" "libsandboxlog" "libsec_shared" "libselinux" "libssl_shared" "libstack_printer" "libsystemparam" "libtokenid_sdk" "libucollection_client" "libunwinder" "libwlan_interface_service_1.3" "libwlan_service_extend" "libwlan_stub_1.3" "libwmutil_base" "libwpa_interface_service_2.0" "libwpa_proxy_2.0" "libwpa_stub_2.0" "libwsutils" "libxml2" "native_appdatafwk" "native_rdb" "net_conn_manager_if" "net_data_share" "net_manager_common" "net_native_manager_if" "net_policy_manager_if" "net_service_common" "net_stats_manager_if" "netsys_bpf_utils" "netsys_client" "netsys_controller" "openhitls_bsl" "openhitls_crypto" "openhitls_pki" "openhitls_tls" "os_account_innerkits" "powermgr_client" "qos" "relational_common_base" "ressched_client" "runtime_utils" "samgr_common" "samgr_proxy" "shared_icui18n" "shared_icuuc" "shared_libz" "sqlite" "startup_util" "storage_manager_acl" "string_utils" "system_ability_fwk" "tel_core_service_api" "tel_state_registry_api" "time_client" "utils" "want" "wifi_base" "wifi_driver_client" "wifi_hal" "wifi_manager_service" "wifi_sdk" "wifi_utils" "wpa" "wpa_client_vendor" "wpa_hdi_client" "zuri" "libchip_proxy_2.0" "libchip_stub_2.0")
 
 
+
+
+
+qos_deps=(
+  "concurrentsvc" "concurrent_task_client" "qos" "qos_ndk"
+  "concurrent_task_service.cfg" "ffrt.para" "ffrt.para.dac"
+  "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "cjson" "configpolicy_util"
+  "hitrace_meter" "ipc_common" "ipc_core" "libaccesstoken_sdk" "libbacktrace_local" "libbegetutil"
+  "libdfx_procinfo" "libeventhandler" "libfaultloggerd" "libffrt" "libhicollie" "libhilog"
+  "libhisysevent" "libhitracechain" "libpcre2" "libsandboxlog" "libsec_shared" "libselinux"
+  "libsystemparam" "libucollection_client" "libunwinder" "samgr_common" "samgr_proxy"
+  "storage_manager_acl" "system_ability_fwk" "utils"
+)
+
+install_qos() {
+   echo "Установка QoS..."
+   process_and_install_deps "${qos_deps[@]}"
+}
+
+
+
+
+
 command -v jq >/dev/null || { echo "Нужен jq: apt install jq" >&2; exit 1; }
 
 # ------------------------------------------------------------------------------
@@ -416,7 +439,7 @@ install_hdf_wlan
 install_netstack
 install_firmware
 install_hdcd
-
+install_qos
 
 
 #process_and_install_deps "${wpa_deps[@]}"
