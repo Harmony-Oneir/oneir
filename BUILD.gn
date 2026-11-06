@@ -353,6 +353,21 @@ group("hdcd") {
 }
 
 
+
+
+# Управление приоритетами потоков (QoS)
+group("qos") {
+  deps = [
+    "//foundation/resourceschedule/qos_manager/services:concurrentsvc",
+    "//foundation/resourceschedule/qos_manager/etc/init:concurrent_task_service.cfg",
+    "//foundation/resourceschedule/qos_manager/sa_profile:concurrent_task_sa_profile",
+    "//foundation/resourceschedule/qos_manager/etc/param:ffrt.para",
+    "//foundation/resourceschedule/qos_manager/etc/param:ffrt.para.dac",
+  ]
+}
+
+
+
 group("all") {
   deps = [
     ":atm",
