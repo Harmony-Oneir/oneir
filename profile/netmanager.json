@@ -32,6 +32,14 @@
         "backup",
         "restore"
       ]
+    },
+    {
+      "name": 1157,
+      "libpath": "libethernet_manager.z.so",
+      "run-on-create": true,
+      "distributed": false,
+      "dump_level": 1,
+      "min_hdi_proxy_version": []
     }
   ]
 }
