@@ -22,8 +22,33 @@ TOOLCHAIN_LIB="$ROOT_DIR/prebuilts/clang/ohos/linux-x86_64/llvm/lib"
 
 firmware_deps=("ath10k_qca9377_fw" "ath10k_qca9377_board2" "ath10k_qca9377_board" "rt2870_fw")
 
+
+
+hiview_runtime_deps=(
+  "ability_connect_callback_stub" "api_cache_manager" "appexecfwk_base" "appexecfwk_core" "base"
+  "cesfwk_core" "cesfwk_innerkits" "database_utils" "dataobs_manager" "datashare_common"
+  "datashare_consumer" "distributeddb_client" "extension_manager" "extractortool" "global_resmgr"
+  "hidumperservice_cpu_source" "hiperf_client" "histogrammanager" "hitrace_dump" "jsoncpp"
+  "libappexecfwk_common" "libasync_stack" "libdfx_dumpcatcher" "libhitrace_option" "libstack_printer"
+  "libtrace_manager" "libucollection_utility" "native_appdatafwk" "native_rdb" "relational_common_base"
+  "shared_icui18n" "shared_icuuc" "shared_libz" "sqlite" "string_utils" "thermalsrv_client"
+  "want" "wifi_sdk" "wifi_utils" "zuri" "libcrypto_shared" "libbeget_proxy"
+)
+
 # Minimal
-atm_deps=("accesstoken_cjson_utils" "accesstoken_manager_service" "accesstoken_json_parse" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "libaccesstoken_sdk" "libtokenid_sdk" "libtoken_callback_sdk" "libtokensetproc_shared" "libpermsetproc_shared" "libprivacy_sdk" "privacy_communication_adapter_cxx" )
+atm_deps=(
+  "accesstoken_manager_service" "libtokenid_sdk" "libtoken_callback_sdk" "libtokensetproc_shared"
+  "libprivacy_sdk" "privacy_communication_adapter_cxx"
+  "accesstoken_cjson_utils" "accesstoken_common_cxx" "accesstoken_communication_adapter_cxx" "cjson"
+  "configpolicy_util" "database_utils" "devicemanagerjson" "devicemanagersdk" "distributeddb_client"
+  "hitrace_meter" "ipc_common" "ipc_core" "jsoncpp" "libaccesstoken_sdk" "libbacktrace_local"
+  "libbegetutil" "libcrypto_shared" "libdfx_procinfo" "libeventhandler" "libfaultloggerd" "libffrt"
+  "libhapverify" "libhicollie" "libhilog" "libhisysevent" "libhitracechain" "libpcre2"
+  "libpermsetproc_shared" "libsandboxlog" "libsec_shared" "libselinux" "libsg_collect_sdk"
+  "libsystemparam" "libucollection_client" "libunwinder" "native_appdatafwk" "native_rdb"
+  "relational_common_base" "saf_agent_fence" "samgr_common" "samgr_proxy" "shared_libz" "sqlite"
+  "storage_manager_acl" "system_ability_fwk" "utils"
+)
 hilog_deps=("libffrt" "shared_libz" "hilogd" "hilog" "libhilog" "hilog_rust" "libsandboxlog")
 safwk_deps=(
   "sa_main"
@@ -119,7 +144,7 @@ netstack_deps=(
   "p2p_supplicant.conf" "resolv.conf" "wpa_supplicant.conf" "xtables.lock"
   "wifi_ap_service" "wifi_base" "wifi_device_ability" "wifi_hotspot_ability" "wifi_manager_service"
   "wifi_p2p_ability" "wifi_p2p_service" "wifi_scan_ability" "wifi_sdk" "wifi_utils"
-  "wifi.para" "wifi.para.dac" "wifi_standard.cfg"
+  "wifi.para" "wifi.para.dac" "wifi_standard.cfg"  "net_bundle_utils"
 )
 
 
@@ -219,6 +244,7 @@ install_minimal() {
  
    echo "       Установка hiview_deps"
    process_and_install_deps "${hiview_deps[@]}"
+   process_and_install_deps "${hiview_runtime_deps[@]}"
    # Создание сервиса для  ohos-hiview
    #echo "       Установка token_init" # init выдаёт токены сам
    #process_and_install_deps "${token_init_deps[@]}"
@@ -399,6 +425,22 @@ for t in accesstokenid_test rtg_test; do
     echo -e "${RED}Не найден: $TESTS_SRC/$t${NC}"
   fi
 done
+
+
+
+
+
+# Модульные тесты qos_manager (собираются группой qos_test)
+QOS_TESTS_SRC="$OUT_DIR/tests/unittest/qos_manager/qos_manager"
+if [[ -d "$QOS_TESTS_SRC" ]]; then
+  mkdir -p "$MOUNT_DIR/system/tests/qos_manager"
+  cp "$QOS_TESTS_SRC"/*_test "$MOUNT_DIR/system/tests/qos_manager/"
+  chmod 755 "$MOUNT_DIR"/system/tests/qos_manager/*
+  echo -e "${GREEN}+ system/tests/qos_manager: $(ls "$QOS_TESTS_SRC"/*_test | wc -l) тестов${NC}"
+else
+  echo -e "${YELLOW}Тесты qos_manager не собраны (./oneir/make.sh qos_test)${NC}"
+fi
+
 
 
 # Шаг 7: кладем профили SA
