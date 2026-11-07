@@ -292,7 +292,7 @@ group("netstack") {
     "//foundation/communication/netmanager_base/services/etc/init:netdetectionurl.conf",
     "//foundation/communication/netmanager_base/services/etc/init:detectionconfig.conf",
     "//foundation/communication/netmanager_base/sa_profile:net_manager_profile",
-
+    "//foundation/communication/netmanager_base/utils:net_bundle_utils",
     # dhcp
     "//foundation/communication/dhcp/services/dhcp_client:dhcp_client",
     "//foundation/communication/dhcp/frameworks/native:dhcp_sdk",
@@ -366,7 +366,10 @@ group("qos") {
   ]
 }
 
-
+group("qos_test") {
+  testonly = true
+  deps = [ "//foundation/resourceschedule/qos_manager/test:concurrent_unittest" ]
+}
 
 group("all") {
   deps = [
