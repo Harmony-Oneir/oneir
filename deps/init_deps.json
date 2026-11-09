@@ -1,0 +1,1164 @@
+[
+
+   {
+      "name": "prebuilts",
+      "values":[
+         {"type":"file", "src": "prebuilts/clang/ohos/linux-x86_64/llvm/lib/x86_64-linux-ohos/libc++.so", "dst":"system/lib64/libc++.so"},
+         {"type":"file", "src": "out/oneir/common/common/libc/ld-musl-x86_64.so.1", "dst":"system/lib/libc.so"},
+         {"type":"file", "src": "out/oneir/common/common/libc/ld-musl-x86_64.so.1", "dst":"lib/ld-musl-x86_64.so.1"},
+         {"type":"module_info", "src": "out/oneir/obj/third_party/musl/ld-musl-namespace-x86_64.ini_module_info.json"},
+         {"type":"file", "src": "prebuilts/clang/ohos/linux-x86_64/llvm/lib/clang/15.0.4/lib/x86_64-linux-ohos/libclang_rt.ubsan_minimal.so", "dst":"system/lib64/libclang_rt.ubsan_minimal.so"}
+
+      ]
+   },
+   {
+      "name": "begetctl",
+      "values":[
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/begetctl/begetctl_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/interfaces/innerkits/libbeget_proxy_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/communication/ipc/interfaces/innerkits/ipc_single/ipc_single_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy/samgr_proxy_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/appspawn/interfaces/innerkits/client/appspawn_client_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/communication/ipc/ipc/native/src/core/ipc_common_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/ffrt/libffrt_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/third_party/selinux/libselinux_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/backtrace/libbacktrace_local_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/faultloggerd_client/libfaultloggerd_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/unwinder/libunwinder_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/third_party/pcre2/libpcre2_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/procinfo/libdfx_procinfo_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/commonlibrary/c_utils/base/utils_module_info.json"}
+      ]
+   },
+   {
+    "name": "boot-base",
+    "values": [
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/passwd_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/group_module_info.json"
+      },
+      {"type":"file", "src": "oneir/rootfs/vendor/etc/fstab.x86_64_oneir", "dst": "vendor/etc/fstab.x86_64_oneir"},
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/ueventd/ueventd_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/ueventd/ueventd.config_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/begetctl/param_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para.dac_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/ohos_const.para_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/ohos.startup.para_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para.size_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/startup/init/services/etc/boot.group_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/third_party/mksh/sh_module_info.json"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/third_party/toybox/toybox_module_info.json"
+      },         
+      {"type":"file", "src": "oneir/rootfs/vendor/etc/init.x86_64_oneir.cfg", "dst":"/vendor/etc/init.x86_64_oneir.cfg"}
+    ]
+   },
+   {
+    "name": "toybox-links",
+    "values": [
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/acpi"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/arch"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ascii"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/base64"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/basename"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/blkid"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/blockdev"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/bunzip2"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/bzcat"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cal"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cat"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chattr"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chgrp"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chmod"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chown"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chroot"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chrt"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/chvt"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cksum"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/clear"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cmp"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/comm"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/count"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cp"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cpio"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/crc32"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/cut"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/date"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/dd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/devmem"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/df"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/dirname"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/dmesg"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/dnsdomainname"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/dos2unix"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/du"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/echo"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/egrep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/eject"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/env"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/expand"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/factor"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fallocate"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/false"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fgrep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/file"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/find"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/flock"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fmt"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/free"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/freeramdisk"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fsfreeze"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fstype"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/fsync"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ftpget"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ftpput"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/getconf"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/getty"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/grep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/groups"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/gunzip"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/gzip"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/halt"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/head"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/help"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/hexedit"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/hostname"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/hwclock"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/i2cdetect"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/i2cdump"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/i2cget"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/i2cset"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/iconv"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/id"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ifconfig"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/inotifyd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/insmod"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/install"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ionice"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/iorenice"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/iotop"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/kill"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/killall"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/killall5"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/link"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ln"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/logger"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/login"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/logname"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/losetup"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ls"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/lsattr"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/lsmod"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/lsof"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/lspci"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/lsusb"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/makedevs"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mcookie"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/md5sum"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mdev"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/microcom"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mix"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mkdir"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mkfifo"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mknod"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mkpasswd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mkswap"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mktemp"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/modinfo"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/more"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mount"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mountpoint"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/mv"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nbd-client"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/netstat"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nice"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nl"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nohup"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nproc"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/nsenter"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/od"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/oneit"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/partprobe"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/passwd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/paste"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/patch"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pgrep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pidof"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ping"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ping6"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pivot_root"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pkill"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pmap"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/poweroff"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/printenv"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/printf"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/prlimit"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ps"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pwd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/pwdx"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/readahead"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/readlink"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/realpath"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/reboot"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/renice"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/reset"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/rev"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/rfkill"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/rm"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/rmdir"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/rmmod"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/route"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sed"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sendevent"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/seq"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/setfattr"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/setsid"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sha1sum"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/shred"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sleep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sntp"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sort"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/split"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/stat"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/strings"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/swapoff"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/swapon"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/switch_root"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sync"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/sysctl"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tac"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tail"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tar"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/taskset"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tee"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/telnetd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/test"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/time"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/timeout"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/top"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/touch"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/true"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/truncate"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tty"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/tunctl"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/ulimit"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/umount"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uname"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uniq"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/unix2dos"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/unlink"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/unshare"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uptime"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/usleep"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uudecode"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uuencode"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/uuidgen"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/vconfig"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/vmstat"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/w"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/watch"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/wc"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/which"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/who"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/whoami"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/xargs"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/xxd"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/yes"
+      },
+      {
+        "type": "symlink",
+        "src": "toybox",
+        "dst": "system/bin/zcat"
+      }
+    ]
+   },
+   {
+      "name":"modules",
+      "values":[
+         {"type": "folder", "src": "out/kernel/src_tmp/modules/lib/modules", "dst": "system/lib/modules"}
+      ]
+   },
+   {
+      "name": "Init",
+      "values":[
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/init/standard/init_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/third_party/bounds_checking_function/libsec_shared_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/interfaces/native/innerkits/libhilog_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/customization/config_policy/frameworks/config_policy/configpolicy_util_module_info.json"},
+         {"type": "module_info", "src": "out/tests/obj/base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent/libhisysevent_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/interfaces/sandbox_log/libsandboxlog_module_info.json"},
+         {"type": "module_info", "src": "out/tests/obj/base/startup/init/interfaces/innerkits/libbegetutil_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/interfaces/innerkits/libsystemparam_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitracechain_module_info.json"},
+         {"type": "module_info", "src": "out/tests/obj/third_party/cJSON/cjson_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/init.cfg_module_info.json"}
+      ]
+   }
+]
