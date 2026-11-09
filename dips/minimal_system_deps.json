@@ -1,0 +1,150 @@
+[
+   {
+      "name":"libs",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/third_party/sqlite/sqlite_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/appdatafwk/relational_common_base_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/databaseutils/database_utils_module_info.json"},
+          {"type":"module_info", "src": "out/tests/obj/foundation/ability/ability_runtime/interfaces/inner_api/dataobs_manager/dataobs_manager_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/openssl/libcrypto_shared_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/openssl/libssl_shared_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/openssl/openssl.cnf_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/interfaces/innerkits/acl/native/storage_manager_acl_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/stack_printer/libstack_printer_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/async_stack/libasync_stack_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/frameworks/libs/distributeddb/distributeddb_client_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/appdatafwk/native_appdatafwk_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/jsoncpp/jsoncpp_module_info.json"}
+      ]
+   },
+   {
+      "name":"safwk",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/core/cesfwk_core_module_info.json"}
+      ]
+   },
+   {
+      "name":"CES",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/services/cesfwk_services_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_base/appexecfwk_base_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/appexecfwk_core_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/interfaces/innerkits/distributeddata/distributeddata_inner_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/osaccount/native/os_account_innerkits_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/privacy/libprivacy_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/extension/static_subscriber_ipc_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/accesstoken/libtokenid_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_start_options_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_start_setting_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/common/libaccount_common_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/ohosaccount/native/libaccountkits_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/api_cache_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/app_manager/app_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/app_util_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/common/libappexecfwk_common_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/interfaces/innerkits/distributeddata/distributeddata_client_sync_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/interfaces/innerkits/distributeddatamgr/distributeddata_mgr_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/frameworks/libs/distributeddb/distributeddb_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/dlp_permission_service/interfaces/inner_api/dlp_parse/libdlpparse_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/domain_account/domain_account_innerkits_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/utils/global/freeze/freeze_util_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/configuration_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/dlp_permission_service/interfaces/inner_api/dlp_permission/libdlp_permission_common_interface_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/innerkits/libwsutils_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/wantagent_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/utils/server/startup/startup_util_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager/session_manager_lite_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/start_window_option_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/session_info_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/utils/libwmutil_base_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/utils/global/common/runtime_utils_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/resource_schedule_service/ressched/interfaces/innerkits/ressched_client/ressched_client_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/process_options_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/privacy/privacy_communication_adapter_cxx_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/dataability/native_dataability_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/mission_info_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/image_native_bridge_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/hisysevent_report_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/global/resource_management/frameworks/resmgr/global_resmgr_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/app_file_service/interfaces/innerkits/native/fileuri_native_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/dlp_permission_service/interfaces/inner_api/dlp_permission/libdlp_permission_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/extractortool_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiviewdfx_api_metrics/histogrammanager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/token_setproc/libtokensetproc_shared_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/string_utils_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/third_party/icu/icu4c/shared_icui18n_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/third_party/icu/icu4c/shared_icuuc_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_connect_callback_stub_module_info.json"}
+      ]
+   },
+   {
+      "name":"Faultloggerd",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/dump_catcher/libdfx_dumpcatcher_module_info.json"}
+      ]
+   },
+   {
+      "name":"hilog",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogtool/hilog_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogd/hilogd_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/zlib/shared_libz_module_info.json"}
+      ]
+   },
+   {
+      "name":"hitrace",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace_meter_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/cmd/hitrace_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace_dump_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitrace_option_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/unified_collection/client/libucollection_client_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitracechain_module_info.json"}
+      ]
+   },
+   {
+      "name":"Qos",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/frameworks/concurrent_task_client/concurrent_task_client_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/services/concurrentsvc_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/qos/qos_module_info.json"}
+      ]
+   },
+   {
+      "name":"samgr",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/services/samgr/native/samgr_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/native/cesfwk_innerkits_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/frameworks/concurrent_task_client/concurrent_task_client_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/communication/ipc/interfaces/innerkits/libdbinder/libdbinder_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/preferences/interfaces/inner_api/native_preferences_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/want_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/base_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/zuri_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/third_party/libxml2/libxml2_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/token_setproc/libpermsetproc_shared_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/interfaces/innerkits/common/samgr_common_module_info.json"}
+      ]
+   },
+   {
+      "name":"atm",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/accesstoken_manager_service_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/common/accesstoken_common_cxx_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/security_guard/frameworks/common/collect/libsg_collect_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/accesstoken/accesstoken_communication_adapter_cxx_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/accesstoken/libaccesstoken_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/interfaces/inner_kits/native_cpp/devicemanagersdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/json/devicemanagerjson_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/appverify/interfaces/innerkits/appverify/libhapverify_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/eventhandler/frameworks/eventhandler/libeventhandler_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/asset/interfaces/inner_kits/c/secure_access_fence/agent_fence/saf_agent_fence_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/rdb/native_rdb_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hicollie/interfaces/native/innerkits/libhicollie_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/json_adapter/accesstoken_cjson_utils_module_info.json"}
+      ]
+   }
+]
