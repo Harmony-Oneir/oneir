@@ -33,31 +33,13 @@
    {
     "name": "boot-base",
     "values": [
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/services/etc/passwd_module_info.json"
-      },
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/services/etc/group_module_info.json"
-      },
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/passwd_module_info.json"},
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/group_module_info.json"},
       {"type":"file", "src": "oneir/rootfs/vendor/etc/fstab.x86_64_oneir", "dst": "vendor/etc/fstab.x86_64_oneir"},
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/ueventd/ueventd_module_info.json"
-      },
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/ueventd/ueventd.config_module_info.json"
-      },
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/services/begetctl/param_module_info.json"
-      },
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para_module_info.json"
-      },
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/ueventd/ueventd_module_info.json"},
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/ueventd/ueventd.config_module_info.json"},
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/begetctl/param_module_info.json"},
+      {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para_module_info.json"},
       {
         "type": "module_info",
         "src": "out/oneir/obj/base/startup/init/services/etc/ohos.para.dac_module_info.json"
@@ -82,11 +64,9 @@
         "type": "module_info",
         "src": "out/oneir/obj/third_party/mksh/sh_module_info.json"
       },
-      {
-        "type": "module_info",
-        "src": "out/oneir/obj/third_party/toybox/toybox_module_info.json"
-      },         
-      {"type":"file", "src": "oneir/rootfs/vendor/etc/init.x86_64_oneir.cfg", "dst":"/vendor/etc/init.x86_64_oneir.cfg"}
+      {"type": "module_info", "src": "out/oneir/obj/third_party/toybox/toybox_module_info.json"},         
+      {"type":"file", "src": "oneir/rootfs/vendor/etc/init.x86_64_oneir.cfg", "dst": "vendor/etc/init.x86_64_oneir.cfg", "mode": "0644"},
+      {"type": "file", "src": "oneir/rootfs/system/etc/param/oneir.para.dac", "dst": "system/etc/param/oneir.para.dac", "mode": "0644"}
     ]
    },
    {
@@ -1142,7 +1122,7 @@
    {
       "name":"modules",
       "values":[
-         {"type": "folder", "src": "out/kernel/src_tmp/modules/lib/modules", "dst": "system/lib/modules"}
+         {"type": "folder", "src": "out/kernel/src_tmp/modules/lib/modules", "dst": "system/lib/modules", "mode": "0644"}
       ]
    },
    {
@@ -1158,7 +1138,9 @@
          {"type": "module_info", "src": "out/oneir/obj/base/startup/init/interfaces/innerkits/libsystemparam_module_info.json"},
          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitracechain_module_info.json"},
          {"type": "module_info", "src": "out/tests/obj/third_party/cJSON/cjson_module_info.json"},
-         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/init.cfg_module_info.json"}
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/init.cfg_module_info.json"},
+         {"type":"file", "src": "oneir/rootfs/system/etc/init.cfg", "dst":"system/etc/init.cfg",  "mode": "0644"},
+         {"type":"file", "src": "oneir/rootfs/system/etc/init/console.cfg", "dst":"system/etc/init/console.cfg",  "mode": "0644"}
       ]
    }
 ]
