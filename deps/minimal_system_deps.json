@@ -20,8 +20,10 @@
    {
       "name":"safwk",
       "values":[
-          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/core/cesfwk_core_module_info.json"}
+         {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/api_cache_manager_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/oneir/sa_main_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/core/cesfwk_core_module_info.json"}
       ]
    },
    {
@@ -40,7 +42,6 @@
           {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_start_setting_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/common/libaccount_common_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/ohosaccount/native/libaccountkits_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/api_cache_manager_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/app_manager/app_manager_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/app_util_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/common/libappexecfwk_common_module_info.json"},
@@ -82,15 +83,73 @@
    {
       "name":"Faultloggerd",
       "values":[
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/dump_catcher/libdfx_dumpcatcher_module_info.json"}
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/dump_catcher/libdfx_dumpcatcher_module_info.json"},
+         {"type": "file","src": "prebuilts/rustc/linux-x86_64/current/lib/rustlib/x86_64-unknown-linux-ohos/lib/libstd.dylib.so", "dst": "system/lib64/libstd.dylib.so"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/services/faultloggerd.cfg_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hisysevent/interfaces/rust/innerkits/hisysevent_rust_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hisysevent/frameworks/native/c_wrapper/hisysevent_c_wrapper_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent_manager/libhisyseventmanager_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/services/faultloggerd_module_info.json"},
+         {"type": "module_info", "src": "out/tests/obj/base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent/libhisysevent_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/tools/process_dump/processdump_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/tools/dump_catcher/dumpcatcher_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/signal_handler/dfx_signalhandler_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/faultloggerd_client/libfaultloggerd_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/unwinder/libunwinder_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/backtrace/libbacktrace_local_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/stack_printer/libstack_printer_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/formatter/libjson_stack_formatter_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/async_stack/libasync_stack_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/procinfo/libdfx_procinfo_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/innerkits/crash_exception/crash_exception_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/services/snapshot/kernel_snapshot_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/rust/panic_handler/panic_handler_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/rust/stacktrace/stacktrace_rust_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/interfaces/rust/rustc_demangle/rustc_demangle_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/services/faultloggerd.para_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/faultloggerd/services/faultloggerd.para.dac_module_info.json"
+      }
+      ]
+   },
+   {
+      "name":"hdcd",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/developtools/hdc/hdcd_system_module_info.json"},
+          {"type": "module_info", "src": "out/tests/obj/third_party/libuv/uv_module_info.json"}
+      ]
+   },
+   {
+      "name":"param",
+      "values":[
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/begetctl/param_module_info.json"}  
       ]
    },
    {
       "name":"hilog",
       "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogd/etc/hilogd.cfg_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogtool/hilog_module_info.json"},
-          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogd/hilogd_module_info.json"},
-          {"type":"module_info", "src": "out/oneir/obj/third_party/zlib/shared_libz_module_info.json"}
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hilog/services/hilogd/hilogd_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/third_party/zlib/shared_libz_module_info.json"}
+      ]
+   },
+   {
+      "name":"hiview",
+      "values":[
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/service/hiview.cfg_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/sysevent_source/hiview.para.dac_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/hiview_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/base/hiviewbase_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/framework/native/unified_collection/trace_manager/libtrace_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/unified_collection/utility/libucollection_utility_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/datashare_consumer_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/developtools/hiperf/interfaces/innerkits/native/hiperf_client/hiperf_client_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/powermgr/thermal_manager/interfaces/inner_api/thermalsrv_client_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/frameworks/native/wifi_sdk_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/common/datashare_common_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/extension_manager/extension_manager_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/utils/wifi_utils_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumperservice_cpu_source_module_info.json"}
       ]
    },
    {
@@ -115,6 +174,7 @@
    {
       "name":"samgr",
       "values":[
+          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/etc/samgr_init_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/services/samgr/native/samgr_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/frameworks/native/cesfwk_innerkits_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/frameworks/concurrent_task_client/concurrent_task_client_module_info.json"},
@@ -131,20 +191,24 @@
    {
       "name":"atm",
       "values":[
-          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/accesstoken_manager_service_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/common/accesstoken_common_cxx_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/security_guard/frameworks/common/collect/libsg_collect_sdk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/accesstoken/accesstoken_communication_adapter_cxx_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/accesstoken/libaccesstoken_sdk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/interfaces/inner_kits/native_cpp/devicemanagersdk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/json/devicemanagerjson_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/appverify/interfaces/innerkits/appverify/libhapverify_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/notification/eventhandler/frameworks/eventhandler/libeventhandler_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/asset/interfaces/inner_kits/c/secure_access_fence/agent_fence/saf_agent_fence_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/rdb/native_rdb_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hicollie/interfaces/native/innerkits/libhicollie_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/json_adapter/accesstoken_cjson_utils_module_info.json"}
+         {"type":"file", "src": "oneir/profile/accesstoken_service.json", "dst":"system/profile/accesstoken_service.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/accesstoken_manager_service_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/common/accesstoken_common_cxx_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/security_guard/frameworks/common/collect/libsg_collect_sdk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/safwk/interfaces/innerkits/safwk/system_ability_fwk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/accesstoken/accesstoken_communication_adapter_cxx_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/accesstoken/libaccesstoken_sdk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/interfaces/inner_kits/native_cpp/devicemanagersdk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/distributedhardware/device_manager/json/devicemanagerjson_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/appverify/interfaces/innerkits/appverify/libhapverify_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/notification/eventhandler/frameworks/eventhandler/libeventhandler_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/asset/interfaces/inner_kits/c/secure_access_fence/agent_fence/saf_agent_fence_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/rdb/native_rdb_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hicollie/interfaces/native/innerkits/libhicollie_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/access_token.rc_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/etc/access_token.para_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/etc/access_token.para.dac_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/json_adapter/accesstoken_cjson_utils_module_info.json"}
       ]
    }
 ]
