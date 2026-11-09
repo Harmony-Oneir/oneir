@@ -27,9 +27,27 @@
       ]
    },
    {
+      "name":"Foundation",
+      "values":[
+         {"type":"file", "src": "oneir/profile/foundation.json", "dst":"system/profile/foundation.json"},
+         {"type":"file", "src": "oneir/rootfs/system/etc/init/foundation.cfg", "dst":"/system/etc/init/foundation.cfg"}
+      ]
+   },
+   {
+      "name":"Param Watcher",
+      "values":[
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/param/watcher/param_watcher_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/param/watcher/param_watcher_module_info.json"},
+         {"type":"file", "src": "oneir/profile/param_watcher.json", "dst":"system/profile/param_watcher.json"}
+      ]
+   },
+   {
       "name":"CES",
       "values":[
           {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/services/cesfwk_services_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/services/ces.para.dac_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/services/ces.para_module_info.json"},
+          {"type": "module_info", "src": "out/oneir/obj/base/notification/common_event_service/tools/cem/cem_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/ability_manager/ability_manager_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_base/appexecfwk_base_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/appexecfwk_core_module_info.json"},
@@ -136,20 +154,98 @@
    {
       "name":"hiview",
       "values":[
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/service/hiview.cfg_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/sysevent_source/hiview.para.dac_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/hiview_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/base/hiviewbase_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/framework/native/unified_collection/trace_manager/libtrace_manager_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/unified_collection/utility/libucollection_utility_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/datashare_consumer_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/developtools/hiperf/interfaces/innerkits/native/hiperf_client/hiperf_client_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/powermgr/thermal_manager/interfaces/inner_api/thermalsrv_client_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/frameworks/native/wifi_sdk_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/common/datashare_common_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/extension_manager/extension_manager_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/utils/wifi_utils_module_info.json"},
-          {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumperservice_cpu_source_module_info.json"}
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/service/hiview.cfg_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/sysevent_source/hiview.para.dac_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/hiview_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/base/hiviewbase_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/framework/native/unified_collection/trace_manager/libtrace_manager_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/unified_collection/utility/libucollection_utility_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/datashare_consumer_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/developtools/hiperf/interfaces/innerkits/native/hiperf_client/hiperf_client_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/powermgr/thermal_manager/interfaces/inner_api/thermalsrv_client_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/frameworks/native/wifi_sdk_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/data_share/interfaces/inner_api/common/datashare_common_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/extension_manager/extension_manager_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/utils/wifi_utils_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumperservice_cpu_source_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/config/hitrace_tags_module_info.json", "mode": "0644"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/base/event_store/config/event_store_config.cfg_module_info.json", "mode": "0644"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/core/platform_config/hiview_platform_config_module_info.json", "mode": "0644"},
+         {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/core/plugin_bundle.json_module_info.json", "mode": "0644"},
+         { "type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/framework/native/unified_collection/trace_manager/trace_quota_config.json_module_info.json", "mode": "0644"},
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugin_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/crash_validator/crashvalidator_plugin_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/eventlogger/config/EventloggerPipeline_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/eventlogger/config/event_logger_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/eventlogger/config/eventloggerso_plugin_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/faultlogger/config/Faultlogger_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/faultlogger/config/faultloggerPipeline_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/freeze_detector/config/freeze_detector_rules_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/plugin_build/adft_plugin_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/plugin_build/bdfr_plugin_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/reliability/bbox_detectors/config/BBoxDetectorPipeline_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/sysevent_source/monitor_config_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/unified_collector/config/UnifiedCollector_event_module_info.json",
+        "mode": "0644"
+      },
+      {
+        "type": "module_info",
+        "src": "out/oneir/obj/base/hiviewdfx/hiview/plugins/usage_event_report/config/usageEventPipeline_module_info.json",
+        "mode": "0644"
+      },
+      {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/service/log_type.json_module_info.json", "mode": "0644"},
+      {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/utility/smart_parser/config/composeRule.json_module_info.json", "mode": "0644"},
+      {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/utility/smart_parser/config/extractRule.json_module_info.json", "mode": "0644"}
       ]
    },
    {
@@ -160,7 +256,10 @@
           {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace_dump_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitrace_option_module_info.json"},
           {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/unified_collection/client/libucollection_client_module_info.json"},
-          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitracechain_module_info.json"}
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/libhitracechain_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/config/hitrace_tags_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace.para_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace.para.dac_module_info.json"}
       ]
    },
    {
