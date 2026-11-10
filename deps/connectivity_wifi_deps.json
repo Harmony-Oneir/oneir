@@ -2,7 +2,7 @@
     {
     "name":"wpa",
     "values":[
-            {"type":"file", "src": "oneir/rootfs/vendor/etc/init/wpa_supplicant.cfg", "dst": "vendor/etc/wpa_supplicant.cfg", "mode": "0644"},
+            {"type":"file", "src": "oneir/rootfs/vendor/etc/init/wpa_supplicant.cfg", "dst": "vendor/etc/init/wpa_supplicant.cfg", "mode": "0644"},
             {"type": "module_info", "src": "out/oneir/obj/third_party/wpa_supplicant/wpa_supplicant-2.9_standard/wpa_supplicant_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/relation_services/etc/init/wpa_supplicant.conf_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hostapd/client/hostapd_hdi_client_module_info.json"},
