@@ -127,7 +127,13 @@ ohos_executable("sa_main") {
   subsystem_name = "systemabilitymgr"
 }
 
-
+group("display_composer") {
+  deps = [
+   "//oneir/display_composer:display_composer",
+   "//drivers/peripheral/display/composer/hdi_service:libdisplay_composer_service_1.5",
+   "//drivers/peripheral/display/composer/hdi_service:libdisplay_composer_driver_1.0",
+  ]
+}
 
 group("oneir_graphics") {
   deps = [
