@@ -69,7 +69,34 @@
             {"type": "module_info", "src": "out/oneir/obj/base/telephony/core_service/interfaces/innerkits/tel_core_service_api_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/base/telephony/state_registry/frameworks/native/observer/tel_state_registry_api_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/wpa/v2_0/libwpa_proxy_2.0_module_info.json"},
-            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/frameworks/native/dhcp_sdk_module_info.json"}
+            {"type": "module_info", "src": "out/oneir/obj/oneir/hdf_config/uhdf/hdf_default.hcb_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/frameworks/native/dhcp_sdk_module_info.json"},
+            {"type":"file", "src": "oneir/profile/wifi_manager_service.json", "dst": "system/profile/wifi_manager_service.json", "mode": "0644"}
+
+        ]
+    },
+    {
+        "name":"wifi_manager",
+        "values":[
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/chip/hdi_service/libchip_controller_chip_interface_service_2.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/chip/hdi_service/libchip_hdi_driver_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hostapd/interfaces/hdi_service/libhostapd_hdi_c_device_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hostapd/client/hostapd_hdi_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hostapd/interfaces/hdi_service/libhostapd_interface_service_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/client/wifi_driver_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hal/wifi_hal_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/chip/hdi_service/wifi_hal_default_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hdi_service/libwifi_hdi_c_device_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hdi_service/libwlan_interface_service_1.3_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/hdi_service/service_extend/libwlan_service_extend_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/wpa/interfaces/hdi_service/libwpa_hdi_c_device_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/wpa/client/wpa_hdi_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/wlan/wpa/interfaces/hdi_service/libwpa_interface_service_2.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/chip/v2_0/libchip_stub_2.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/v1_3/libwlan_stub_1.3_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/wpa_supplicant/wpa_supplicant-2.9_standard/wpa_client_vendor_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/hostapd/v1_0/libhostapd_stub_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/wpa/v2_0/libwpa_stub_2.0_module_info.json"}
         ]
     }
 
