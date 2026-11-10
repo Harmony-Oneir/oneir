@@ -14,6 +14,40 @@
             {"type": "module_info", "src": "out/oneir/obj/third_party/wpa_supplicant/wpa_supplicant-2.9_standard/wpa_cli_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/third_party/wpa_supplicant/wpa_supplicant-2.9_standard/wpa_module_info.json"}
         ]
+    },
+    {
+    "name":"wifi_manager",
+    "values":[
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/netsys_native_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netsyscontroller/netsys_controller_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netmanagernative/net_native_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/netsys_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/curl/curl_shared_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/fwmarkclient/fwmark_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netconnclient/net_conn_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/utils/net_manager_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/bpf/netsys_bpf_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/libbpf/libbpf_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/services/utils/dhcp_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netpolicyclient/net_policy_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/elfio/elfio_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/time/time_service/interfaces/inner_api/time_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/utils/net_data_share_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/common/net_service_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netconnclient/net_security_config_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netconnmanager/net_conn_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netstatsclient/net_stats_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netstatsmanager/net_stats_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netpolicymanager/net_policy_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/brotli/brotli_shared_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/cares/c_ares_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/nghttp2/lib/libnghttp2_shared_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/openhitls/openhitls_bsl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/openhitls/openhitls_crypto_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/openhitls/openhitls_pki_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/openhitls/openhitls_tls_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/frameworks/native/dhcp_sdk_module_info.json"}
+        ]
     }
 
 ]
