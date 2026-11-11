@@ -1,0 +1,83 @@
+[
+     {
+        "name":"display_composer",
+        "values":[
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_composer/oneir_display_composer_vdi_impl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_composer/oneir_display_composer_vendor_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_composer/oneir_display_gfx_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_buffer/oneir_display_buffer_vdi_impl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_buffer/oneir_display_buffer_vendor_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/composer/hdi_service/libdisplay_composer_service_1.5_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/libdrm/libdrm_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_5/libdisplay_composer_hdi_impl_1.5_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_5/libdisplay_composer_proxy_1.5_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_0/libdisplay_composer_proxy_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_1/libdisplay_composer_proxy_1.1_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_2/libdisplay_composer_proxy_1.2_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_3/libdisplay_composer_proxy_1.3_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_4/libdisplay_composer_proxy_1.4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_0/libdisplay_buffer_hdi_impl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_0/libdisplay_buffer_proxy_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/composer/hdi_service/libdisplay_composer_driver_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_surface/buffer_handle/buffer_handle_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/cache_manager/libcomposer_buffer_cache_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_0/libdisplay_buffer_stub_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_2/libdisplay_buffer_stub_1.2_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_0/libdisplay_composer_stub_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_1/libdisplay_composer_stub_1.1_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_2/libdisplay_composer_stub_1.2_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_3/libdisplay_composer_stub_1.3_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_4/libdisplay_composer_stub_1.4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/v1_5/libdisplay_composer_stub_1.5_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_1/libdisplay_buffer_stub_1.1_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/composer/hdifd_parcelable/libhdifd_parcelable_module_info.json"},
+
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/liballocator_driver_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/liballocator_service_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/liballocator_service_1.4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmapper_driver_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmapper_service_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmapper_service_1.2_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_4/libdisplay_buffer_stub_1.4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmapper_service_1.3_module_info.json"}
+            
+        ]
+    },
+    {
+        "name":"display_composer_tests",
+        "values":[
+            {"type":"file", "src": "out/oneir/tests/moduletest/drivers_peripheral_display/drivers_peripheral_display_composer/composer_mt", "dst": "system/bin/tests/composer_mt", "mode": "0755"}, 
+            {"type":"file", "src": "out/oneir/tests/unittest/drivers_peripheral_display/drivers_peripheral_display_composer/composer_ut", "dst": "system/bin/tests/composer_ut", "mode": "0755"}, 
+            {"type":"file", "src": "out/oneir/tests/benchmark/drivers_peripheral_display/drivers_peripheral_display_composer/hdf_display_benchmark_test", "dst": "system/bin/tests/hdf_display_benchmark_test", "mode": "0755"}, 
+            {"type":"file", "src": "out/oneir/tests/unittest/drivers_peripheral_display/drivers_peripheral_display_composer/composer_death_test", "dst": "system/bin/tests/composer_death_test", "mode": "0755"} 
+        ]
+    },
+    {
+        "name": "kernel_modules_gpu",
+        "values": [
+            {"type": "file", "src": "out/kernel/OBJ/linux-6.6/drivers/virtio/virtio_dma_buf.ko",       "dst": "vendor/modules/virtio_dma_buf.ko", "mode": "0644"},
+            {"type": "file", "src": "out/kernel/OBJ/linux-6.6/drivers/gpu/drm/virtio/virtio-gpu.ko", "dst": "vendor/modules/virtio-gpu.ko",     "mode": "0644"}
+        ]
+    },
+    {
+        "name": "display_buffer",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_buffer/oneir_display_buffer_vdi_impl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/display_buffer/oneir_display_buffer_vendor_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_1/libdisplay_buffer_proxy_1.1_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_4/libdisplay_buffer_hdi_impl_v1_4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_2/libdisplay_buffer_proxy_1.2_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_4/libdisplay_buffer_proxy_1.4_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_3/libdisplay_buffer_proxy_1.3_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmetadata_service_1.1_module_info.json"},
+{"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/display/buffer/hdi_service/libmetadata_driver_1.1_module_info.json"}
+        ]
+    },
+    {
+        "name": "display_buffer_tests",
+        "values": [
+            {"type":"file", "src": "out/oneir/tests/unittest/drivers_peripheral_display/drivers_peripheral_display/hdf_disp_buffer_unittest", "dst": "system/bin/tests/display_buffer_tests/hdf_disp_buffer_unittest", "mode": "0755"},
+            {"type":"file", "src": "out/oneir/oneir/oneir_display/display_buffer_perf", "dst": "system/bin/tests/display_buffer_tests/display_buffer_perf", "mode": "0755"}
+        ]
+    }
+]
