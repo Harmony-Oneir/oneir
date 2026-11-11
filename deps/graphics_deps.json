@@ -79,5 +79,22 @@
             {"type":"file", "src": "out/oneir/tests/unittest/drivers_peripheral_display/drivers_peripheral_display/hdf_disp_buffer_unittest", "dst": "system/bin/tests/display_buffer_tests/hdf_disp_buffer_unittest", "mode": "0755"},
             {"type":"file", "src": "out/oneir/oneir/oneir_display/display_buffer_perf", "dst": "system/bin/tests/display_buffer_tests/display_buffer_perf", "mode": "0755"}
         ]
+    },
+    {
+         "name": "vulkan_intel",
+         "values": [
+             {"type": "file", "src": "out/oneir/thirdparty/mesa3d-vk/stage/vendor/lib64/libvulkan_intel.so", "dst": "vendor/lib64/libvulkan_intel.so", "mode": "0644"},
+             {"type": "file", "src": "out/oneir/thirdparty/mesa3d-vk/stage/vendor/share/vulkan/icd.d/intel_icd.x86_64.json", "dst": "vendor/etc/vulkan/icd.d/intel_icd.x86_64.json", "mode": "0644"},
+             {"type": "module_info", "src": "out/oneir/obj/third_party/expat/expat_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/third_party/vulkan-loader/vulkan_loader_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_2d/frameworks/vulkan_layers/vulkan_swapchain_layer_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_2d/frameworks/vulkan_layers/vulkan_swapchain_layer_json_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/qos_manager/frameworks/native/qos_ndk_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/third_party/zlib/shared_libz_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace_meter_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/base/startup/init/interfaces/innerkits/libbegetutil_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/third_party/expat/expat_module_info.json"},
+             {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_surface/surface/surface_module_info.json"}
+         ]
     }
 ]
