@@ -98,6 +98,15 @@
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/hostapd/v1_0/libhostapd_stub_1.0_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/wlan/wpa/v2_0/libwpa_stub_2.0_module_info.json"}
         ]
+    },
+    {
+    "name": "firmware_ath10k_qca9377",
+    "type": "module_info",
+    "values": [
+            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_fw_module_info.json"},
+            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board_module_info.json"},
+            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board2_module_info.json"}
+        ]
     }
 
 ]
