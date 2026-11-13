@@ -127,11 +127,14 @@ ohos_executable("sa_main") {
   subsystem_name = "systemabilitymgr"
 }
 
+
+
 group("display_composer") {
   deps = [
    "//oneir/display_composer:display_composer",
    "//drivers/peripheral/display/composer/hdi_service:libdisplay_composer_service_1.5",
    "//drivers/peripheral/display/composer/hdi_service:libdisplay_composer_driver_1.0",
+
   ]
 }
 
@@ -145,7 +148,6 @@ group("oneir_graphics") {
 
     # Клиентская часть RS: нужна приложениям и вашим пробникам (surface_probe, ohos_window).
     "$_graphic_2d/rosen/modules/render_service_client:librender_service_client",
-
     # --- Библиотека отрисовки (Drawing поверх Skia) ---
     # "$_graphic_2d/rosen/modules/2d_graphics:2d_graphics",
 
@@ -224,6 +226,7 @@ group("rootfs_init") {
     "//base/startup/init/services/begetctl:begetctl",
     "//base/startup/init/services/etc:etc_files",
     "//third_party/musl:musl_all",
+    "//base/startup/init/services/modules/reboot:rebootmodule",
     "//third_party/musl:ld-musl-namespace-x86_64.ini",
     "//third_party/mksh:sh",
     "//third_party/toybox:toybox",
@@ -328,13 +331,7 @@ group("hdf_wlan") {
 
 
 
-group("ces") {
-  deps = [
-    "//base/notification/common_event_service/services:cesfwk_services",
-    "//base/notification/common_event_service/sa_profile:event_sa_profile",
-    "//base/notification/common_event_service/tools:tools_target",
-  ]
-}
+
 
 
 
@@ -372,9 +369,44 @@ group("qos") {
   ]
 }
 
+
+# Проводная сеть: служба Ethernet (SA 1157, процесс netmanager)
+group("ethernet") {
+  deps = [
+    "//foundation/communication/netmanager_ext/services/ethernetmanager:ethernet_manager",
+    "//foundation/communication/netmanager_ext/services/ethernetmanager:ethernet_interfaces",
+    "//foundation/communication/netmanager_ext/interfaces/innerkits/ethernetclient:ethernet_manager_if",
+    "//foundation/communication/netmanager_ext/utils:net_event_report",
+    "//foundation/communication/netmanager_ext/services/etc/init:ethernet.cfg",
+  ]
+}
+
+
 group("qos_test") {
   testonly = true
   deps = [ "//foundation/resourceschedule/qos_manager/test:concurrent_unittest" ]
+}
+
+
+
+
+# Общие события (CES, SA 3299, процесс foundation)
+group("ces") {
+  deps = [
+    "//base/notification/common_event_service/services:cesfwk_services",
+    "//base/notification/common_event_service/sa_profile:event_sa_profile",
+    "//base/notification/common_event_service/tools:tools_target",
+  ]
+}
+
+
+
+group("ces_test") {
+  testonly = true
+  deps = [
+    "//base/notification/common_event_service/test/systemtest:systemtest",
+    "//base/notification/common_event_service/test/benchmarktest:benchmarktest",
+  ]
 }
 
 group("all") {
