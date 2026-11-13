@@ -121,7 +121,7 @@
             {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_2d/rosen/modules/frame_analyzer/libframe_analyzer_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/graphic/graphic_2d/rosen/modules/animation/window_animation/window_animation_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/third_party/skia/skia_canvaskit_module_info.json"},
-
+	    {"type": "module_info", "src": "out/tests/obj/base/hiviewdfx/hitrace/interfaces/native/innerkits/hitrace.para.dac_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_1/libdisplay_buffer_proxy_1.1_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_2/libdisplay_buffer_proxy_1.2_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/drivers/interface/display/buffer/v1_3/libdisplay_buffer_proxy_1.3_module_info.json"},
@@ -188,7 +188,8 @@
             {"type": "module_info", "src": "out/oneir/obj/third_party/abseil-cpp/absl_spinlock_wait_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/multimodalinput/input/util/mmi_rust_key_config_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/base/security/security_component_manager/frameworks/inner_api/security_component/libsecurity_component_sdk_module_info.json"},
-            {"type": "module_info", "src": "out/oneir/obj/foundation/barrierfree/accessibility/interfaces/innerkits/acfwk/accessibilityconfig_module_info.json"}
+            {"type": "module_info", "src": "out/oneir/obj/foundation/barrierfree/accessibility/interfaces/innerkits/acfwk/accessibilityconfig_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hitrace/config/hitrace.cfg_module_info.json"}
         ]
     }   
 ]
