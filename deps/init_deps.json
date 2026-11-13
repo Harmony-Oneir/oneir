@@ -744,6 +744,16 @@
       },
       {
         "type": "symlink",
+        "src": "begetctl",
+        "dst": "system/bin/reboot"
+      },
+      {
+        "type": "symlink",
+        "src": "begetctl",
+        "dst": "system/bin/service_control"
+      },
+      {
+        "type": "symlink",
         "src": "toybox",
         "dst": "system/bin/printenv"
       },
@@ -1141,7 +1151,9 @@
          {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/init.cfg_module_info.json"},
          {"type":"file", "src": "oneir/rootfs/system/etc/init.cfg", "dst":"system/etc/init.cfg",  "mode": "0644"},
          {"type":"file", "src": "oneir/rootfs/system/etc/init/console.cfg", "dst":"system/etc/init/console.cfg",  "mode": "0644"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/modules/reboot/rebootmodule_module_info.json"},
          {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/init.reboot_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/interfaces/innerkits/init_module_engine/libinit_module_engine_module_info.json"},
          {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/etc/ueventd.cfg_module_info.json"}
       ]
    }
