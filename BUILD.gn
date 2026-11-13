@@ -40,6 +40,7 @@ group("hitrace") {
     "//base/hiviewdfx/hitrace/interfaces/native/innerkits:libhitracechain($_tc)",
     "//base/hiviewdfx/hitrace/interfaces/native/innerkits:hitrace_dump($_tc)",
     "//base/hiviewdfx/hitrace/interfaces/native/innerkits:libhitrace_option($_tc)",
+    "//base/hiviewdfx/hitrace/config:hitrace.cfg($_tc)",
   ]
 }
 
