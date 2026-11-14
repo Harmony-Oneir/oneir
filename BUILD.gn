@@ -410,6 +410,13 @@ group("ces_test") {
   ]
 }
 
+group("net_all") {
+  deps = [
+    ":netstack",
+    ":ethernet",
+  ]
+}
+
 group("all") {
   deps = [
     ":atm",
