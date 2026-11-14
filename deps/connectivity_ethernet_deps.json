@@ -1,0 +1,70 @@
+[
+    {
+        "name":"ethernet init",
+        "values":[
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/etc/init/ethernet.cfg_module_info.json"}
+        ]
+    },
+    {
+        "name": "netmanager base",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/utils/net_manager_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/utils/net_data_share_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/utils/net_bundle_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netconnclient/net_conn_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netconnclient/net_security_config_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netmanagernative/net_native_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netpolicyclient/net_policy_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/interfaces/innerkits/netstatsclient/net_stats_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/common/net_service_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netconnmanager/net_conn_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netpolicymanager/net_policy_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netstatsmanager/net_stats_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netsyscontroller/netsys_controller_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netmanager_base.rc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netmanager_trust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netmanager_base.para_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netmanager_base.para.dac_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/detectionconfig.conf_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netdetectionurl.conf_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/initHosts_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/resolv.conf_module_info.json"},
+            {"type": "file", "src": "oneir/profile/netmanager.json", "dst": "system/profile/netmanager.json", "mode": "0644"}
+        ]
+    },
+    {
+        "name": "netsysnative",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/netsys_native_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/netsys_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/fwmarkclient/fwmark_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/bpf/netsys_bpf_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/netmanagernative/bpf/netsys_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netsysnative.rc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/netsysnative_trust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_base/services/etc/init/xtables.lock_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/iptables/iptables_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/iptables/iptables-save_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/iptables/iptables-restore_module_info.json"},
+            {"type": "file", "src": "oneir/profile/netsysnative.json", "dst": "system/profile/netsysnative.json", "mode": "0644"}
+        ]
+    },
+    {
+        "name": "dhcp",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/services/dhcp_client/dhcp_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/frameworks/native/dhcp_sdk_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dhcp/services/utils/dhcp_utils_module_info.json"}
+        ]
+    },
+    {
+        "name": "ethernet",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/utils/net_event_report_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/interfaces/innerkits/ethernetclient/ethernet_manager_if_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/ethernetmanager/ethernet_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/ethernetmanager/ethernet_interfaces_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/etc/init/ethernet.cfg_module_info.json"}
+        ]
+    }
+]
