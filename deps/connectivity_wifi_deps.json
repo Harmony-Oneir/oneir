@@ -100,12 +100,59 @@
         ]
     },
     {
-    "name": "firmware_ath10k_qca9377",
-    "type": "module_info",
-    "values": [
-            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_fw_module_info.json"},
-            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board_module_info.json"},
-            {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board2_module_info.json"}
+        "name": "firmware_ath10k_qca9377",
+        "type": "module_info",
+        "values": [
+                {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_fw_module_info.json"},
+                {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board_module_info.json"},
+                {"src": "out/oneir/obj/oneir/firmware/ath10k_qca9377_board2_module_info.json"}
+            ]
+    },
+    {
+        "name": "wifi_hotspot",
+        "values": [
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/base/usb/usb_manager/interfaces/innerkits/usbsrv_client_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btframework_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/dhcp/services/dhcp_server/dhcp_server_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/interfaces/innerkits/netshareclient/net_tether_manager_if_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/networksharemanager/net_tether_manager_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/services/networksharemanager/network_share_config_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/tools/ohos-networkShare/ohos-networkShare_config_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/tools/ohos-networkShare/ohos-networkShare_exec_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/netmanager_ext/tools/ohos-networkShare/ohos-networkShare_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/communication/wifi/wifi/relation_services/etc/init/hostapd.conf_module_info.json"
+            },
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/wifi/wifi/relation_services/etc/init/hostapd_coex.conf_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btcommon_module_info.json"}
         ]
     }
 
