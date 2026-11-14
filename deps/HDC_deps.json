@@ -1,0 +1,11 @@
+[
+    {
+        "name": "hdcd",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/developtools/hdc/hdcd_system_module_info.json"},
+            {"type": "file", "src": "oneir/rootfs/system/etc/init/hdcd.cfg", "dst": "system/etc/init/hdcd.cfg", "mode": "0644"},
+            {"type": "module_info", "src": "out/oneir/obj/developtools/hdc/src/daemon/etc/hdc.para_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/developtools/hdc/src/daemon/etc/hdc.para.dac_module_info.json"}
+        ]
+    }
+]
