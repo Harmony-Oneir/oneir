@@ -1,0 +1,7 @@
+{
+    "name": "bluetooth firmware",
+    "values": [
+        {"type": "file", "src": "oneir/firmware/linux-firmware/qca/rampatch_usb_00000302.bin", "dst": "system/lib/firmware/qca/rampatch_usb_00000302.bin", "mode": "0644"},
+        {"type": "file", "src": "oneir/firmware/linux-firmware/qca/nvm_usb_00000302.bin", "dst": "system/lib/firmware/qca/nvm_usb_00000302.bin", "mode": "0644"}
+    ]
+}
