@@ -308,12 +308,13 @@ group("netstack") {
     "//foundation/communication/dhcp/frameworks/native:dhcp_sdk",
     "//foundation/communication/dhcp/services/utils:dhcp_utils",
     "//foundation/communication/dhcp/services/sa_profile:wifi_standard_sa_profile",
-
+    
     # wifi
     "//foundation/communication/wifi/wifi/services/wifi_standard/wifi_framework:wifi_manage",
     "//foundation/communication/wifi/wifi/services/wifi_standard/wifi_framework:wifi_system_ability",
     "//foundation/communication/wifi/wifi/relation_services:relation_services",
     "//foundation/communication/wifi/wifi/frameworks/native/tools/ohos-wifiManager:ohos-wifiManager",
+     
   ]
 }
 
@@ -332,7 +333,16 @@ group("hdf_wlan") {
 
 
 
-
+# Раздача Wi-Fi: DHCP-сервер (SA 1127), общий доступ / NAT (SA 1154), утилита.
+# Точка доступа: SA 1121 (wifi) -> HDI hostapd_host (ondemand) -> ap_main из libwpa.z.so
+group("hotspot") {
+  deps = [
+    "//foundation/communication/dhcp/services/dhcp_server:dhcp_server",
+    "//foundation/communication/netmanager_ext/services/networksharemanager:net_tether_manager",
+    "//foundation/communication/netmanager_ext/services/networksharemanager:network_share_config",
+    "//foundation/communication/netmanager_ext/tools/ohos-networkShare:ohos-networkShare",
+  ]
+}
 
 
 
@@ -416,6 +426,55 @@ group("net_all") {
     ":ethernet",
   ]
 }
+
+
+
+
+
+# oneir/bluetooth/BUILD.gn
+# Bluetooth для стенда oneir: HDI + служба + клиент/утилита.
+# Прошивка контроллера кладётся в образ через JSON-сценарий (blok "bluetooth firmware").
+
+group("bluetooth_hdi") {
+  deps = [
+    "//drivers/interface/bluetooth/hci/v1_0:libbluetooth_hci_stub_1.0",
+    "//drivers/interface/bluetooth/hci/v1_0:libbluetooth_hci_proxy_1.0",
+    "//drivers/peripheral/bluetooth/hci:bluetooth_hci_entry",
+    # TODO: vendor-библиотека под HCI_CHANNEL_USER (libbt_vendor)
+  ]
+}
+
+group("bluetooth_service") {
+  deps = [
+    "//foundation/communication/bluetooth_service/sa_profile:communication_bluetooth_service_sa_profile",
+    "//foundation/communication/bluetooth_service/services/bluetooth/etc/init:etc",
+    "//foundation/communication/bluetooth_service/services/bluetooth/hardware:bluetooth_hdi_adapter",
+    "//foundation/communication/bluetooth_service/services/bluetooth/server:bluetooth_server",
+    "//foundation/communication/bluetooth_service/services/bluetooth/service:btsbc",
+    "//foundation/communication/bluetooth_service/services/bluetooth/service:btservice",
+    "//foundation/communication/bluetooth_service/services/bluetooth/stack:btstack",
+    "//foundation/communication/bluetooth_service/services/bluetooth/external:btdummy",
+  ]
+}
+
+group("bluetooth_client") {
+  deps = [
+    "//foundation/communication/bluetooth/frameworks/inner:btcommon",
+    "//foundation/communication/bluetooth/frameworks/inner:btframework",
+    "//foundation/communication/bluetooth/tools/ohos-bluetoothTool:ohos-bluetoothTool",
+  ]
+}
+
+group("oneir_bluetooth") {
+  deps = [
+    ":bluetooth_hdi",
+    ":bluetooth_service",
+    ":bluetooth_client",
+  ]
+}
+
+
+
 
 group("all") {
   deps = [
