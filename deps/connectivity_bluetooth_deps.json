@@ -1,7 +1,47 @@
-{
-    "name": "bluetooth firmware",
-    "values": [
-        {"type": "file", "src": "oneir/firmware/linux-firmware/qca/rampatch_usb_00000302.bin", "dst": "system/lib/firmware/qca/rampatch_usb_00000302.bin", "mode": "0644"},
-        {"type": "file", "src": "oneir/firmware/linux-firmware/qca/nvm_usb_00000302.bin", "dst": "system/lib/firmware/qca/nvm_usb_00000302.bin", "mode": "0644"}
-    ]
-}
+[
+
+    {
+    	"name": "bluetooth firmware",
+    	"values": [
+        	{"type": "file", "src": "oneir/firmware/linux-firmware/qca/rampatch_usb_00000302.bin", "dst": "system/lib/firmware/qca/rampatch_usb_00000302.bin", "mode": "0644"},
+       		{"type": "file", "src": "oneir/firmware/linux-firmware/qca/nvm_usb_00000302.bin", "dst": "system/lib/firmware/qca/nvm_usb_00000302.bin", "mode": "0644"}
+    	]
+    },
+    {
+        "name": "bluetooth hdi",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_stub_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_proxy_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libbluetooth_hci_hdi_driver_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libhci_interface_service_1.0_module_info.json"}
+        ]
+    },
+    {
+        "name": "bluetooth service",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/server/bluetooth_server_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/service/btservice_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/service/btsbc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/stack/btstack_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/hardware/bluetooth_hdi_adapter_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/external/btdummy_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/etc/init/bluetooth_service_cfg_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/etc/init/bt_config.xml_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/etc/init/bt_device_config.xml_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/etc/init/bt_device_info.xml_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/etc/init/bt_profile_config.xml_module_info.json"},
+            {"type": "file", "src": "oneir/profile/bluetooth_service.json", "dst": "system/profile/bluetooth_service.json", "mode": "0644"}
+        ]
+    },
+    {
+        "name": "bluetooth client",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btcommon_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btframework_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/tools/ohos-bluetoothTool/ohos-bluetoothTool_exec_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/tools/ohos-bluetoothTool/ohos-bluetoothTool_config_module_info.json"}
+        ]
+    }
+
+
+]
