@@ -3,7 +3,7 @@
     {
     	"name": "bluetooth firmware",
     	"values": [
-        	{"type": "file", "src": "oneir/firmware/linux-firmware/qca/rampatch_usb_00000302.bin", "dst": "system/lib/firmware/qca/rampatch_usb_00000302.bin", "mode": "0644"},
+            {"type": "file", "src": "oneir/firmware/linux-firmware/qca/rampatch_usb_00000302.bin", "dst": "system/lib/firmware/qca/rampatch_usb_00000302.bin", "mode": "0644"},
        		{"type": "file", "src": "oneir/firmware/linux-firmware/qca/nvm_usb_00000302.bin", "dst": "system/lib/firmware/qca/nvm_usb_00000302.bin", "mode": "0644"}
     	]
     },
@@ -39,6 +39,29 @@
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btcommon_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/frameworks/inner/btframework_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/tools/ohos-bluetoothTool/ohos-bluetoothTool_exec_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/audio_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/av_session/frameworks/native/session/avsession_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/telephony/call_manager/frameworks/native/tel_call_manager_api_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/audio_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/frameworks/native/audio_debug_manager/audio_debug_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/audio_engine_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_policy/audio_foundation_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/idl/audio_framework_interface_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_policy/audio_policy_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/audio_policy_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/frameworks/native/audioutils/audio_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/av_session/frameworks/native/session/avsession_cast_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/av_session/utils/avsession_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/av_session/services/session/libidl_avsession_service_interface_stub_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/wantagent/wantagent_innerkits_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/frameworks/native/audiodefinitions/audio_definitions_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_engine/audio_engine_plugins_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/services/audio_service/idl/audio_policy_client_idl_interface_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/audio_framework/frameworks/native/audioschedule/audio_schedule_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/media_foundation/services/media_monitor/media_monitor_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/media_foundation/services/media_monitor/media_monitor_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/frame_aware_sched/interfaces/innerkits/frameintf/rtg_interface_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/sonic/sonic_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/tools/ohos-bluetoothTool/ohos-bluetoothTool_config_module_info.json"}
         ]
     }
