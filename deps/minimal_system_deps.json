@@ -2,7 +2,7 @@
    {
       "name":"libs",
       "values":[
-          {"type": "module_info", "src": "out/oneir/obj/third_party/sqlite/sqlite_module_info.json"},
+          {"type":"module_info", "src": "out/oneir/obj/third_party/sqlite/sqlite_module_info.json"},
           {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/relational_store/interfaces/inner_api/appdatafwk/relational_common_base_module_info.json"},
           {"type":"module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/kv_store/databaseutils/database_utils_module_info.json"},
           {"type":"module_info", "src": "out/tests/obj/foundation/ability/ability_runtime/interfaces/inner_api/dataobs_manager/dataobs_manager_module_info.json"},
@@ -37,7 +37,7 @@
       "name":"Param Watcher",
       "values":[
          {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/param/watcher/param_watcher_module_info.json"},
-         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/param/watcher/param_watcher_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/base/startup/init/services/param/watcher/param_watcher.rc_module_info.json"},
          {"type":"file", "src": "oneir/profile/param_watcher.json", "dst":"system/profile/param_watcher.json"}
       ]
    },
@@ -309,5 +309,37 @@
          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/services/accesstokenmanager/etc/access_token.para.dac_module_info.json"},
          {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/frameworks/json_adapter/accesstoken_cjson_utils_module_info.json"}
       ]
-   }
+   },
+   {
+      "name": "HDF",
+      "values":[
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/manager/hdf_devmgr_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/manager/hdf_devmgr.cfg_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/oneir/hdf_config/uhdf/hdf_devhost.cfg_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/devhost/host/hdf_devhost_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/host/libhdf_host_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/utils/libhdf_utils_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/ipc/libhdf_ipc_adapter_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/hdi/libhdi_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/hdi/libhdi_base_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/pub_utils/libpub_utils_module_info.json"},
+         {"type": "module_info", "src": "out/oneir/obj/drivers/hdf_core/adapter/uhdf2/manager/hdf_devmgr.para.dac_module_info.json"}
+      ]
+   },
+   {
+        "name": "hidumper",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/frameworks/native/hidumper_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/frameworks/native/hidumperclient_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumper_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumperservice_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumpermemory_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/hidumper_service.rc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/event_reason_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/infos_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/interfaces/innerkits/lib_dump_usage_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/plugins/hidumper_plugin_module_info.json"},
+            {"type": "file", "src": "oneir/profile/hidumper_service.json", "dst": "system/profile/hidumper_service.json", "mode": "0644"}
+        ]
+    }
 ]
