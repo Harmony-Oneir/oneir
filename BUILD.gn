@@ -32,6 +32,13 @@ group("hiview") {
 }
 
 
+group("hidumper") {
+  deps = [
+    "//base/hiviewdfx/hidumper:bin",
+    "//base/hiviewdfx/hidumper:service",
+  ]
+}
+
 
 group("hitrace") {
   deps = [
@@ -470,6 +477,7 @@ group("oneir_bluetooth") {
     ":bluetooth_hdi",
     ":bluetooth_service",
     ":bluetooth_client",
+    "//oneir/bluetooth/vendor:bt_vendor",
   ]
 }
 
