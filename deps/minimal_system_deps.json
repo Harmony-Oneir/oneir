@@ -339,6 +339,8 @@
             {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/services/infos_config_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/interfaces/innerkits/lib_dump_usage_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hidumper/plugins/hidumper_plugin_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/commonlibrary/memory_utils/libmeminfo/libmeminfo_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/memorytracker/v1_0/libmemorytracker_proxy_1.0_module_info.json"},
             {"type": "file", "src": "oneir/profile/hidumper_service.json", "dst": "system/profile/hidumper_service.json", "mode": "0644"}
         ]
     }
