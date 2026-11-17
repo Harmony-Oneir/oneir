@@ -8,15 +8,6 @@
     	]
     },
     {
-        "name": "bluetooth hdi",
-        "values": [
-            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_stub_1.0_module_info.json"},
-            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_proxy_1.0_module_info.json"},
-            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libbluetooth_hci_hdi_driver_module_info.json"},
-            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libhci_interface_service_1.0_module_info.json"}
-        ]
-    },
-    {
         "name": "bluetooth service",
         "values": [
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth_service/services/bluetooth/server/bluetooth_server_module_info.json"},
@@ -64,6 +55,15 @@
             {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/frame_aware_sched/interfaces/innerkits/frameintf/rtg_interface_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/third_party/sonic/sonic_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/bluetooth/tools/ohos-bluetoothTool/ohos-bluetoothTool_config_module_info.json"}
+        ]
+    },{
+        "name": "bluetooth hdi",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_stub_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/interface/bluetooth/hci/v1_0/libbluetooth_hci_proxy_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libbluetooth_hci_hdi_driver_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/drivers/peripheral/bluetooth/hci/hdi_service/libhci_interface_service_1.0_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/oneir/bluetooth/vendor/bt_vendor_module_info.json"}
         ]
     }
 
