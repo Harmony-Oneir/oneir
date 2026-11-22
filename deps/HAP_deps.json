@@ -1,0 +1,27 @@
+[
+    {
+        "name": "os_account",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/common/libaccount_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/domain_account/domain_account_innerkits_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/ohosaccount/native/libaccountkits_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/frameworks/osaccount/native/os_account_innerkits_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/account_database_adapter_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/accountmgr_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/authorization_manager/privileges_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/os_account_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/os_account_constraint_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/os_account_constraint_definition_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/security/asset/frameworks/asset/c/system_api/asset_sdk_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/interfaces/innerkits/storage_manager/native/storage_manager_sa_proxy_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/security/asset/interfaces/inner_kits/c/asset/asset_sdk_ffi_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/security/asset/interfaces/inner_kits/rs/asset/asset_sdk_rust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/ipc/interfaces/innerkits/rust/ipc_rust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/systemabilitymgr/samgr/interfaces/innerkits/rust/samgr_rust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/commonlibrary/c_utils/base/utils_rust_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/useriam/user_auth_framework/frameworks/native/client/userauth_client_module_info.json"},
+            {"type": "file", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/accountmgr.cfg", "dst": "system/etc/init/accountmgr.cfg", "mode": "0644"},
+            {"type": "file", "src": "out/oneir/obj/base/account/os_account/sa_profile/profiles/accountmgr.json", "dst": "system/profile/accountmgr.json", "mode": "0644"}
+        ]
+    }
+]
