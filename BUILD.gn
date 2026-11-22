@@ -486,6 +486,7 @@ group("oneir_bluetooth") {
 group("os_account") {
   deps = [
     "//base/account/os_account/services/accountmgr:accountmgr_target",
+    "//base/account/os_account/sa_profile:account_sa_profile",
   ]
 }
 
