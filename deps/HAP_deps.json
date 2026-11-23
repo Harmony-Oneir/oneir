@@ -23,5 +23,28 @@
             {"type": "file", "src": "out/oneir/obj/base/account/os_account/services/accountmgr/accountmgr.cfg", "dst": "system/etc/init/accountmgr.cfg", "mode": "0644"},
             {"type": "file", "src": "out/oneir/obj/base/account/os_account/sa_profile/profiles/accountmgr.json", "dst": "system/profile/accountmgr.json", "mode": "0644"}
         ]
+    },{
+        "name": "storage_daemon",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_daemon_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_common_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/sdc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_daemon_user_path_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_daemon_mount_info_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_daemon_disk_config_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/dfs_service/interfaces/inner_api/native/cloud_daemon_kit_inner/cloud_daemon_kit_inner_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/disk_manager/interfaces/innerkits/disk_manager_innerkits_module_info.json"},
+            {"type": "file", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_daemon/storage_daemon.cfg", "dst": "system/etc/init/storage_daemon.cfg", "mode": "0644"}
+        ]
+    },{
+        "name": "storage_tests",
+        "values": [
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/string_utils_test", "dst": "system/tests/storage/string_utils_test", "mode": "0755"},
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/file_utils_test", "dst": "system/tests/storage/file_utils_test", "mode": "0755"},
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/user_path_resolver_test", "dst": "system/tests/storage/user_path_resolver_test", "mode": "0755"},
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/user_manager_test", "dst": "system/tests/storage/user_manager_test", "mode": "0755"},
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/mount_manager_test", "dst": "system/tests/storage/mount_manager_test", "mode": "0755"},
+            {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/storage_daemon_clt_test", "dst": "system/tests/storage/storage_daemon_clt_test", "mode": "0755"}
+        ]
     }
 ]
