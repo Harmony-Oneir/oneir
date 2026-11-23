@@ -46,5 +46,21 @@
             {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/mount_manager_test", "dst": "system/tests/storage/mount_manager_test", "mode": "0755"},
             {"type": "file", "src": "out/oneir/tests/unittest/storage_service/storage_service/storage_daemon/storage_daemon_clt_test", "dst": "system/tests/storage/storage_daemon_clt_test", "mode": "0755"}
         ]
+    },{
+        "name": "bms",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/common/libappexecfwk_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/etc/bms.para.dac_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/etc/bms.para_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_base/appexecfwk_base_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/appexecfwk_core_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/inner_api/bundlemgr_extension/bundlemgr_extension_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/bundle_tool_libs_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/installs.cfg_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/installs_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/libbms_exception_wrapper_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/libbms_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/spm_module_parser/spm_module_parser_module_info.json"}
+        ]
     }
 ]
