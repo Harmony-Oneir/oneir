@@ -516,7 +516,13 @@ group("storage_tests") {
   ]
 }
 
-
+group("bms") {
+  deps = [
+    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:bms_target($_tc)",
+    "//foundation/bundlemanager/bundle_framework/sa_profile:appexecfwk_sa_profile($_tc)",
+    "//foundation/bundlemanager/bundle_framework/etc:bms_para($_tc)",
+  ]
+}
 
 group("all") {
   deps = [
