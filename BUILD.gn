@@ -524,6 +524,17 @@ group("bms") {
   ]
 }
 
+
+group("storage_manager") {
+  deps = [
+    "//foundation/filemanagement/storage_service/services/storage_manager:storage_manager",
+    "//foundation/filemanagement/storage_service/services/storage_manager:storage_manager_monitor_config",
+    "//foundation/filemanagement/storage_service/services/storage_manager/sa_profile:storage_manager_sa_profile",
+    "//foundation/filemanagement/storage_service/services/storage_manager/sa_profile:storage_manager_cfg",
+  ]
+}
+
+
 group("all") {
   deps = [
     ":atm",
