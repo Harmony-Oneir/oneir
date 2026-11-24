@@ -79,8 +79,18 @@
             {"type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hichecker/interfaces/native/innerkits/libhichecker_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/multimedia/image_framework/interfaces/kits/js/common/image_error_convert_module_info.json"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/communication/ipc/interfaces/innerkits/ipc_napi_common/ipc_napi_module_info.json"},
-            {"type": "file", "src": "foundation/bundlemanager/bundle_framework/sa_profile/401.json", "dst": "system/profile/foundation.json", "mode": "0644"},
+            {"type": "file", "src": "oneir/profile/foundation.json", "dst": "system/profile/foundation.json", "mode": "0644"},
             {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/services/bundlemgr/spm_module_parser/spm_module_parser_module_info.json"}
+        ]
+    },{
+        "name": "storage_manager",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/storage_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/storage_manager_config.para_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/storage_manager_config.para.dac_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/theme/screenlock_mgr/interfaces/inner_api/screenlock_client_module_info.json"},
+            {"type": "file", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/sa_profile/foundation/filemanagement/storage_service/services/storage_manager/storage_manager.cfg", "dst": "system/etc/init/storage_manager.cfg", "mode": "0644"},
+            {"type": "file", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/sa_profile/profiles/5003.json", "dst": "system/profile/storage_manager.json", "mode": "0644"}
         ]
     }
 ]
