@@ -92,5 +92,107 @@
             {"type": "file", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/sa_profile/foundation/filemanagement/storage_service/services/storage_manager/storage_manager.cfg", "dst": "system/etc/init/storage_manager.cfg", "mode": "0644"},
             {"type": "file", "src": "out/oneir/obj/foundation/filemanagement/storage_service/services/storage_manager/sa_profile/profiles/5003.json", "dst": "system/profile/storage_manager.json", "mode": "0644"}
         ]
+    },
+    {
+        "name": "ability_manager",
+        "values": [
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/abilityms_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/mission_list_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/ams_service_config.json_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/deeplink_reserve_config.json_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/start_ability_without_caller_token.json_module_info.json"
+            },
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/uiextension_picker_config.json_module_info.json"
+            },
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/ams_extension_config.json_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/deps_wrapper/ability_deps_wrapper_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/ability/native/ability_observer_ipc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/agent_runtime_framework/interfaces/kits/native/agent_extension/connection/agent_extension_connection_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/agent_runtime_framework/interfaces/inner_api/agent_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/app_domain_verify/interfaces/inner_api/common/app_domain_verify_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/app_domain_verify/interfaces/inner_api/client/app_domain_verify_mgr_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/appkit/appkit_manager_helper_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/ability/native/auto_startup_callback_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/resourceschedule/background_task_mgr/interfaces/innerkits/bgtaskmgr_innerkits_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/cli_tool_framework/interfaces/cli_tool/cli_tool_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/dm/libdm_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/foreground_app_obs_manager/foreground_app_obs_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/global/i18n/services/i18n_sa_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/abilitymgr/modular_object_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/perm_verification_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/session_handler/session_handler_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/wmserver/sms_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/agent_runtime_framework/interfaces/inner_api/agent_fwk_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/sdk/softbus_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/task_handler_wrap_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/udmf/interfaces/innerkits/udmf_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/uri_permission/uri_permission_mgr_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/services/common/user_controller_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/view_data_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/common/window_scene_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/wm/libwm_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/ability/ability_context_native_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/arkui/ace_engine/interfaces/inner_api/ace/ace_uicontent_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/appkit/app_context_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/inputmethod/imf/interfaces/inner_api/inputmethod_controller/inputmethod_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/components/nstackx/nstackx_core/dfile/nstackx_dfile.open_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session/scene_session_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/screen_session_manager_client/screen_session_manager_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager/session_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/adapter/softbus_adapter_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/dfx/softbus_dfx_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/core/common/softbus_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/distributeddatamgr/udmf/interfaces/innerkits/utd_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/arkui/ace_engine/interfaces/inner_api/ace/ace_forward_compatibility_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/appkit/app_context_utils_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/msdp/device_status/interfaces/innerkits/devicestatus_client_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/ability/native/dialog_request_callback_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/inputmethod/imf/common/imf_hisysevent/imf_hisysevent_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/inputmethod/imf/common/inputmethod_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/js/napi/inner/napi_common/napi_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/components/nstackx/nstackx_congestion/nstackx_congestion.open_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/components/nstackx/nstackx_ctrl/nstackx_ctrl_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/communication/dsoftbus/components/nstackx/nstackx_util/nstackx_util.open_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/runtime/runtime_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session/screen_session_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/ability/native/ability_business_error_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/error_utils/ability_runtime_error_util_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/arkui/ace_engine/frameworks/core/ace_container_scope_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/frameworks/native/appkit/application_context_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_framework/interfaces/kits/js/common/bundle_napi_common_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/third_party/libcoap/libcoap_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/connect_server_manager/connect_server_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/commonlibrary/ets_utils/js_sys_module/console/console_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/msdp/device_status/utils/ipc/devicestatus_ipc_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/msdp/device_status/utils/common/devicestatus_util_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_base/extractresourcemanager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/global/i18n/interfaces/js/innerkits/intl/intl_register_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/js_environment/frameworks/js_environment/js_environment_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/global/resource_management/interfaces/js/innerkits/core/resmgr_napi_core_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/commonlibrary/ets_utils/js_sys_module/timer/timer_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/base/security/access_token/interfaces/innerkits/token_callback/libtoken_callback_sdk_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_animation/window_animation_utils_module_info.json"},
+            {"type": "file", "src": "oneir/profile/foundation.json", "dst": "system/profile/foundation.json", "mode": "0644"},
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/foundation/ability/ability_runtime/services/appmgr/libappms_module_info.json"
+            }
+        ]
     }
 ]
