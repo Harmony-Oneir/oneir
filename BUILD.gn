@@ -546,8 +546,7 @@ group("ability_manager") {
 
 group("installs") {
   deps = [
-    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:installs",
-    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:installs.cfg",
+    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:bms_target",
   ]
 }
 
