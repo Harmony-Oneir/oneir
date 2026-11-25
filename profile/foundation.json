@@ -2,6 +2,14 @@
     "process": "foundation",
     "systemability": [
         {
+            "name": 180,
+            "libpath": "libabilityms.z.so",
+            "run-on-create": true,
+            "distributed": false,
+            "dump_level": 1,
+            "min_hdi_proxy_version": []
+        },
+        {
             "name": 401,
             "libpath": "libbms.z.so",
             "run-on-create": true,
@@ -17,6 +25,14 @@
                 "backup",
                 "restore"
             ]
+        },
+        {
+            "name": 501,
+            "libpath": "libappms.z.so",
+            "run-on-create": true,
+            "distributed": false,
+            "dump_level": 1,
+            "min_hdi_proxy_version": []
         },
         {
             "name": 3299,
