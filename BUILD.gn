@@ -535,6 +535,22 @@ group("storage_manager") {
 }
 
 
+group("ability_manager") {
+  deps = [
+    "//foundation/ability/ability_runtime/services/abilitymgr:abilityms",
+    "//foundation/ability/ability_runtime/services/abilitymgr:mission_list",
+    "//foundation/ability/ability_runtime/services/abilitymgr:ams_service_config",
+    "//foundation/ability/ability_runtime/services/appmgr:libappms",
+  ]
+}
+
+group("installs") {
+  deps = [
+    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:installs",
+    "//foundation/bundlemanager/bundle_framework/services/bundlemgr:installs.cfg",
+  ]
+}
+
 group("all") {
   deps = [
     ":atm",
