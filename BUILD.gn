@@ -568,6 +568,13 @@ group("appspawn") {
   ]
 }
 
+group("tools_bm_aa") {
+  deps = [
+    "//foundation/bundlemanager/bundle_tool/frameworks:bm",
+    "//foundation/ability/ability_runtime/tools/aa:tools_aa",
+  ]
+}
+
 group("all") {
   deps = [
     ":atm",
