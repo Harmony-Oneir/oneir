@@ -550,6 +550,24 @@ group("installs") {
   ]
 }
 
+
+
+group("appspawn") {
+  deps = [
+    "//base/startup/appspawn/standard:appspawn",
+    "//base/startup/appspawn/standard:appspawn_helper",
+    "//base/startup/appspawn/standard:pid_ns_init",
+    "//base/startup/appspawn:appspawn.rc",
+    "//base/startup/appspawn/etc:etc_files",
+    "//base/startup/appspawn/modules/ace_adapter:appspawn_ace",
+    "//base/startup/appspawn/modules/sandbox:appspawn_sandbox",
+    "//base/startup/appspawn/modules/common:appspawn_common",
+    "//base/startup/appspawn/modules/spm:libappspawn_spm",
+    "//base/startup/appspawn/modules/module_engine:libappspawn_module_engine",
+    "//base/startup/appspawn/modules/module_engine:libappspawn_stub_empty",
+  ]
+}
+
 group("all") {
   deps = [
     ":atm",
