@@ -215,7 +215,10 @@
     },{
         "name": "appspawn",
         "values": [
-            { "type": "module_info", "src": "out/oneir/obj/base/startup/appspawn/modules/spm/libappspawn_spm_module_info.json"},
+            {
+                "type": "module_info",
+                "src": "out/oneir/obj/base/startup/appspawn/modules/spm/libappspawn_spm_module_info.json"
+            },
             {
                 "type": "module_info",
                 "src": "out/oneir/obj/base/startup/appspawn/modules/module_engine/libappspawn_module_engine_module_info.json"
@@ -539,6 +542,15 @@
                 "dst": "system/etc/init/appspawn.cfg",
                 "mode": "0644"
             }
+        ]
+    },{
+        "name": "bms",
+        "values": [
+            {"type": "module_info", "src": "out/oneir/obj/foundation/bundlemanager/bundle_tool/frameworks/bm_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/tools/aa/aa_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/interfaces/inner_api/quick_fix/quickfix_manager_module_info.json"},
+            {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/tools/aa/shell_command_executor_config.json_module_info.json"}
+
         ]
     }
 ]
