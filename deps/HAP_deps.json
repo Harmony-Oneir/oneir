@@ -552,5 +552,211 @@
             {"type": "module_info", "src": "out/oneir/obj/foundation/ability/ability_runtime/tools/aa/shell_command_executor_config.json_module_info.json"}
 
         ]
-    }
+    },{
+    "name": "window_manager",
+    "values": [
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/utils/libwmutil_base_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/utils/libwmutil_module_info.json"},
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/resources/media/window_place_holder_image_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/resources/abc/pip/interface/file_pip_content_abc_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/resources/abc/pip/interface/file_web_pip_content_abc_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/resources/config/display_manager_config_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/resources/config/window_manager_config_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager_service/session_manager_service_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/window_scene/intention_event/libintention_event_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/window_scene/intention_event/service/intention_event_anr_manager_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/window_scene/screen_session_manager/screen_session_manager_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager/scene_session_manager_module_info.json"
+        },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager/session_manager_lite_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session_manager/session_manager_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/screen_session_manager_client/screen_session_manager_client_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/innerkits/libwsutils_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/kits/napi/scene_session_manager/scenesessionmanager_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/kits/napi/session_manager_service/sessionmanagerservice_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/kits/napi/screen_session_manager/screensessionmanager_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/interfaces/kits/napi/transaction_manager/transactionmanager_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/common/window_scene_common_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session/scene_session_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/arkui/ace_engine/interfaces/inner_api/xcomponent_controller/ace_xcomponent_controller_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/base/hiviewdfx/hiview/interfaces/inner_api/xpower_event/libxpower_event_js_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/multimedia/image_framework/frameworks/kits/js/common/pixelmap_ndk/pixelmap_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/multimodalinput/input/frameworks/native/input/oh_input_manager_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/wm/libpip_web_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/window_scene/session/screen_session_module_info.json" },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/dm_lite/libdm_lite_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/wmserver/sms_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/edidparse/libedid_parse_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/dmserver/libdms_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/dm/libdm_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/dm/libdm_ndk_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/etc/sceneboard.config_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/etc/wms.para.dac_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/etc/wms.para_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/wm/libmmi_client_adapter_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/wm/libwm_lite_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/wm/libwm_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/wm/libwm_ndk_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/extension/modal_system_ui_extension/libmodal_system_ui_extension_client_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/extension/extension_connection/libwindow_extension_client_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/extension/window_extension/libwindow_extension_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/extension/window_extension/window_extension_module_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/float_view_napi/floatview_kit_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/float_view_napi/floatview_napi_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/screen_runtime/screen_napi_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/displayidenv_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/systemdensityenv_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/windowavoidareaenv_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/windowfocusenv_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/windowsizeenv_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/environmental/inner/windowenv_napi_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_extension_ability/windowextensionability_napi_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_animation/window_animation_utils_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_runtime/window_napi_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_runtime/window_native_kit_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_runtime/windowstage_kit_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_runtime/window_stage_napi/windowstage_module_info.json"
+        },
+        {
+            "type": "module_info",
+            "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/floating_ball_napi/floatingball_kit_module_info.json"
+        },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/floating_ball_napi/floatingball_napi_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/picture_in_picture_napi/pipwindow_kit_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/picture_in_picture_napi/pipwindow_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/picture_in_picture_napi/inner/pip_napi_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/embeddable_window_stage/embeddablewindowstage_kit_module_info.json"},
+        {"type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/window_extension_context/windowextensioncontext_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/extension/uiextension_napi_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/screenshot/screenshot_module_info.json" },
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/extension_window/extensionwindow_napi_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/multimodalinput/input/frameworks/native/input/oh_input_manager_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/wm/libpip_web_module_info.json"},
+        { "type": "module_info", "src": "out/oneir/obj/foundation/window/window_manager/interfaces/kits/napi/display_runtime/display_napi_module_info.json"}
+    ]
+}
 ]
