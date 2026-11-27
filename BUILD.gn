@@ -575,6 +575,34 @@ group("tools_bm_aa") {
   ]
 }
 
+group("window_manager") {
+  deps = [
+    "//foundation/window/window_manager/sa_profile:wms_sa_profile",
+    "//foundation/window/window_manager/wmserver:libwms",
+    "//foundation/window/window_manager/dmserver:libdms",
+    "//foundation/window/window_manager/window_scene:window_scene",
+    "//foundation/window/window_manager/wm:libwm",
+    "//foundation/window/window_manager/wm:libwm_lite",
+    "//foundation/window/window_manager/wm:libwm_ndk",
+    "//foundation/window/window_manager/wm:libmmi_client_adapter",
+    "//foundation/window/window_manager/dm:libdm",
+    "//foundation/window/window_manager/dm:libdm_ndk",
+    "//foundation/window/window_manager/utils:libwmutil",
+    "//foundation/window/window_manager/utils:libwmutil_base",
+    "//foundation/window/window_manager/window_scene/common:window_scene_common",
+    "//foundation/window/window_manager/edidparse:libedid_parse",
+    "//foundation/window/window_manager/extension/extension_connection:libwindow_extension_client",
+    "//foundation/window/window_manager/extension/modal_system_ui_extension:libmodal_system_ui_extension_client",
+    "//foundation/window/window_manager/extension/window_extension:libwindow_extension",
+    "//foundation/window/window_manager/extension/window_extension:window_extension_module",
+    "//foundation/window/window_manager/interfaces/kits/napi:napi_packages",
+    "//foundation/window/window_manager/interfaces/kits/napi/window_runtime/window_stage_napi:windowstage",
+    "//foundation/window/window_manager/window_scene/interfaces/kits/napi:window_scene_napi_packages",
+    "//foundation/window/window_manager/resources:window_resources",
+    "//foundation/window/window_manager/etc:wms_etc",
+  ]
+}
+
 group("all") {
   deps = [
     ":atm",
